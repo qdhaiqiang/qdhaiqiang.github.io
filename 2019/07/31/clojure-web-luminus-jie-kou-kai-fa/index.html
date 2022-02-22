@@ -1,0 +1,2722 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="clojure web(luminus)接口开发, blog">
+    <meta name="description" content="好记性不如烂笔头，一点点攒呗">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>clojure web(luminus)接口开发 | 回忆点滴</title>
+    <link rel="icon" type="image/svg+xml" href="/logo.svg">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script>
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">回忆点滴</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>时间轴</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/music" class="waves-effect waves-light">
+      
+      <i class="fas fa-music" style="zoom: 0.6;"></i>
+      
+      <span>视听</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/galleries" class="waves-effect waves-light">
+      
+      <i class="fa fa-image" style="zoom: 0.6;"></i>
+      
+      <span>相册</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">回忆点滴</div>
+        <div class="logo-desc">
+            
+            好记性不如烂笔头，一点点攒呗
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			时间轴
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/music" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-music"></i>
+			
+			视听
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/galleries" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fa fa-image"></i>
+			
+			相册
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/qdhaiqiang" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/qdhaiqiang" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">clojure web(luminus)接口开发</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/clojure/">
+                                <span class="chip bg-color">clojure</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/clojure/" class="post-category">
+                                clojure
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-07-31
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    7.3k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    38 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/996e20539aac">简书地址</a></p>
+<span id="more"></span>
+
+<h2 id="项目框架"><a href="#项目框架" class="headerlink" title="项目框架"></a>项目框架</h2><p>本项目使用<a target="_blank" rel="noopener" href="http://www.luminusweb.net/">luminus</a>做模板，参考<a target="_blank" rel="noopener" href="https://github.com/luminus-framework/luminus-template">luminus-template</a>,执行下面的命令init工程:</p>
+<pre class="line-numbers language-shell"><code class="language-shell">lein new luminus alk-wxapi +mysql +service
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h3><ul>
+<li><a target="_blank" rel="noopener" href="http://www.luminusweb.net/docs">后台基础框架luminus</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.hugsql.org/">后台sql支持HugSQL</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ring-clojure/ring">后台web框架</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/metosin/reitit">前后端路由框架</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Day8/re-frame">前端状态管理框架</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/priornix/antizer">前端PC版UI框架-antizer</a></li>
+<li><a target="_blank" rel="noopener" href="https://clojuredocs.org/">clojure 函数定义及demo查询</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/geekerzp/clojure-style-guide/blob/master/README-zhCN.md">clojure编程风格指南</a></li>
+<li><a target="_blank" rel="noopener" href="https://clojure.org/guides/spec">spec guide</a></li>
+<li><a target="_blank" rel="noopener" href="https://cursive-ide.com/userguide/testing.html">单元测试</a></li>
+</ul>
+<h3 id="项目运行"><a href="#项目运行" class="headerlink" title="项目运行"></a>项目运行</h3><p>在命令行工具中启动用lein启动一个repl，lein没有安装的需要自行百度。</p>
+<pre class="line-numbers language-shell"><code class="language-shell">➜  ~ cd git/redcreation/alk-wxapi
+➜  alk-wxapi git:(master) lein repl
+nREPL server started on port 50529 on host 127.0.0.1 - nrepl://127.0.0.1:50529
+REPL-y 0.4.3, nREPL 0.6.0
+Clojure 1.10.0
+Java HotSpot(TM) 64-Bit Server VM 1.8.0_192-b12
+    Docs: (doc function-name-here)
+          (find-doc "part-of-name-here")
+  Source: (source function-name-here)
+ Javadoc: (javadoc java-object-or-class-here)
+    Exit: Control+D or (exit) or (quit)
+ Results: Stored in vars *1, *2, *3, an exception in *e
+
+user=&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>然后在Intellij Idea中远程连接</p>
+<p><img src="/loading.gif" data-original="/images/clojure/ideaconfig.png" alt="ideaconfig"></p>
+<p>run这个配置，然后在下面的repl环境中执行<code>(start)</code>即启动server。</p>
+<h3 id="常见问题及解决方案"><a href="#常见问题及解决方案" class="headerlink" title="常见问题及解决方案"></a>常见问题及解决方案</h3><h4 id="1、处理request"><a href="#1、处理request" class="headerlink" title="1、处理request"></a>1、处理request</h4><p>实际项目开发中经常需要打印request内容，这部分在springMVC中一般用aop来解决。<br>clojure中没有对象，更别提aop了，但是没有框架的束缚，处理起request和response反而更加灵活，是用clojure的<a target="_blank" rel="noopener" href="http://clojure-doc.org/articles/cookbooks/middleware.html">middleware</a><br>处理的，比如一个打印出入参的middleware如下：</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">(require '[clojure.tools.logging :as log])
+
+(defn log-wrap [handler]
+  (fn [request]
+    (if-not (:dev env)
+      (let [request-id (java.util.UUID/randomUUID)]
+        (log/info (str "\n================================ REQUEST START ================================"
+                       "\n request-id:" request-id
+                       "\n request-uri: " (:uri request)
+                       "\n request-method: " (:request-method request)
+                       "\n request-query: " (:query (:parameters request))
+                       "\n request-body: " (:body (:parameters request))))
+        (let [res (handler request)]
+          (log/info (str "response: " (:body res)
+                         "\n request-id:" request-id))
+          (log/info (str "\n================================ response END ================================"))
+          res))
+      (handler request))))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>将此swap配置在全局路由中即可,一般是有个统一配置format的middleware的，放在一起即可。</p>
+<h4 id="2、在handler中使用request里自定义的对象"><a href="#2、在handler中使用request里自定义的对象" class="headerlink" title="2、在handler中使用request里自定义的对象"></a>2、在handler中使用request里自定义的对象</h4><p>有了上面说的middleware能处理request，那么往request里放个对象，自然不在话下，比如讲header里的token转换成user对象置于request中，在后面handler中直接是用。</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">(defn token-wrap [handler]
+  (fn [request]
+    (let [token (get-in request [:headers "token"])
+          user (-&gt; token
+                   str-&gt;jwt
+                   :claims)]
+      (log/info (str "解析后的user：" (-&gt; token
+                                      str-&gt;jwt
+                                      :claims)))
+      (log/info (str "******* the current user is " (:iss user)))
+      (handler (assoc request :current-user (:iss user))))))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="3、hendler获取body，path，query的参数"><a href="#3、hendler获取body，path，query的参数" class="headerlink" title="3、hendler获取body，path，query的参数"></a>3、hendler获取body，path，query的参数</h4><p>在handle前后，可以用<code>(keys request)</code>查看request里自己传入的参数，那么在handler里怎么获取这些参数呢,在Luminus中定义了三种与springMVC类似的参数关键词，对应关系如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">mvc</th>
+<th align="center">request</th>
+<th align="center">luminus</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">@RequestParam</td>
+<td align="center">query-params</td>
+<td align="center">parameters -&gt; query</td>
+<td align="center">query参数，URL后面问号的参数，或form的参数</td>
+</tr>
+<tr>
+<td align="center">@PathVariable</td>
+<td align="center">path-params</td>
+<td align="center">parameters -&gt; path</td>
+<td align="center">path参数，URL中<code>/</code>的参数</td>
+</tr>
+<tr>
+<td align="center">@RequestBody</td>
+<td align="center">body-params</td>
+<td align="center">parameters -&gt;body</td>
+<td align="center">post/put方法里的body参数</td>
+</tr>
+</tbody></table>
+<p>这三个keyword是ring自身的处理，是原始request里的参数，但是query-params参数被处理成map的key不是keywords，是普通的string，得用(query-params “id”)这样来取值。因此推荐如下示例使用：<br>推荐从request的parameters中获取，关键字分别是query，path， body。<br>获取的例子：</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">  ["/path/bad/:id"
+   {:post {:summary    "路径上传参--不推荐此方法获取--query参数key变成了str"
+           :parameters {:path  {:id int?}
+                        :query {:name string?}
+                        :body  {:message string?}}
+           :handler    (fn [{:keys [path-params query-params body-params]}]
+                        {:status 200
+                         :body   {:data (str "path params: " path-params
+                                             "\n query params: " query-params
+                                             "\n body params: " body-params)}})}}]
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>原因分析</strong></p>
+<p>我们在handler.clj的<code>ring/router</code>后面使用<code>[reitit.ring.middleware.dev :as dev]</code>的<code>{:reitit.middleware/transform dev/print-request-diffs}</code>方法打印出中间件的处理逻辑，</p>
+<p><img src="/loading.gif" data-original="/images/clojure/handler.png" alt="handler"></p>
+<p>结果如下：</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">--- Middleware ---
+
+  {:body #<io.undertow.io.undertowinputstream@39931c66>,
+   :character-encoding "ISO-8859-1",
+   :content-length 21,
+   :content-type "application/json",
+   :context "",
+   :cookies {"JSESSIONID" {:value "GpSiQENkmzM7qQwqWdYxjehYKvNKoEGMG6MIwqwU"},
+             "_ga" {:value "GA1.1.521496834.1555489511"},
+             "_gid" {:value "GA1.1.947080805.1561170619"}},
+   :flash nil,
+   :form-params {},
+   :handler-type :undertow,
+   :headers {"accept" "application/json",
+             "accept-encoding" "gzip, deflate, br",
+             "accept-language" "zh-CN,zh;q=0.9,zh-TW;q=0.8,en;q=0.7",
+             "connection" "keep-alive",
+             "content-length" "21",
+             "content-type" "application/json",
+             "cookie" "_ga=GA1.1.521496834.1555489511; JSESSIONID=GpSiQENkmzM7qQwqWdYxjehYKvNKoEGMG6MIwqwU; _gid=GA1.1.947080805.1561170619",
+             "host" "localhost:3000",
+             "origin" "http://localhost:3000",
+             "referer" "http://localhost:3000/api/api-docs/index.html",
+             "user-agent" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36"},
+   :multipart-params {},
+   :params {:name "2"},
+   :path-info "/api/guestbooks/path/good-all-params/1",
+   :path-params {:id "1"},
+   :query-params {"name" "2"},
+   :query-string "name=2",
+   :remote-addr "0:0:0:0:0:0:0:1",
+   :request-method :post,
+   :scheme :http,
+   :server-exchange #<io.undertow.server.httpserverexchange@78f2e776 httpserverexchange&#123;="" post="" api="" guestbooks="" path="" good-all-params="" 1="" request="" &#123;accept="[application/json]," accept-language="[zh-CN,zh;q=0.9,zh-TW;q=0.8,en;q=0.7]," accept-encoding="[gzip," deflate,="" br],="" origin="[http://localhost:3000]," user-agent="[Mozilla/5.0" (macintosh;="" intel="" mac="" os="" x="" 10_13_6)="" applewebkit="" 537.36="" (khtml,="" like="" gecko)="" chrome="" 75.0.3770.100="" safari="" 537.36],="" connection="[keep-alive]," content-length="[21]," content-type="[application/json]," cookie="[_ga=GA1.1.521496834.1555489511;" jsessionid="GpSiQENkmzM7qQwqWdYxjehYKvNKoEGMG6MIwqwU;" _gid="GA1.1.947080805.1561170619]," referer="[http://localhost:3000/api/api-docs/index.html]," host="[localhost:3000]}" response="" &#123;server="[undertow]}}">,
+   :server-name "localhost",
+   :server-port 3000,
+   :session nil,
+   :ssl-client-cert nil,
+   :uri "/api/guestbooks/path/good-all-params/1"}
+
+--- Middleware :reitit.ring.middleware.parameters/parameters ---
+
+  {:body #<io.undertow.io.undertowinputstream@39931c66>,
+   :character-encoding "ISO-8859-1",
+   :content-length 21,
+   :content-type "application/json",
+   :context "",
+   :cookies {"JSESSIONID" {:value "GpSiQENkmzM7qQwqWdYxjehYKvNKoEGMG6MIwqwU"},
+             "_ga" {:value "GA1.1.521496834.1555489511"},
+             "_gid" {:value "GA1.1.947080805.1561170619"}},
+   :flash nil,
+   :form-params {},
+   :handler-type :undertow,
+   :headers {"accept" "application/json",
+             "accept-encoding" "gzip, deflate, br",
+             "accept-language" "zh-CN,zh;q=0.9,zh-TW;q=0.8,en;q=0.7",
+             "connection" "keep-alive",
+             "content-length" "21",
+             "content-type" "application/json",
+             "cookie" "_ga=GA1.1.521496834.1555489511; JSESSIONID=GpSiQENkmzM7qQwqWdYxjehYKvNKoEGMG6MIwqwU; _gid=GA1.1.947080805.1561170619",
+             "host" "localhost:3000",
+             "origin" "http://localhost:3000",
+             "referer" "http://localhost:3000/api/api-docs/index.html",
+             "user-agent" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36"},
+   :multipart-params {},
+   :params {:name "2"},
+   :path-info "/api/guestbooks/path/good-all-params/1",
+   :path-params {:id "1"},
+   :query-params {"name" "2"},
+   :query-string "name=2",
+   :remote-addr "0:0:0:0:0:0:0:1",
+   :request-method :post,
+   :scheme :http,
+   :server-exchange #<io.undertow.server.httpserverexchange@78f2e776 httpserverexchange&#123;="" post="" api="" guestbooks="" path="" good-all-params="" 1="" request="" &#123;accept="[application/json]," accept-language="[zh-CN,zh;q=0.9,zh-TW;q=0.8,en;q=0.7]," accept-encoding="[gzip," deflate,="" br],="" origin="[http://localhost:3000]," user-agent="[Mozilla/5.0" (macintosh;="" intel="" mac="" os="" x="" 10_13_6)="" applewebkit="" 537.36="" (khtml,="" like="" gecko)="" chrome="" 75.0.3770.100="" safari="" 537.36],="" connection="[keep-alive]," content-length="[21]," content-type="[application/json]," cookie="[_ga=GA1.1.521496834.1555489511;" jsessionid="GpSiQENkmzM7qQwqWdYxjehYKvNKoEGMG6MIwqwU;" _gid="GA1.1.947080805.1561170619]," referer="[http://localhost:3000/api/api-docs/index.html]," host="[localhost:3000]}" response="" &#123;server="[undertow]}}">,
+   :server-name "localhost",
+   :server-port 3000,
+   :session nil,
+   :ssl-client-cert nil,
+   :uri "/api/guestbooks/path/good-all-params/1"}
+
+--- Middleware :reitit.ring.middleware.muuntaja/format-negotiate ---
+
+  {:body #<io.undertow.io.undertowinputstream@39931c66>,
+   :character-encoding "ISO-8859-1",
+   :content-length 21,
+   :content-type "application/json",
+   :context "",
+   :cookies {"JSESSIONID" {:value "GpSiQENkmzM7qQwqWdYxjehYKvNKoEGMG6MIwqwU"},
+             "_ga" {:value "GA1.1.521496834.1555489511"},
+             "_gid" {:value "GA1.1.947080805.1561170619"}},
+   :flash nil,
+   :form-params {},
+   :handler-type :undertow,
+   :headers {"accept" "application/json",
+             "accept-encoding" "gzip, deflate, br",
+             "accept-language" "zh-CN,zh;q=0.9,zh-TW;q=0.8,en;q=0.7",
+             "connection" "keep-alive",
+             "content-length" "21",
+             "content-type" "application/json",
+             "cookie" "_ga=GA1.1.521496834.1555489511; JSESSIONID=GpSiQENkmzM7qQwqWdYxjehYKvNKoEGMG6MIwqwU; _gid=GA1.1.947080805.1561170619",
+             "host" "localhost:3000",
+             "origin" "http://localhost:3000",
+             "referer" "http://localhost:3000/api/api-docs/index.html",
+             "user-agent" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36"},
+   :multipart-params {},
+   :params {:name "2"},
+   :path-info "/api/guestbooks/path/good-all-params/1",
+   :path-params {:id "1"},
+   :query-params {"name" "2"},
+   :query-string "name=2",
+   :remote-addr "0:0:0:0:0:0:0:1",
+   :request-method :post,
+   :scheme :http,
+   :server-exchange #<io.undertow.server.httpserverexchange@78f2e776 httpserverexchange&#123;="" post="" api="" guestbooks="" path="" good-all-params="" 1="" request="" &#123;accept="[application/json]," accept-language="[zh-CN,zh;q=0.9,zh-TW;q=0.8,en;q=0.7]," accept-encoding="[gzip," deflate,="" br],="" origin="[http://localhost:3000]," user-agent="[Mozilla/5.0" (macintosh;="" intel="" mac="" os="" x="" 10_13_6)="" applewebkit="" 537.36="" (khtml,="" like="" gecko)="" chrome="" 75.0.3770.100="" safari="" 537.36],="" connection="[keep-alive]," content-length="[21]," content-type="[application/json]," cookie="[_ga=GA1.1.521496834.1555489511;" jsessionid="GpSiQENkmzM7qQwqWdYxjehYKvNKoEGMG6MIwqwU;" _gid="GA1.1.947080805.1561170619]," referer="[http://localhost:3000/api/api-docs/index.html]," host="[localhost:3000]}" response="" &#123;server="[undertow]}}">,
+   :server-name "localhost",
+   :server-port 3000,
+   :session nil,
+   :ssl-client-cert nil,
+   :uri "/api/guestbooks/path/good-all-params/1",
+   +:muuntaja/request #muuntaja.core.FormatAndCharset
+   {:charset "utf-8",
+    :format "application/json",
+    :raw-format "application/json"},
+   +:muuntaja/response #muuntaja.core.FormatAndCharset
+   {:charset "utf-8",
+    :format "application/json",
+    :raw-format "application/json"}}
+
+--- Middleware :reitit.ring.middleware.muuntaja/format-response ---
+
+  {:body #<io.undertow.io.undertowinputstream@39931c66>,
+   :character-encoding "ISO-8859-1",
+   :content-length 21,
+   :content-type "application/json",
+   :context "",
+   :cookies {"JSESSIONID" {:value "GpSiQENkmzM7qQwqWdYxjehYKvNKoEGMG6MIwqwU"},
+             "_ga" {:value "GA1.1.521496834.1555489511"},
+             "_gid" {:value "GA1.1.947080805.1561170619"}},
+   :flash nil,
+   :form-params {},
+   :handler-type :undertow,
+   :headers {"accept" "application/json",
+             "accept-encoding" "gzip, deflate, br",
+             "accept-language" "zh-CN,zh;q=0.9,zh-TW;q=0.8,en;q=0.7",
+             "connection" "keep-alive",
+             "content-length" "21",
+             "content-type" "application/json",
+             "cookie" "_ga=GA1.1.521496834.1555489511; JSESSIONID=GpSiQENkmzM7qQwqWdYxjehYKvNKoEGMG6MIwqwU; _gid=GA1.1.947080805.1561170619",
+             "host" "localhost:3000",
+             "origin" "http://localhost:3000",
+             "referer" "http://localhost:3000/api/api-docs/index.html",
+             "user-agent" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36"},
+   :multipart-params {},
+   :params {:name "2"},
+   :path-info "/api/guestbooks/path/good-all-params/1",
+   :path-params {:id "1"},
+   :query-params {"name" "2"},
+   :query-string "name=2",
+   :remote-addr "0:0:0:0:0:0:0:1",
+   :request-method :post,
+   :scheme :http,
+   :server-exchange #<io.undertow.server.httpserverexchange@78f2e776 httpserverexchange&#123;="" post="" api="" guestbooks="" path="" good-all-params="" 1="" request="" &#123;accept="[application/json]," accept-language="[zh-CN,zh;q=0.9,zh-TW;q=0.8,en;q=0.7]," accept-encoding="[gzip," deflate,="" br],="" origin="[http://localhost:3000]," user-agent="[Mozilla/5.0" (macintosh;="" intel="" mac="" os="" x="" 10_13_6)="" applewebkit="" 537.36="" (khtml,="" like="" gecko)="" chrome="" 75.0.3770.100="" safari="" 537.36],="" connection="[keep-alive]," content-length="[21]," content-type="[application/json]," cookie="[_ga=GA1.1.521496834.1555489511;" jsessionid="GpSiQENkmzM7qQwqWdYxjehYKvNKoEGMG6MIwqwU;" _gid="GA1.1.947080805.1561170619]," referer="[http://localhost:3000/api/api-docs/index.html]," host="[localhost:3000]}" response="" &#123;server="[undertow]}}">,
+   :server-name "localhost",
+   :server-port 3000,
+   :session nil,
+   :ssl-client-cert nil,
+   :uri "/api/guestbooks/path/good-all-params/1",
+   :muuntaja/request {:charset "utf-8",
+                      :format "application/json",
+                      :raw-format "application/json"},
+   :muuntaja/response {:charset "utf-8",
+                       :format "application/json",
+                       :raw-format "application/json"}}
+
+--- Middleware :reitit.ring.middleware.exception/exception ---
+
+  {:body #<io.undertow.io.undertowinputstream@39931c66>,
+   :character-encoding "ISO-8859-1",
+   :content-length 21,
+   :content-type "application/json",
+   :context "",
+   :cookies {"JSESSIONID" {:value "GpSiQENkmzM7qQwqWdYxjehYKvNKoEGMG6MIwqwU"},
+             "_ga" {:value "GA1.1.521496834.1555489511"},
+             "_gid" {:value "GA1.1.947080805.1561170619"}},
+   :flash nil,
+   :form-params {},
+   :handler-type :undertow,
+   :headers {"accept" "application/json",
+             "accept-encoding" "gzip, deflate, br",
+             "accept-language" "zh-CN,zh;q=0.9,zh-TW;q=0.8,en;q=0.7",
+             "connection" "keep-alive",
+             "content-length" "21",
+             "content-type" "application/json",
+             "cookie" "_ga=GA1.1.521496834.1555489511; JSESSIONID=GpSiQENkmzM7qQwqWdYxjehYKvNKoEGMG6MIwqwU; _gid=GA1.1.947080805.1561170619",
+             "host" "localhost:3000",
+             "origin" "http://localhost:3000",
+             "referer" "http://localhost:3000/api/api-docs/index.html",
+             "user-agent" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36"},
+   :multipart-params {},
+   :params {:name "2"},
+   :path-info "/api/guestbooks/path/good-all-params/1",
+   :path-params {:id "1"},
+   :query-params {"name" "2"},
+   :query-string "name=2",
+   :remote-addr "0:0:0:0:0:0:0:1",
+   :request-method :post,
+   :scheme :http,
+   :server-exchange #<io.undertow.server.httpserverexchange@78f2e776 httpserverexchange&#123;="" post="" api="" guestbooks="" path="" good-all-params="" 1="" request="" &#123;accept="[application/json]," accept-language="[zh-CN,zh;q=0.9,zh-TW;q=0.8,en;q=0.7]," accept-encoding="[gzip," deflate,="" br],="" origin="[http://localhost:3000]," user-agent="[Mozilla/5.0" (macintosh;="" intel="" mac="" os="" x="" 10_13_6)="" applewebkit="" 537.36="" (khtml,="" like="" gecko)="" chrome="" 75.0.3770.100="" safari="" 537.36],="" connection="[keep-alive]," content-length="[21]," content-type="[application/json]," cookie="[_ga=GA1.1.521496834.1555489511;" jsessionid="GpSiQENkmzM7qQwqWdYxjehYKvNKoEGMG6MIwqwU;" _gid="GA1.1.947080805.1561170619]," referer="[http://localhost:3000/api/api-docs/index.html]," host="[localhost:3000]}" response="" &#123;server="[undertow]}}">,
+   :server-name "localhost",
+   :server-port 3000,
+   :session nil,
+   :ssl-client-cert nil,
+   :uri "/api/guestbooks/path/good-all-params/1",
+   :muuntaja/request {:charset "utf-8",
+                      :format "application/json",
+                      :raw-format "application/json"},
+   :muuntaja/response {:charset "utf-8",
+                       :format "application/json",
+                       :raw-format "application/json"}}
+
+--- Middleware :reitit.ring.middleware.muuntaja/format-request ---
+
+  {:body #<io.undertow.io.undertowinputstream@39931c66>,
+   :character-encoding "ISO-8859-1",
+   :content-length 21,
+   :content-type "application/json",
+   :context "",
+   :cookies {"JSESSIONID" {:value "GpSiQENkmzM7qQwqWdYxjehYKvNKoEGMG6MIwqwU"},
+             "_ga" {:value "GA1.1.521496834.1555489511"},
+             "_gid" {:value "GA1.1.947080805.1561170619"}},
+   :flash nil,
+   :form-params {},
+   :handler-type :undertow,
+   :headers {"accept" "application/json",
+             "accept-encoding" "gzip, deflate, br",
+             "accept-language" "zh-CN,zh;q=0.9,zh-TW;q=0.8,en;q=0.7",
+             "connection" "keep-alive",
+             "content-length" "21",
+             "content-type" "application/json",
+             "cookie" "_ga=GA1.1.521496834.1555489511; JSESSIONID=GpSiQENkmzM7qQwqWdYxjehYKvNKoEGMG6MIwqwU; _gid=GA1.1.947080805.1561170619",
+             "host" "localhost:3000",
+             "origin" "http://localhost:3000",
+             "referer" "http://localhost:3000/api/api-docs/index.html",
+             "user-agent" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36"},
+   :multipart-params {},
+   :params {:name "2"},
+   :path-info "/api/guestbooks/path/good-all-params/1",
+   :path-params {:id "1"},
+   :query-params {"name" "2"},
+   :query-string "name=2",
+   :remote-addr "0:0:0:0:0:0:0:1",
+   :request-method :post,
+   :scheme :http,
+   :server-exchange #<io.undertow.server.httpserverexchange@78f2e776 httpserverexchange&#123;="" post="" api="" guestbooks="" path="" good-all-params="" 1="" request="" &#123;accept="[application/json]," accept-language="[zh-CN,zh;q=0.9,zh-TW;q=0.8,en;q=0.7]," accept-encoding="[gzip," deflate,="" br],="" origin="[http://localhost:3000]," user-agent="[Mozilla/5.0" (macintosh;="" intel="" mac="" os="" x="" 10_13_6)="" applewebkit="" 537.36="" (khtml,="" like="" gecko)="" chrome="" 75.0.3770.100="" safari="" 537.36],="" connection="[keep-alive]," content-length="[21]," content-type="[application/json]," cookie="[_ga=GA1.1.521496834.1555489511;" jsessionid="GpSiQENkmzM7qQwqWdYxjehYKvNKoEGMG6MIwqwU;" _gid="GA1.1.947080805.1561170619]," referer="[http://localhost:3000/api/api-docs/index.html]," host="[localhost:3000]}" response="" &#123;server="[undertow]}}">,
+   :server-name "localhost",
+   :server-port 3000,
+   :session nil,
+   :ssl-client-cert nil,
+   :uri "/api/guestbooks/path/good-all-params/1",
+   :muuntaja/request {:charset "utf-8",
+                      :format "application/json",
+                      :raw-format "application/json"},
+   :muuntaja/response {:charset "utf-8",
+                       :format "application/json",
+                       :raw-format "application/json"},
+   +:body-params {:message "22"}}
+
+--- Middleware :reitit.ring.coercion/coerce-request ---
+
+  {:body #<io.undertow.io.undertowinputstream@39931c66>,
+   :body-params {:message "22"},
+   :character-encoding "ISO-8859-1",
+   :content-length 21,
+   :content-type "application/json",
+   :context "",
+   :cookies {"JSESSIONID" {:value "GpSiQENkmzM7qQwqWdYxjehYKvNKoEGMG6MIwqwU"},
+             "_ga" {:value "GA1.1.521496834.1555489511"},
+             "_gid" {:value "GA1.1.947080805.1561170619"}},
+   :flash nil,
+   :form-params {},
+   :handler-type :undertow,
+   :headers {"accept" "application/json",
+             "accept-encoding" "gzip, deflate, br",
+             "accept-language" "zh-CN,zh;q=0.9,zh-TW;q=0.8,en;q=0.7",
+             "connection" "keep-alive",
+             "content-length" "21",
+             "content-type" "application/json",
+             "cookie" "_ga=GA1.1.521496834.1555489511; JSESSIONID=GpSiQENkmzM7qQwqWdYxjehYKvNKoEGMG6MIwqwU; _gid=GA1.1.947080805.1561170619",
+             "host" "localhost:3000",
+             "origin" "http://localhost:3000",
+             "referer" "http://localhost:3000/api/api-docs/index.html",
+             "user-agent" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36"},
+   :multipart-params {},
+   :params {:name "2"},
+   :path-info "/api/guestbooks/path/good-all-params/1",
+   :path-params {:id "1"},
+   :query-params {"name" "2"},
+   :query-string "name=2",
+   :remote-addr "0:0:0:0:0:0:0:1",
+   :request-method :post,
+   :scheme :http,
+   :server-exchange #<io.undertow.server.httpserverexchange@78f2e776 httpserverexchange&#123;="" post="" api="" guestbooks="" path="" good-all-params="" 1="" request="" &#123;accept="[application/json]," accept-language="[zh-CN,zh;q=0.9,zh-TW;q=0.8,en;q=0.7]," accept-encoding="[gzip," deflate,="" br],="" origin="[http://localhost:3000]," user-agent="[Mozilla/5.0" (macintosh;="" intel="" mac="" os="" x="" 10_13_6)="" applewebkit="" 537.36="" (khtml,="" like="" gecko)="" chrome="" 75.0.3770.100="" safari="" 537.36],="" connection="[keep-alive]," content-length="[21]," content-type="[application/json]," cookie="[_ga=GA1.1.521496834.1555489511;" jsessionid="GpSiQENkmzM7qQwqWdYxjehYKvNKoEGMG6MIwqwU;" _gid="GA1.1.947080805.1561170619]," referer="[http://localhost:3000/api/api-docs/index.html]," host="[localhost:3000]}" response="" &#123;server="[undertow]}}">,
+   :server-name "localhost",
+   :server-port 3000,
+   :session nil,
+   :ssl-client-cert nil,
+   :uri "/api/guestbooks/path/good-all-params/1",
+   :muuntaja/request {:charset "utf-8",
+                      :format "application/json",
+                      :raw-format "application/json"},
+   :muuntaja/response {:charset "utf-8",
+                       :format "application/json",
+                       :raw-format "application/json"},
+   +:parameters {:body {:message "22"},
+                 :path {:id 1},
+                 :query {:name "2"}}}
+
+2019-06-22 11:09:16,537 [XNIO-2 task-2] INFO  alk-wxapi.middleware.log-interceptor - 
+================================ REQUEST START ================================
+ request-id:8ddb3169-e72f-4b90-8811-d500c50d3057
+ request-uri: /api/guestbooks/path/good-all-params/1
+ request-method: :post
+ request-query: {:name "2"}
+ request-body: {:message "22"} 
+--- Middleware ---
+
+  {:body #<io.undertow.io.undertowinputstream@39931c66>,
+   :body-params {:message "22"},
+   :character-encoding "ISO-8859-1",
+   :content-length 21,
+   :content-type "application/json",
+   :context "",
+   :cookies {"JSESSIONID" {:value "GpSiQENkmzM7qQwqWdYxjehYKvNKoEGMG6MIwqwU"},
+             "_ga" {:value "GA1.1.521496834.1555489511"},
+             "_gid" {:value "GA1.1.947080805.1561170619"}},
+   :flash nil,
+   :form-params {},
+   :handler-type :undertow,
+   :headers {"accept" "application/json",
+             "accept-encoding" "gzip, deflate, br",
+             "accept-language" "zh-CN,zh;q=0.9,zh-TW;q=0.8,en;q=0.7",
+             "connection" "keep-alive",
+             "content-length" "21",
+             "content-type" "application/json",
+             "cookie" "_ga=GA1.1.521496834.1555489511; JSESSIONID=GpSiQENkmzM7qQwqWdYxjehYKvNKoEGMG6MIwqwU; _gid=GA1.1.947080805.1561170619",
+             "host" "localhost:3000",
+             "origin" "http://localhost:3000",
+             "referer" "http://localhost:3000/api/api-docs/index.html",
+             "user-agent" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36"},
+   :multipart-params {},
+   :parameters {:body {:message "22"},
+                :path {:id 1},
+                :query {:name "2"}},
+   :params {:name "2"},
+   :path-info "/api/guestbooks/path/good-all-params/1",
+   :path-params {:id "1"},
+   :query-params {"name" "2"},
+   :query-string "name=2",
+   :remote-addr "0:0:0:0:0:0:0:1",
+   :request-method :post,
+   :scheme :http,
+   :server-exchange #<io.undertow.server.httpserverexchange@78f2e776 httpserverexchange&#123;="" post="" api="" guestbooks="" path="" good-all-params="" 1="" request="" &#123;accept="[application/json]," accept-language="[zh-CN,zh;q=0.9,zh-TW;q=0.8,en;q=0.7]," accept-encoding="[gzip," deflate,="" br],="" origin="[http://localhost:3000]," user-agent="[Mozilla/5.0" (macintosh;="" intel="" mac="" os="" x="" 10_13_6)="" applewebkit="" 537.36="" (khtml,="" like="" gecko)="" chrome="" 75.0.3770.100="" safari="" 537.36],="" connection="[keep-alive]," content-length="[21]," content-type="[application/json]," cookie="[_ga=GA1.1.521496834.1555489511;" jsessionid="GpSiQENkmzM7qQwqWdYxjehYKvNKoEGMG6MIwqwU;" _gid="GA1.1.947080805.1561170619]," referer="[http://localhost:3000/api/api-docs/index.html]," host="[localhost:3000]}" response="" &#123;server="[undertow]}}">,
+   :server-name "localhost",
+   :server-port 3000,
+   :session nil,
+   :ssl-client-cert nil,
+   :uri "/api/guestbooks/path/good-all-params/1",
+   :muuntaja/request {:charset "utf-8",
+                      :format "application/json",
+                      :raw-format "application/json"},
+   :muuntaja/response {:charset "utf-8",
+                       :format "application/json",
+                       :raw-format "application/json"}}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></io.undertow.server.httpserverexchange@78f2e776></io.undertow.io.undertowinputstream@39931c66></io.undertow.server.httpserverexchange@78f2e776></io.undertow.io.undertowinputstream@39931c66></io.undertow.server.httpserverexchange@78f2e776></io.undertow.io.undertowinputstream@39931c66></io.undertow.server.httpserverexchange@78f2e776></io.undertow.io.undertowinputstream@39931c66></io.undertow.server.httpserverexchange@78f2e776></io.undertow.io.undertowinputstream@39931c66></io.undertow.server.httpserverexchange@78f2e776></io.undertow.io.undertowinputstream@39931c66></io.undertow.server.httpserverexchange@78f2e776></io.undertow.io.undertowinputstream@39931c66></io.undertow.server.httpserverexchange@78f2e776></io.undertow.io.undertowinputstream@39931c66></code></pre>
+<p>可以看到在<code>reitit.ring.coercion/coerce-request</code>中间件处理后request里增加了<br><code>:parameters {  :body {:message "22"},  :path {:id 1},  :query {:name "2"}}</code><br>3种类型一致的map，这就是我们为什么推荐使用的原因。</p>
+<blockquote>
+<p>handler里获取request自定义的对象：</p>
+</blockquote>
+<p>那么，在上一步handle中加入到request中了一个current-user怎么获取和使用呢？其实，body-params，query-params这些也只是从request中获取到的而已，既然能从request中获取这些，那么request里的其他所有自然也能在handler中获取，看下面的例子：</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">["/reset/pwd"
+    {:post {:summary    "修改密码"
+            :parameters {:body (s/keys :req-un [::old-pwd ::new-pwd])}
+            :handler    (fn [{{{:keys [old-pwd new-pwd]} :body} :parameters :as request}]
+                          (let [current-id (-&gt; request :current-user :user-id)
+                                db-user (db/get-user-id
+                                         {:user-id current-id})]
+                            (if (check-old-pwd old-pwd (:password db-user))
+                              (do (conman.core/with-transaction
+                                    [*db*]
+                                    (db/update-pwd! {:password  (d/sha-256 new-pwd)
+                                                         :user-id current-id}))
+                                  {:status 200
+                                   :body   {:code    1
+                                            :message "修改成功，请用新密码登录"}})
+                              {:status 400
+                               :body   {:code    0
+                                        :message "密码错误，请输入正确的密码！"}})))}}]
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>:as request</code>的意思是包含前面指定获取的参数的所有。</p>
+<h4 id="4、分页，动态hugsql"><a href="#4、分页，动态hugsql" class="headerlink" title="4、分页，动态hugsql"></a>4、分页，动态hugsql</h4><p>在springboot里习惯使用spring data jpa，分页使用Pageable、PageRequest，还能携带Sort，放回结果自动分页，确实方便。在<a target="_blank" rel="noopener" href="http://www.luminusweb.net/">luminusweb</a>里没有看到分页的说明，于是在底层的<a target="_blank" rel="noopener" href="https://www.hugsql.org/">HugSQL</a>里找到的方案,举个动态sql，并且使用like模糊查询的例子：</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- :name get-patient-like :? :*</span>
+<span class="token comment" spellcheck="true">-- :doc 模糊查询患者列表</span>
+<span class="token keyword">SELECT</span>
+<span class="token comment" spellcheck="true">/*~ (if (:count params) */</span>
+  <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> <span class="token string">'total-elements'</span>
+<span class="token comment" spellcheck="true">/*~*/</span>
+    p<span class="token punctuation">.</span><span class="token punctuation">`</span>patient_id<span class="token punctuation">`</span><span class="token punctuation">,</span>
+    p<span class="token punctuation">.</span><span class="token punctuation">`</span>name<span class="token punctuation">`</span><span class="token punctuation">,</span>
+    p<span class="token punctuation">.</span><span class="token punctuation">`</span>headimgurl<span class="token punctuation">`</span><span class="token punctuation">,</span>
+    p<span class="token punctuation">.</span><span class="token punctuation">`</span>patient_no<span class="token punctuation">`</span>
+<span class="token comment" spellcheck="true">/*~ ) ~*/</span>
+<span class="token keyword">FROM</span>
+    <span class="token punctuation">`</span>t_patient<span class="token punctuation">`</span> p
+<span class="token keyword">WHERE</span>
+    p<span class="token punctuation">.</span>deleted <span class="token operator">=</span> <span class="token boolean">FALSE</span>
+    <span class="token operator">AND</span> p<span class="token punctuation">.</span><span class="token punctuation">`</span>hospital_id<span class="token punctuation">`</span> <span class="token operator">=</span> :hospital<span class="token operator">-</span>id
+<span class="token comment" spellcheck="true">/*~ (if (= nil (:keywords params)) */</span>
+  <span class="token operator">AND</span> <span class="token number">1</span><span class="token operator">=</span><span class="token number">1</span>
+<span class="token comment" spellcheck="true">/*~*/</span>
+  <span class="token operator">AND</span> <span class="token punctuation">(</span>
+        p<span class="token punctuation">.</span><span class="token punctuation">`</span>name<span class="token punctuation">`</span> <span class="token operator">LIKE</span> :keywords
+        <span class="token operator">OR</span> p<span class="token punctuation">.</span>mobile <span class="token operator">LIKE</span> :keywords
+      <span class="token operator">OR</span> p<span class="token punctuation">.</span>patient_no <span class="token operator">LIKE</span> :keywords
+    <span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">/*~ ) ~*/</span>
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> p<span class="token punctuation">.</span><span class="token punctuation">`</span>create_time<span class="token punctuation">`</span> <span class="token keyword">DESC</span>
+<span class="token comment" spellcheck="true">--~ (if (:count params) ";" "LIMIT :page, :size ;")</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>调用：</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">["/patient/search"
+    {:get {:summary    "医生模糊检索患者列表"
+           :parameters {:query (s/keys :req-un [:base/page :base/size]
+                                       :opt-un [::keywords])}
+           :handler    (fn [{{{:keys [page size keywords]} :query} :parameters :as request}]
+                         (let [hospital-id (-&gt; request :doctor :hospital-id)]
+                           {:status 
+                            200
+                            :body   
+                            {:code 1
+                             :data {:total-elements 
+                                    (-&gt;&gt; (db-pat/get-patient-like
+                                           {:count       true
+                                            :keywords    (str "%" keywords "%")
+                                            :hospital-id hospital-id})
+                                         (map :total-elements)
+                                         (first))
+                                    :content
+                                    (db-pat/get-patient-like
+                                      {:page        page
+                                       :size        size
+                                       :hospital-id hospital-id
+                                       :keywords    (str "%" keywords "%")})}}}))}}]
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>说明：接口的page,size为必须参数，keywords是非必须参数，sql中根据count的boolean值判断是不是求count，根据keywords是否有值判断是否加模糊查询条件，实现动态sql调用。<br>更多hugSQL的高阶使用，使用时参考<a target="_blank" rel="noopener" href="https://www.hugsql.org/">官网</a><br>边用边学吧。</p>
+<ul>
+<li>一个in查询的例子，下例中的type用逗号隔开传入:</li>
+</ul>
+<pre class="line-numbers language-clojure"><code class="language-clojure">:get    {:summary    "分页获取患者检查报告列表"
+              :parameters {:query (s/keys :req-un [:base/patient-id ::type])}
+              :handler    (fn [{{{:keys [type, patient-id]} :query} :parameters}]
+                            {:status 200
+                             :body   {:code 1
+                                      :data (db/get-examine-reports
+                                              {:patient-id patient-id
+                                               :types      (str/split type #",")})}})}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>sql：</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- :name get-reports :? :*</span>
+<span class="token comment" spellcheck="true">-- :doc 查询列表</span>
+<span class="token keyword">SELECT</span>
+<span class="token operator">*</span>
+<span class="token keyword">FROM</span> <span class="token punctuation">`</span>t_report<span class="token punctuation">`</span>
+<span class="token keyword">WHERE</span> <span class="token punctuation">`</span>deleted<span class="token punctuation">`</span> <span class="token operator">=</span> <span class="token boolean">FALSE</span> <span class="token operator">AND</span> <span class="token punctuation">`</span>id<span class="token punctuation">`</span> <span class="token operator">=</span>:id <span class="token operator">AND</span> <span class="token punctuation">`</span><span class="token keyword">type</span><span class="token punctuation">`</span> <span class="token operator">in</span> <span class="token punctuation">(</span>:v<span class="token operator">*</span>:<span class="token keyword">types</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>调用处保证types是个array就行：</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">:get    {:summary    "获取报告列表"
+              :parameters {:query (s/keys :req-un [:base/id ::type])}
+              :handler    (fn [{{{:keys [type, id]} :query} :parameters}]
+                            {:status 200
+                             :body   {:code 1
+                                      :data (db/get-reports
+                                              {:id id
+                                               :types      (str/split type #",")})}})}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>批量操作,hugsql支持批量操作，语法是<code>:t*</code>，看看sql</li>
+</ul>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- :name batch-create-cure-reaction-detail! :! :n</span>
+<span class="token comment" spellcheck="true">-- :doc: 新建</span>
+<span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token punctuation">`</span>t_cure_reaction_detail<span class="token punctuation">`</span> <span class="token punctuation">(</span><span class="token punctuation">`</span>main_id<span class="token punctuation">`</span><span class="token punctuation">,</span> <span class="token punctuation">`</span><span class="token keyword">type</span><span class="token punctuation">`</span><span class="token punctuation">,</span> <span class="token punctuation">`</span>dict_key_id<span class="token punctuation">`</span><span class="token punctuation">,</span> <span class="token punctuation">`</span>dict_key_name<span class="token punctuation">`</span><span class="token punctuation">,</span> <span class="token punctuation">`</span>dict_value_id<span class="token punctuation">`</span><span class="token punctuation">,</span> <span class="token punctuation">`</span>dict_value_name<span class="token punctuation">`</span><span class="token punctuation">)</span> <span class="token keyword">VALUES</span>
+    :t<span class="token operator">*</span>:reaction<span class="token operator">-</span>detail
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>一个UT：</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">(ns alk-wxapi.routes.service.cure-reaction-service-test
+  (:require [clojure.test :as t]
+            [alk-wxapi.routes.service.cure-reaction-service :as sut]
+            [alk-wxapi.db.db-patient-cure :as db]
+            [alk-wxapi.db.core :refer [*db*]]
+            [luminus-migrations.core :as migrations]
+            [clojure.java.jdbc :as jdbc]
+            [alk-wxapi.config :refer [env]]
+            [mount.core :as mount]))
+
+(t/use-fixtures
+  :once
+  (fn [f]
+    (mount/start
+      #'alk-wxapi.config/env
+      #'alk-wxapi.db.core/*db*)
+    (migrations/migrate ["migrate"] (select-keys env [:database-url]))
+    (f)))
+
+(def test-batch-create-cure-reaction-detail-data
+  '[[1
+     "REACTION"
+     62
+     "哮喘症状"
+     68
+     "气闭"]
+
+    [1
+     "REACTION"
+     58
+     "全身非特异性反应"
+     59
+     "发热"]
+
+    [1
+     "DISPOSE"
+     86
+     "处理方式"
+     89
+     "局部处理(冰敷)"]])
+
+(t/deftest test-batch-create-cure-reaction-detail
+  (jdbc/with-db-transaction
+    [t-conn *db*]
+    (jdbc/db-set-rollback-only! t-conn)
+
+    (t/is (= 2 (db/batch-create-cure-reaction-detail-data!
+                 {:reaction-detail test-batch-create-cure-reaction-detail-data})))))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>执行结果：</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">(alk-wxapi.db.db-patient-cure/batch-create-cure-reaction-detail!
+  {:reaction-detail [[1
+                      "REACTION"
+                      62
+                      "哮喘症状"
+                      68
+                      "气闭"]
+
+                     [1
+                      "REACTION"
+                      58
+                      "全身非特异性反应"
+                      59
+                      "发热"]
+
+                     [1
+                      "DISPOSE"
+                      86
+                      "处理方式"
+                      89
+                      "局部处理(冰敷)"]]})
+=&gt; 3
+2019-06-15 15:16:06,929 [nRepl-session-353b6f60-9fd8-415c-9baa-19f7eb4a97f9] INFO  jdbc.sqlonly - batching 1 statements: 1: INSERT INTO `t_cure_reaction_detail` (`main_id`, `type`, `dict_key_id`, 
+`dict_key_name`, `dict_value_id`, `dict_value_name`) VALUES (1,'REACTION',62,'哮喘症状',68,'气闭'),(1,'REACTION',58,'全身非特异性反应',59,'发热'),(1,'DISPOSE',86,'处理方式',89,'局部处理(冰敷)') 
+ 
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>需要<strong>注意</strong>的是传入的vector，里面也是vector，按照sql中的顺序，不是map结构。</p>
+<h4 id="5、mysql中的字段表名和字段下划线在clojure中用中线连接的统一适配"><a href="#5、mysql中的字段表名和字段下划线在clojure中用中线连接的统一适配" class="headerlink" title="5、mysql中的字段表名和字段下划线在clojure中用中线连接的统一适配"></a>5、mysql中的字段表名和字段下划线在clojure中用中线连接的统一适配</h4><p><a target="_blank" rel="noopener" href="https://github.com/druids/hugsql-adapter-case">druids</a>提供了几个adapter，用来处理转换关系，比如有驼峰，中线等，我们使用连接符转换，即创建connection时加入kebab-case：</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">(defstate ^:dynamic *db*
+          :start (do (Class/forName "net.sf.log4jdbc.DriverSpy")
+                     (if-let [jdbc-url (env :database-url)]
+                       (conman/connect! {:jdbc-url jdbc-url})
+                       (do
+                         (log/warn "database connection URL was not found, please set :database-url in your config, e.g: dev-config.edn")
+                         *db*)))
+          :stop (conman/disconnect! *db*))
+(conman/bind-connection *db* {:adapter (kebab-adapter)} "sql/queries.sql")
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这个adapter在init项目时已经引入了，就看使用不使用。</p>
+<h4 id="6、获取环境变量的值"><a href="#6、获取环境变量的值" class="headerlink" title="6、获取环境变量的值"></a>6、获取环境变量的值</h4><p>环境变量比较好获取，比如微信的配置和获取</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">{:weixin           {:app-id "wx9258d165932dad73"
+                    :secret "my-secret"}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>在dev/test/prod中配置结构相同，</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">(require '[alk-wxapi.config :refer [env]])
+(defn get-weixin-access-token [code]
+  (let [url (format "https://api.weixin.qq.com/sns/oauth2/access_token?appid=%s&amp;secret=%s&amp;code=%s&amp;grant_type=authorization_code"
+                    (-&gt; env
+                        :weixin
+                        :app-id)
+                    (-&gt; env
+                        :weixin
+                        :secret)
+                    code)]
+    (log/info "请求微信access-token, url: %s" url) url))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>如果配置是一层，使用也只需写一层key。<br><strong>特别说明</strong>：<br>在将redis的connetion从clj修改成从环境变量中获取时，也是一样的配置和获取，但是碰到了问题，在request里查看env中的redis的各项都有值，但是调用redis的地方却提示无法创建connection，</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">(ns alk-wxapi.db.redis
+  (:require [taoensso.carmine :as car :refer (wcar)]
+            [alk-wxapi.config :refer [env]]
+            [mount.core :refer [defstate]]))
+
+(def server1-conn
+          :start
+          {:pool {}
+           :spec {:host       (-&gt; env :redis-host)
+                  :port       (-&gt; env :redis-port)
+                  :password   (-&gt; env :redis-password)
+                  :timeout-ms (-&gt; env :redis-timeout-ms)
+                  :db         (-&gt; env :redis-db)}})
+
+(defmacro wcar* [&amp; body] `(car/wcar server1-conn ~@body))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>最后得知是因为env被定义了个state，</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">(ns alk-wxapi.config
+  (:require [cprop.core :refer [load-config]]
+            [cprop.source :as source]
+            [mount.core :refer [args defstate]]))
+
+(defstate env
+  :start
+  (load-config
+    :merge
+    [(args)
+     (source/from-system-props)
+     (source/from-env)]))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>但是按照<a target="_blank" rel="noopener" href="https://github.com/ptaoussanis/carmine">说明文档</a>redis的conn是个常规的def定义的函数，但是它下面的使用是个宏<code>defmacro </code>，宏是在编译的执行的，因此在初始化时evn环没有ready，所以无法创建出connection。需要将server1-conn改成一个state，state有依赖状态，会等到env完成后才产生。</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">(defstate server1-conn 
+ ...
+)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="7、jar引入及依赖冲突解决："><a href="#7、jar引入及依赖冲突解决：" class="headerlink" title="7、jar引入及依赖冲突解决："></a>7、jar引入及依赖冲突解决：</h4><ul>
+<li>lein deps :tree  查看包依赖。</li>
+<li>引入新的jar时在<code>project.clj</code>的<code>:dependencies</code>按说明引入，跟maven一样，分groupId、artifactId、version。</li>
+<li>排除某sdk里的某些冲突包</li>
+</ul>
+<pre class="line-numbers language-clojure"><code class="language-clojure">[com.baidu.aip/java-sdk "4.11.0"
+ :exclusions [org.slf4j/slf4j-simple]]
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="8、spec使用"><a href="#8、spec使用" class="headerlink" title="8、spec使用"></a>8、spec使用</h4><p>spec的使用需要引入<code>[clojure.spec.alpha :as s]</code>和<code>[spec-tools.core :as st]</code>，看个spec的定义：</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">(s/def ::page
+  (st/spec
+    {:spec            int?
+     :description     "页码，从0开始"
+     :swagger/default "0"
+     :reason          "页码参数不能为空"}))
+
+(s/def ::size
+  (st/spec
+    {:spec            int?
+     :description     "每页条数"
+     :swagger/default 10
+     :reason          "条数参数不能为空"}))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>使用：</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">["/page"
+    {:get {:summary    "分页获取字典数据"
+           :parameters {:query (s/keys :req-un [::page ::size])
+                        :handler (s/keys :req-un [page]
+                                         :opt-un [size])}
+           :handler    (fn [{{{:keys [page, size]} :query} :parameters :as request}]
+                         {:status 200
+                          :body   {:code 10
+                                   :data {:total-elements (-&gt;&gt; (db/get-dicts-page {:count true})
+                                                               (map :total-elements)
+                                                               (first))
+                                          :content        (db/get-dicts-page {:page page
+                                                                              :size size})}}})}}]
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>spec的参数也可以定义在其他namespace里，使用时加上namespace的名字即可，比如一个叫base的namespace里定义参数如下：</li>
+</ul>
+<pre class="line-numbers language-clojure"><code class="language-clojure">(s/def :base/role
+  (st/spec
+    {:spec        #{"PATIENT", "DOCTOR"}
+     :description "角色"
+     :reason      "角色不能为空"}))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这个枚举类型的spec在另一个namespace里使用时<strong>不需要</strong>在require里引入这个base，而直接在spec里加namespace的名字，是这样的：</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">:parameters {:header (s/keys :req-un [:base/role])}
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>用coll-of定义出一个list</li>
+</ul>
+<pre class="line-numbers language-clojure"><code class="language-clojure">(s/def ::head-id id?)
+(s/def ::url string?)
+(s/def ::unmatched-head
+  (s/keys :req [::head-id ::url]))
+
+(s/def ::unmatched-head-result
+  (st/spec
+   {:spec (s/coll-of ::unmatched-head)}))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>再比定义一个下面的post的body体：</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">{
+  "patient-id": "string",
+  "patient-ext-list": [
+    {
+      "dict-id": 0,
+      "dict-type": "string",
+      "dict-value": "string",
+      "other-value": "string"
+    }
+  ]
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>spec定义</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">(s/def ::dict-id int?)
+(s/def ::dict-value string?)
+(s/def ::dict-type string?)
+(s/def ::other-value string?)
+(s/def ::patient-ext-list (s/coll-of (s/keys :req-un [::dict-id ::dict-type ::dict-value ::other-value])))
+(s/def ::ext-body (s/keys :req-un [:base/patient-id ::patient-ext-list]))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>coll-of函数还接收可选的参数，用来对数组中的元素进行限制，可选参数有如下：</p>
+<p>   （1）:kind- - - -可以指定数组的类型，vector，set，list等；</p>
+<p>   （2）:count- - - -可以限定数组中元素的个数；</p>
+<p>   （3）:min-count- - - -限定数组中元素个数的最小值</p>
+<p>   （4）:max-count- - - -限定数组中元素个数的最大值</p>
+<p>   （5）:distinct- - - -数组没有重复的元素</p>
+<p>   （6）:into- - - -可以将数组的元素插入到[],(),{},#{}这些其中之一，主要是为了改变conform函数的返回结果</p>
+<ul>
+<li>定义一个指定长度的</li>
+</ul>
+<pre class="line-numbers language-clojure"><code class="language-clojure">(s/def ::id
+  (st/spec
+   {:spec (s/and string? #(= (count %) 6))
+    :description "一个长度为6字符串"
+    :swagger/default "666666"
+    :reason "必须是长度为6的字符串"}))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>使用函数验证参数合法性<pre class="line-numbers language-clojure"><code class="language-clojure">(s/def ::head-body-id
+(st/spec
+ {:spec (s/and string? (fn [s]
+                         (let [[head-id body-id] (clojure.string/split s #"-")]
+                           (and (s/valid? ::head-id head-id)
+                                (s/valid? ::body-id body-id)))))
+  :description "一个长度为13字符串, head-id 和 body-id 用‘-’ 连起来"
+  :swagger/default "666666-999999"
+  :reason "必须是长度为13的字符串，用-把body-id和head-id连起来"}))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>定义数组<pre class="line-numbers language-clojure"><code class="language-clojure">(s/def ::dict-id [string?])    ;Good
+(s/def ::dict-id vector?)      ;Bad
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<p>更多使用参考：<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zyfd/p/9962221.html">clojure.spec库入门学习</a></p>
+<h4 id="9、新增接口加入route"><a href="#9、新增接口加入route" class="headerlink" title="9、新增接口加入route"></a>9、新增接口加入route</h4><p>创建一个新的namespace，参考<a target="_blank" rel="noopener" href="http://www.luminusweb.net/docs">官网说明</a>定义出一个routes函数，然后将其加入到handle.clj中即可，像下面这样一直conj即可：<br><img src="/loading.gif" data-original="/images/clojure/%E6%B7%BB%E5%8A%A0route.png" alt="添加route"></p>
+<h4 id="10、文件上传接口"><a href="#10、文件上传接口" class="headerlink" title="10、文件上传接口"></a>10、文件上传接口</h4><p>接口定义</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">(defn format-date-time [timestamp]
+  (-&gt; "yyyyMMddHHmmss"
+      (java.text.SimpleDateFormat.)
+      (.format timestamp)))
+
+;;上传到本地
+(defn upload-file-local [type file]
+  (let [file-path (str (-&gt; env :file-path) type
+                       "/" (format-date-time (java.util.Date.))
+                       "/" (:filename file))]
+    (io/make-parents file-path)
+    (with-open [writer (io/output-stream file-path)]
+      (io/copy (:tempfile file) writer))
+    (get-image-data file-path)
+    file-path))
+
+(defn common-routes []
+  ["/common"
+   {:swagger    {:tags ["文件接口"]}
+    :parameters {:header (s/keys :req-un [::token ::role])}
+    :middleware [token-wrap]}
+
+   ["/files"
+    {:post {:summary    "附件上传接口"
+            :parameters {:multipart {:file multipart/temp-file-part
+                                     :type (st/spec
+                                             {:spec        string?
+                                              :description "类型"
+                                              :reason      "类型必填"})}}
+
+            :responses  {200 {:body {:code int?, :data {:file-url string?}}}}
+            :handler    (fn [{{{:keys [type file]} :multipart} :parameters}]
+                          {:status 200
+                           :body   {:code    1
+                                    :message "上传成功"
+                                    :data    {:file-url (:url (upload-file-local type file))}}})}}]])
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>如果要将图片上传至七牛等有CDN能力的云存储空间，可以使用别人的轮子，或者自己需要造轮子，我这里使用了一个<a target="_blank" rel="noopener" href="https://github.com/killme2008/clj.qiniu">别人造的上传七牛的轮子</a>,先在:dependencies里加入依赖</p>
+<pre><code>[clj.qiniu "0.2.1"]
+</code></pre>
+<p>调用api</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">(require '[clj.qiniu :as qiniu])
+;;上传到七牛配置
+(defn set-qiniu-config []
+  (qiniu/set-config! :access-key "my-key"
+                     :secret-key "my-secret"))
+
+(def qiniu-config
+  {:bucket "medical"
+   :domain "http://prfmkg8tt.bkt.clouddn.com/"
+   :prefix "alk/weixin/"})
+
+(defn qiniu-upload-path [type filename]
+  (str (-&gt; qiniu-config :prefix)
+       type "/"
+       (utils/format-date-time (java.util.Date.))
+       "/"
+       filename))
+
+;;七牛云上传，返回上传后地址
+(defn upload-file-qiniu [type file]
+  (set-qiniu-config)
+  (let [filename (:filename file)
+        bucket (-&gt; qiniu-config :bucket)
+        key (qiniu-upload-path type filename)
+        res (qiniu/upload-bucket bucket
+                                 key
+                                 (:tempfile file))]
+    (log/info "上传七牛云结果：" res)
+    (if-not (= 200 (-&gt; res :status))
+      (throw (Exception. " 附件上传失败 ")))
+    (str (-&gt; qiniu-config :domain) key)))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>使用的时候将上传local改成upload-file-qiniu即可。</p>
+<h4 id="11、全局跨域配置"><a href="#11、全局跨域配置" class="headerlink" title="11、全局跨域配置"></a>11、全局跨域配置</h4><p>在middleware的<code>wrap-base</code>中加入跨域信息，先配置个*的</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">(ns alk-wxapi.middleware
+  (:require
+   [alk-wxapi.env :refer [defaults]]
+   [alk-wxapi.config :refer [env]]
+   [ring.middleware.flash :refer [wrap-flash]]
+   [immutant.web.middleware :refer [wrap-session]]
+   [ring.middleware.cors :refer [wrap-cors]]
+   [ring.middleware.defaults :refer [site-defaults wrap-defaults]]))
+
+(defn wrap-base [handler]
+  (-&gt; ((:middleware defaults) handler)
+      wrap-flash
+      (wrap-session {:cookie-attrs {:http-only true}})
+      (wrap-cors :access-control-allow-origin [#".*"]
+                 :access-control-allow-methods [:get :put :post :delete])
+      (wrap-defaults
+       (-&gt; site-defaults
+           (assoc-in [:security :anti-forgery] false)
+           (dissoc :session)))))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="12、增加打包环境"><a href="#12、增加打包环境" class="headerlink" title="12、增加打包环境"></a>12、增加打包环境</h4><p>比如增加pre环境，在project.clj中配置uberjar即可，在:profiles里增加,可以参考test环境，比如增加的uberjar-test环境：</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">   :uberjar-test  {:omit-source    true
+                   :aot            :all
+                   :uberjar-name   "alk-wxapi-test.jar"
+                   :source-paths   ["env/test/clj"]
+                   :resource-paths ["env/test/resources"]
+                   :jvm-opts       ["-Dconf=test-config.edn"]}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>打包:</p>
+<pre class="line-numbers language-shell"><code class="language-shell">➜  alk-wxapi git:(master) ✗ lein with-profiles uberjar-test uberjar
+Compiling alk-wxapi.common.utils
+Compiling alk-wxapi.config
+Compiling alk-wxapi.core
+Compiling alk-wxapi.db.core
+Compiling alk-wxapi.db.db-dicts
+Compiling alk-wxapi.db.db-doctor
+Compiling alk-wxapi.db.db-guestbook
+Compiling alk-wxapi.db.db-hospital
+Compiling alk-wxapi.db.db-patient
+Compiling alk-wxapi.db.redis
+Compiling alk-wxapi.env
+Compiling alk-wxapi.handler
+Compiling alk-wxapi.middleware
+Compiling alk-wxapi.middleware.exception
+Compiling alk-wxapi.middleware.formats
+Compiling alk-wxapi.middleware.interceptor
+Compiling alk-wxapi.middleware.log-interceptor
+Compiling alk-wxapi.middleware.token-interceptor
+Compiling alk-wxapi.nrepl
+Compiling alk-wxapi.routes.base
+Compiling alk-wxapi.routes.dicts
+Compiling alk-wxapi.routes.doctor
+Compiling alk-wxapi.routes.file
+Compiling alk-wxapi.routes.guestbook
+Compiling alk-wxapi.routes.hospital
+Compiling alk-wxapi.routes.patient
+Compiling alk-wxapi.routes.patient-cost
+Compiling alk-wxapi.routes.patient-examine
+Compiling alk-wxapi.routes.public
+Compiling alk-wxapi.routes.user
+Compiling alk-wxapi.routes.weixin
+Compiling alk-wxapi.validation
+Warning: skipped duplicate file: config.edn
+Warning: skipped duplicate file: logback.xml
+Created /Users/mahaiqiang/git/redcreation/alk-wxapi/target/uberjar+uberjar-test/alk-wxapi-0.1.0-SNAPSHOT.jar
+Created /Users/mahaiqiang/git/redcreation/alk-wxapi/target/uberjar/alk-wxapi-test.jar
+➜  alk-wxapi git:(master) ✗
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="13、事务"><a href="#13、事务" class="headerlink" title="13、事务"></a>13、事务</h4><p>发起事务使用<code>conman.core/with-transaction</code>，一个例子：</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">(let [timestamp (java.util.Date.)
+      id (utils/generate-db-id)]
+  (conman.core/with-transaction 
+    [*db*]
+    (db/create-guestbook! (assoc body-params
+                            :timestamp timestamp
+                            :id id))
+    (db/get-guestbook {:id id})
+    (throw (ex-info (str "异常，事务回滚，列表中查看该id的数据是否存在，id:" id) {}))))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>注意：只有在transaction中的exception发生，事务的机制才会生效，我测试时就正好稀里糊涂把throw放到了with-transaction里面，导致总是不会回滚。</p>
+<h4 id="14、工具类"><a href="#14、工具类" class="headerlink" title="14、工具类"></a>14、工具类</h4><p>工具类Utils单独一个namespace，目前收纳</p>
+<ul>
+<li>获取uuid</li>
+</ul>
+<pre class="line-numbers language-clojure"><code class="language-clojure">(defn generate-db-id []
+  (clojure.string/replace (str (java.util.UUID/randomUUID)) "-" ""))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>日期时间格式化</li>
+</ul>
+<pre class="line-numbers language-clojure"><code class="language-clojure">(defn format-time [timestamp]
+  (-&gt; "yyyy-MM-dd HH:mm:ss"
+      (java.text.SimpleDateFormat.)
+      (.format timestamp)))
+
+(defn format-date-time [timestamp]
+  (-&gt; "yyyyMMddHHmmss"
+      (java.text.SimpleDateFormat.)
+      (.format timestamp)))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="15、定时任务"><a href="#15、定时任务" class="headerlink" title="15、定时任务"></a>15、定时任务</h4><p>有个比较重量级的<a target="_blank" rel="noopener" href="http://clojurequartz.info/articles/guides.html">http://clojurequartz.info/articles/guides.html</a>库，quartz与在java里的一样，只不过是clojure的实现。<br>我们项目里没有很复杂的需要动态修改的定时任务，因此选择了一个轻量级的库:<a target="_blank" rel="noopener" href="https://github.com/jarohen/chime">chime</a>，api参考github。下面是项目中的一个demo</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">(ns alk-wxapi.common.scheduler
+  (:require [chime :refer [chime-ch]]
+            [clj-time.core :as t]
+            [clj-time.periodic :refer [periodic-seq]]
+            [clojure.core.async :as a :refer [<!-- go-loop]]
+            [clojure.tools.logging :as log])
+  (:import org.joda.time.DateTimeZone))
+
+;; FIXME 定时功能应该还没有做    (^_^)
+
+(defn times []
+  (rest (periodic-seq (.. (t/now)
+                          (withZone (DateTimeZone/getDefault))
+                          #_(withTime 0 0 0 0))
+                      (t/minutes 10))))
+(defn channel []
+  (a/chan))
+
+(defn chime []
+  (chime-ch (times) &#123;:ch (channel)&#125;))
+
+(defn start-scheduler []
+  (let [chime-channle (chime)]
+    (go-loop []
+      (when-let [msg (<! chime-channle)]
+        (log/error (format "亲爱的 %s, Clojure repl搞一个小时了，休息一下？"
+                           (System/getProperty "user.name")))
+        (recur)))
+    chime-channle))
+<span aria-hidden="true" class="line-numbers-rows"--><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></code></pre>
+<p>该定时任务项目启动后一个小时执行一次，执行只是简单打个log，效果如下：<br><img src="/loading.gif" data-original="/images/clojure/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1log.png" alt="定时任务log"></p>
+<h4 id="16、优雅地打印jdbc的执行sql"><a href="#16、优雅地打印jdbc的执行sql" class="headerlink" title="16、优雅地打印jdbc的执行sql"></a>16、优雅地打印jdbc的执行sql</h4><p>项目中默认的jdbc驱动是mysql自身的启动，所以默认的databaseurl也许是这样的</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">:database-url "mysql://localhost:3306/demo?user=root&amp;password=password
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>然而，这样的配置是不会打印出jdbc执行的真正sql的，而我们有时候很需要这些sql，因为他们代表着逻辑，有时候debug也会需要。<br>那么怎么配置才能达到目的呢？<br>我们使用的是log4jdbc，因此需要在project.clj中引入该库，</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">[com.googlecode.log4jdbc/log4jdbc "1.2"]
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>引入以后修改需要查看sql的profile里的edn配置文件，比如本地dev-config.edn</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">:database-url "jdbc:log4jdbc:mysql://localhost:3306/demo?user=root&amp;password=password
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>然后jdbc连接处自然也得变,routes/db/core.clj</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">(defstate ^:dynamic *db*
+          :start (do (Class/forName "net.sf.log4jdbc.DriverSpy")
+                     (if-let [jdbc-url (env :database-url)]
+                       (conman/connect! {:jdbc-url jdbc-url})
+                       (do
+                         (log/warn "database connection URL was not found, please set :database-url in your config, e.g: dev-config.edn")
+                         *db*)))
+          :stop (conman/disconnect! *db*))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>默认的log配置，使用logback是配置的方式。<br>这样会在log控制台看到很多jdbc的log，因为默认这些日志都是info的，需要调整logback里日志级别。<br>为了分开打印log、error、sql的log，附上我本地的logback配置文件</p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span> <span class="token attr-name">scan</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token attr-name">scanPeriod</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>10 seconds<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>statusListener</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>ch.qos.logback.core.status.NopStatusListener<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>appender</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>FILE<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>ch.qos.logback.core.rolling.RollingFileAppender<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token comment" spellcheck="true">&lt;!-- 如果只是想要Info级别的日志，只是过滤info还是会输出Error日志，因为Error的级别高，使用filter，可以避免输出Error日志 --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>ch.qos.logback.classic.filter.LevelFilter<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token comment" spellcheck="true">&lt;!--过滤 Error--&gt;</span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>level</span><span class="token punctuation">&gt;</span></span>ERROR<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>level</span><span class="token punctuation">&gt;</span></span>
+            <span class="token comment" spellcheck="true">&lt;!--匹配到就禁止--&gt;</span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>onMatch</span><span class="token punctuation">&gt;</span></span>DENY<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>onMatch</span><span class="token punctuation">&gt;</span></span>
+            <span class="token comment" spellcheck="true">&lt;!--没有匹配到就允许--&gt;</span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>onMismatch</span><span class="token punctuation">&gt;</span></span>ACCEPT<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>onMismatch</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>file</span><span class="token punctuation">&gt;</span></span>log/info-wxapi.log<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>file</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rollingPolicy</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>ch.qos.logback.core.rolling.TimeBasedRollingPolicy<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fileNamePattern</span><span class="token punctuation">&gt;</span></span>log/info-wxapi.%d<span class="token entity" title="{">&amp;#123;</span>yyyy-MM-dd<span class="token entity" title="}">&amp;#125;</span>.%i.log<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>fileNamePattern</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>timeBasedFileNamingAndTriggeringPolicy</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>maxFileSize</span><span class="token punctuation">&gt;</span></span>100MB<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>maxFileSize</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>timeBasedFileNamingAndTriggeringPolicy</span><span class="token punctuation">&gt;</span></span>
+            <span class="token comment" spellcheck="true">&lt;!-- keep 30 days of history --&gt;</span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>maxHistory</span><span class="token punctuation">&gt;</span></span>30<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>maxHistory</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rollingPolicy</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>encoder</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>charset</span><span class="token punctuation">&gt;</span></span>UTF-8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>charset</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pattern</span><span class="token punctuation">&gt;</span></span>%date<span class="token entity" title="{">&amp;#123;</span>ISO8601<span class="token entity" title="}">&amp;#125;</span> [%thread] %-5level %logger<span class="token entity" title="{">&amp;#123;</span>36<span class="token entity" title="}">&amp;#125;</span> - %msg %n<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pattern</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>encoder</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>appender</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>appender</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>ERRORFILE<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>ch.qos.logback.core.rolling.RollingFileAppender<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token comment" spellcheck="true">&lt;!--如果只是想要 Error 级别的日志，那么需要过滤一下，默认是 info 级别的，ThresholdFilter--&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>ch.qos.logback.classic.filter.ThresholdFilter<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>level</span><span class="token punctuation">&gt;</span></span>Error<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>level</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>file</span><span class="token punctuation">&gt;</span></span>log/error-wxapi.log<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>file</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rollingPolicy</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>ch.qos.logback.core.rolling.TimeBasedRollingPolicy<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fileNamePattern</span><span class="token punctuation">&gt;</span></span>log/error-wxapi.%d<span class="token entity" title="{">&amp;#123;</span>yyyy-MM-dd<span class="token entity" title="}">&amp;#125;</span>.%i.log<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>fileNamePattern</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>timeBasedFileNamingAndTriggeringPolicy</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>maxFileSize</span><span class="token punctuation">&gt;</span></span>100MB<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>maxFileSize</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>timeBasedFileNamingAndTriggeringPolicy</span><span class="token punctuation">&gt;</span></span>
+            <span class="token comment" spellcheck="true">&lt;!-- keep 30 days of history --&gt;</span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>maxHistory</span><span class="token punctuation">&gt;</span></span>10<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>maxHistory</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rollingPolicy</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>encoder</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>charset</span><span class="token punctuation">&gt;</span></span>UTF-8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>charset</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pattern</span><span class="token punctuation">&gt;</span></span>%date<span class="token entity" title="{">&amp;#123;</span>ISO8601<span class="token entity" title="}">&amp;#125;</span> [%thread] %-5level %logger<span class="token entity" title="{">&amp;#123;</span>36<span class="token entity" title="}">&amp;#125;</span> - %msg %n<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pattern</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>encoder</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>appender</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>appender</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>SQLFILE<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>ch.qos.logback.core.rolling.RollingFileAppender<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>file</span><span class="token punctuation">&gt;</span></span>log/sql-wxapi.log<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>file</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rollingPolicy</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>ch.qos.logback.core.rolling.TimeBasedRollingPolicy<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fileNamePattern</span><span class="token punctuation">&gt;</span></span>log/sql-wxapi.%d<span class="token entity" title="{">&amp;#123;</span>yyyy-MM-dd<span class="token entity" title="}">&amp;#125;</span>.%i.log<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>fileNamePattern</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>timeBasedFileNamingAndTriggeringPolicy</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>maxFileSize</span><span class="token punctuation">&gt;</span></span>100MB<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>maxFileSize</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>timeBasedFileNamingAndTriggeringPolicy</span><span class="token punctuation">&gt;</span></span>
+            <span class="token comment" spellcheck="true">&lt;!-- keep 30 days of history --&gt;</span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>maxHistory</span><span class="token punctuation">&gt;</span></span>10<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>maxHistory</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rollingPolicy</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>encoder</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>charset</span><span class="token punctuation">&gt;</span></span>UTF-8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>charset</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pattern</span><span class="token punctuation">&gt;</span></span>%date<span class="token entity" title="{">&amp;#123;</span>ISO8601<span class="token entity" title="}">&amp;#125;</span> [%thread] %-5level %logger<span class="token entity" title="{">&amp;#123;</span>36<span class="token entity" title="}">&amp;#125;</span> - %msg %n<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pattern</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>encoder</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>appender</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>logger</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org.apache.http<span class="token punctuation">"</span></span> <span class="token attr-name">level</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>warn<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>logger</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org.xnio.nio<span class="token punctuation">"</span></span> <span class="token attr-name">level</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>warn<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>logger</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.zaxxer.hikari<span class="token punctuation">"</span></span> <span class="token attr-name">level</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>warn<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>logger</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>io.undertow.session<span class="token punctuation">"</span></span> <span class="token attr-name">level</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>warn<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>logger</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>io.undertow.request<span class="token punctuation">"</span></span> <span class="token attr-name">level</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>warn<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>logger</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>jdbc.audit<span class="token punctuation">"</span></span> <span class="token attr-name">level</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>warn<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>logger</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>jdbc.sqltiming<span class="token punctuation">"</span></span> <span class="token attr-name">level</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>warn<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>logger</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>jdbc.connection<span class="token punctuation">"</span></span> <span class="token attr-name">level</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>warn<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>logger</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>jdbc.resultset<span class="token punctuation">"</span></span> <span class="token attr-name">level</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>warn<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>logger</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wxapi<span class="token punctuation">"</span></span> <span class="token attr-name">level</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>INFO<span class="token punctuation">"</span></span> <span class="token attr-name">additivity</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>appender-ref</span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>FILE<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>appender-ref</span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>ERRORFILE<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>logger</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>logger</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>jdbc.sqlonly<span class="token punctuation">"</span></span> <span class="token attr-name">level</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>INFO<span class="token punctuation">"</span></span> <span class="token attr-name">additivity</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>appender-ref</span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>SQLFILE<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>logger</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>root</span> <span class="token attr-name">level</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>ERROR<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>appender-ref</span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>ERRORFILE<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>appender-ref</span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>FILE<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>root</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>:as request</code>的意思是包含前面指定获取的参数的所有。<br>当然，如你所知，clojure确实足够灵活，取参方式也还有方式，比如</p>
+<pre class="line-numbers language-clojure"><code class="language-clojure">["/path/good-all-params/:id"
+   {:post {:summary    "更多方式"
+           :parameters {:path  {:id int?}
+                        :query {:name string?}
+                        :body  {:message string?}}
+           :handler    (fn [{{data :body} :parameters
+                             {{:keys [id]} :path}    :parameters]
+                        (ok (format " body params: %s " data)))}}]
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这里参数名称<code>data</code>可以定义成任何你想叫的名字。</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/clojure/">
+                                    <span class="chip bg-color">clojure</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">写作不易，客官打赏一杯奶茶？</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="https://unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'N7oztxzXo2GE0LjMsxQ5yEg6-gzGzoHsz',
+        appKey: 'cstOXLnQTjiJCeiwLK8pxp3g',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'ヾﾉ≧∀≦)o 来呀！吐槽一番吧！'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/07/31/clojure-pa-keng-zhi-xiang-mu-li-chu-li-guo-de-fu-za-luo-ji/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="clojure爬坑之项目里处理过的复杂逻辑">
+                        
+                        <span class="card-title">clojure爬坑之项目里处理过的复杂逻辑</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            简书地址
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-07-31
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/clojure/" class="post-category">
+                                    clojure
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/clojure/">
+                        <span class="chip bg-color">clojure</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/07/20/mysql-zhong-cun-chu-dai-te-shu-fu-hao-de-wei-xin-ni-cheng/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="mysql中存储带特殊符号的微信昵称">
+                        
+                        <span class="card-title">mysql中存储带特殊符号的微信昵称</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            微信昵称中有表情符号，在获取到微信个人信息保存到mysql时，格式不支持导致保存失败，怎么解决？
+简书地址
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-07-20
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/mysql/">
+                        <span class="chip bg-color">mysql</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2018-2022</span>
+            
+            <span id="year">2018</span>
+            <a href="/about" target="_blank">马海强</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+             <span id="busuanzi_container_site_pv"></span> 
+            <i class="fa fa-heart"></i> 本站总访问量 
+            <span id="busuanzi_value_site_pv" class="white-color">
+
+            </span>  
+             
+                <span id="busuanzi_container_site_uv"></span> 次,&nbsp; 
+                <i class="fa fa-users"></i> 访客数 
+                <span id="busuanzi_value_site_uv" class="white-color">
+
+                </span> 人 
+
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2018";
+                    var startMonth = "6";
+                    var startDate = "5";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="qdhaiqiang" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:qdhaiqiang@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=389709260" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 389709260" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?8835c2c7d2db94534f40216cf670e8ea";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i["DaoVoiceObject"] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            a.charset = "utf-8";
+            m.parentNode.insertBefore(a, m)
+        })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+            "//widget.daovoice.io/widget/6984b559.js", "daovoice")
+        daovoice('init', {
+            app_id: "39029f44"
+        });
+        daovoice('update');
+    </script>
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+<script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+
+</html>

@@ -1,0 +1,1793 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="docker学习案例：用docker部署tomcat服务, blog">
+    <meta name="description" content="好记性不如烂笔头，一点点攒呗">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>docker学习案例：用docker部署tomcat服务 | 回忆点滴</title>
+    <link rel="icon" type="image/svg+xml" href="/logo.svg">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script>
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">回忆点滴</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>时间轴</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/music" class="waves-effect waves-light">
+      
+      <i class="fas fa-music" style="zoom: 0.6;"></i>
+      
+      <span>视听</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/galleries" class="waves-effect waves-light">
+      
+      <i class="fa fa-image" style="zoom: 0.6;"></i>
+      
+      <span>相册</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">回忆点滴</div>
+        <div class="logo-desc">
+            
+            好记性不如烂笔头，一点点攒呗
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			时间轴
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/music" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-music"></i>
+			
+			视听
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/galleries" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fa fa-image"></i>
+			
+			相册
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/qdhaiqiang" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/qdhaiqiang" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">docker学习案例：用docker部署tomcat服务</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/docker/">
+                                <span class="chip bg-color">docker</span>
+                            </a>
+                        
+                            <a href="/tags/tomcat/">
+                                <span class="chip bg-color">tomcat</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%BF%90%E7%BB%B4/" class="post-category">
+                                运维
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-07-23
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    17 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>docker实际案例之在centOS7.4上用docker部署tomcat服务<br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2c3cbd1dfb08">简书地址</a></p>
+<span id="more"></span>
+
+<h3 id="一、使用docker-run命令直接启动一个tomcat容器"><a href="#一、使用docker-run命令直接启动一个tomcat容器" class="headerlink" title="一、使用docker run命令直接启动一个tomcat容器"></a>一、使用docker run命令直接启动一个tomcat容器</h3><h4 id="1-1-下载官方tomcat镜像"><a href="#1-1-下载官方tomcat镜像" class="headerlink" title="1.1 下载官方tomcat镜像"></a>1.1 下载官方tomcat镜像</h4><pre class="line-numbers language-shell"><code class="language-shell">[root@dev nginx]# docker search tomcat
+INDEX       NAME                                            DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
+docker.io   docker.io/tomcat                                Apache Tomcat is an open source implementa...   1942      [OK]       
+docker.io   docker.io/tomee                                 Apache TomEE is an all-Apache Java EE cert...   51        [OK]       
+docker.io   docker.io/dordoka/tomcat                        Ubuntu 14.04, Oracle JDK 8 and Tomcat 8 ba...   49                   [OK]
+docker.io   docker.io/davidcaste/alpine-tomcat              Apache Tomcat 7/8 using Oracle Java 7/8 wi...   27                   [OK]
+docker.io   docker.io/bitnami/tomcat                        Bitnami Tomcat Docker Image                     19                   [OK]
+docker.io   docker.io/consol/tomcat-7.0                     Tomcat 7.0.57, 8080, "admin/admin"              16                   [OK]
+docker.io   docker.io/cloudesire/tomcat                     Tomcat server, 6/7/8                            15                   [OK]
+docker.io   docker.io/tutum/tomcat                          Base docker image to run a Tomcat applicat...   10                   
+docker.io   docker.io/meirwa/spring-boot-tomcat-mysql-app   a sample spring-boot app using tomcat and ...   9                    [OK]
+docker.io   docker.io/jeanblanchard/tomcat                  Minimal Docker image with Apache Tomcat         8                    
+docker.io   docker.io/aallam/tomcat-mysql                   Debian, Oracle JDK, Tomcat &amp; MySQL              7                    [OK]
+docker.io   docker.io/rightctrl/tomcat                      CentOS , Oracle Java, tomcat application s...   3                    [OK]
+docker.io   docker.io/amd64/tomcat                          Apache Tomcat is an open source implementa...   2                    
+docker.io   docker.io/arm64v8/tomcat                        Apache Tomcat is an open source implementa...   2                    
+docker.io   docker.io/fabric8/tomcat-8                      Fabric8 Tomcat 8 Image                          2                    [OK]
+docker.io   docker.io/maluuba/tomcat7-java8                 Tomcat7 with java8.                             2                    
+docker.io   docker.io/99taxis/tomcat7                       Tomcat7                                         1                    [OK]
+docker.io   docker.io/camptocamp/tomcat-logback             Docker image for tomcat with logback integ...   1                    [OK]
+docker.io   docker.io/primetoninc/tomcat                    Apache tomcat 8.5, 8.0, 7.0                     1                    [OK]
+docker.io   docker.io/jelastic/tomcat                                                                       0                    
+docker.io   docker.io/oobsri/tomcat8                        Testing CI Jobs with different names.           0                    
+docker.io   docker.io/picoded/tomcat7                       tomcat7 with jre8 and MANAGER_USER / MANAG...   0                    [OK]
+docker.io   docker.io/s390x/tomcat                          Apache Tomcat is an open source implementa...   0                    
+docker.io   docker.io/swisstopo/service-print-tomcat        backend tomcat for service-print "the true...   0                    
+docker.io   docker.io/trollin/tomcat                                                                        0                    
+[root@dev nginx]# docker pull docker.io/tomcat
+Using default tag: latest
+Trying to pull repository docker.io/library/tomcat ... 
+latest: Pulling from docker.io/library/tomcat
+55cbf04beb70: Pull complete 
+1607093a898c: Pull complete 
+9a8ea045c926: Pull complete 
+1290813abd9d: Pull complete 
+8a6b982ad6d7: Pull complete 
+abb029e68402: Pull complete 
+8cd067dc06dc: Pull complete 
+1b9ce2097b98: Pull complete 
+d6db5874b692: Pull complete 
+25b4aa3d52c5: Pull complete 
+53ec227dabf0: Pull complete 
+242938ace8b4: Pull complete 
+Digest: sha256:87ad70ceaafd5c71301b081b37ca2795bd6c7c1a5599a8c92c9447bbd225ae47
+Status: Downloaded newer image for docker.io/tomcat:latest
+[root@dev nginx]# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+nginx_image1        latest              c4d5f5accc06        57 minutes ago      109 MB
+docker.io/tomcat    latest              2d43521f2b1a        5 days ago          463 MB
+docker.io/nginx     latest              8b89e48b5f15        6 days ago          109 MB
+[root@dev nginx]# 
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="1-2-启动容器"><a href="#1-2-启动容器" class="headerlink" title="1.2 启动容器"></a>1.2 启动容器</h4><pre class="line-numbers language-shell"><code class="language-shell">[root@dev nginx]# docker run -p 8080:8080 docker.io/tomcat
+23-Jul-2018 09:31:43.954 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.32
+23-Jul-2018 09:31:43.966 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Jun 20 2018 19:50:35 UTC
+23-Jul-2018 09:31:43.966 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.32.0
+23-Jul-2018 09:31:43.966 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+23-Jul-2018 09:31:43.966 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            3.10.0-693.2.2.el7.x86_64
+23-Jul-2018 09:31:43.966 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+23-Jul-2018 09:31:43.966 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-8-openjdk-amd64/jre
+23-Jul-2018 09:31:43.966 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_171-8u171-b11-1~deb9u1-b11
+23-Jul-2018 09:31:43.966 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+23-Jul-2018 09:31:43.966 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /usr/local/tomcat
+23-Jul-2018 09:31:43.967 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /usr/local/tomcat
+23-Jul-2018 09:31:43.967 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/usr/local/tomcat/conf/logging.properties
+23-Jul-2018 09:31:43.967 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+23-Jul-2018 09:31:43.967 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+23-Jul-2018 09:31:43.967 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+23-Jul-2018 09:31:43.967 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+23-Jul-2018 09:31:43.967 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+23-Jul-2018 09:31:43.967 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/usr/local/tomcat
+23-Jul-2018 09:31:43.967 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/usr/local/tomcat
+23-Jul-2018 09:31:43.967 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/usr/local/tomcat/temp
+23-Jul-2018 09:31:43.968 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded APR based Apache Tomcat Native library [1.2.17] using APR version [1.5.2].
+23-Jul-2018 09:31:43.968 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+23-Jul-2018 09:31:43.968 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+23-Jul-2018 09:31:43.981 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 1.1.0f  25 May 2017]
+23-Jul-2018 09:31:44.152 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+23-Jul-2018 09:31:44.168 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+23-Jul-2018 09:31:44.190 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+23-Jul-2018 09:31:44.193 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+23-Jul-2018 09:31:44.197 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 987 ms
+23-Jul-2018 09:31:44.247 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+23-Jul-2018 09:31:44.248 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.32
+23-Jul-2018 09:31:44.281 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/usr/local/tomcat/webapps/docs]
+23-Jul-2018 09:31:44.886 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/usr/local/tomcat/webapps/docs] has finished in [606] ms
+23-Jul-2018 09:31:44.893 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/usr/local/tomcat/webapps/examples]
+23-Jul-2018 09:31:45.359 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/usr/local/tomcat/webapps/examples] has finished in [465] ms
+23-Jul-2018 09:31:45.359 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/usr/local/tomcat/webapps/ROOT]
+23-Jul-2018 09:31:45.396 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/usr/local/tomcat/webapps/ROOT] has finished in [37] ms
+23-Jul-2018 09:31:45.397 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/usr/local/tomcat/webapps/manager]
+23-Jul-2018 09:31:45.454 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/usr/local/tomcat/webapps/manager] has finished in [56] ms
+23-Jul-2018 09:31:45.454 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/usr/local/tomcat/webapps/host-manager]
+23-Jul-2018 09:31:45.499 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/usr/local/tomcat/webapps/host-manager] has finished in [45] ms
+23-Jul-2018 09:31:45.504 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+23-Jul-2018 09:31:45.533 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+23-Jul-2018 09:31:45.538 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 1340 ms
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="1-3-浏览器查看"><a href="#1-3-浏览器查看" class="headerlink" title="1.3 浏览器查看"></a>1.3 浏览器查看</h4><p><img src="/loading.gif" data-original="/images/linux/docker/docker-tomcat.png" alt="tomcat:8080"></p>
+<h4 id="1-4-部署自己的web应用"><a href="#1-4-部署自己的web应用" class="headerlink" title="1.4 部署自己的web应用"></a>1.4 部署自己的web应用</h4><p>将本地war包上传到宿主机<code>/opt/tomcat8/</code>目录下。<br>先停止原来的tomcat容器，然后重新挂在新的war包并启动。</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@dev nginx]# docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                NAMES
+00a88a12a6f4        nginx_image1        "/bin/sh -c 'nginx..."   About an hour ago   Up About an hour    0.0.0.0:80-&gt;80/tcp   nginx
+[root@dev nginx]# docker stop 00a88a12a6f4
+00a88a12a6f4
+[root@dev nginx]# docker rm 00a88a12a6f4
+00a88a12a6f4
+[root@dev nginx]# cd /opt/tomcat8/
+[root@dev tomcat8]# ll
+total 25852
+-rw-r--r-- 1 root root 26470421 Jul 23 17:40 weixin.war
+[root@dev tomcat8]# docker run -d -v /opt/tomcat8/weixin.war:/usr/local/tomcat/webapps/weixin.war -p 8080:8080 docker.io/tomcat  
+2c2e386b7d1a2635f7be28c404a7a71a0ec8fda074b22035be6d62d28b8f8a50
+[root@dev tomcat8]# docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                    NAMES
+2c2e386b7d1a        docker.io/tomcat    "catalina.sh run"   15 seconds ago      Up 14 seconds       0.0.0.0:8080-&gt;8080/tcp   mystifying_wilson
+[root@dev tomcat8]# 
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>调用接口查看启动情况<br><img src="/loading.gif" data-original="/images/linux/docker/docker-tomcat-config.png" alt="tomcat：8080"><br>容器正常启动。</p>
+<h3 id="二、使用docker-file启动tomcat容器"><a href="#二、使用docker-file启动tomcat容器" class="headerlink" title="二、使用docker file启动tomcat容器"></a>二、使用docker file启动tomcat容器</h3><h4 id="2-1、编写docker-file"><a href="#2-1、编写docker-file" class="headerlink" title="2.1、编写docker file"></a>2.1、编写docker file</h4><p>在当前/opt/tomcat8/目录下创建dockerfile文件，写入如下内容：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">from docker.io/tomcat:8.5.29    
+MAINTAINER marvin(qdhaiqiang@163.com)   
+COPY  webapps   /usr/local/tomcat/webapps
+COPY  logs  /usr/local/tomcat/logs
+COPY  conf/server.xml  /usr/local/tomcat/conf/server.xml
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2-2、用dockerfile-构建出镜tomcat镜像"><a href="#2-2、用dockerfile-构建出镜tomcat镜像" class="headerlink" title="2. 2、用dockerfile 构建出镜tomcat镜像"></a>2. 2、用dockerfile 构建出镜tomcat镜像</h4><pre class="line-numbers language-shell"><code class="language-shell">[root@dev tomcat8]# docker build -t marvin/tomcat . 
+Sending build context to Docker daemon 26.48 MB
+Step 1/5 : FROM docker.io/tomcat:latest
+ ---&gt; 2d43521f2b1a
+Step 2/5 : MAINTAINER marvin(qdhaiqiang@163.com)
+ ---&gt; Running in de53a8b32cf8
+ ---&gt; fd9c7980f09e
+Removing intermediate container de53a8b32cf8
+Step 3/5 : COPY webapps /usr/local/tomcat/webapps
+ ---&gt; 010bf40a7e8d
+Removing intermediate container 27feb6b70ca8
+Step 4/5 : COPY logs /usr/local/tomcat/logs
+ ---&gt; 010946977b25
+Removing intermediate container aff55ea55e30
+Step 5/5 : COPY conf/server.xml /usr/local/tomcat/conf/server.xml
+ ---&gt; 098f61ab6f8b
+Removing intermediate container 18d241c36d15
+Successfully built 098f61ab6f8b
+[root@dev tomcat8]# 
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>查看新构建的镜像</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@dev tomcat8]# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+marvin/tomcat       latest              098f61ab6f8b        11 seconds ago      489 MB
+nginx_image1        latest              c4d5f5accc06        About an hour ago   109 MB
+docker.io/tomcat    latest              2d43521f2b1a        5 days ago          463 MB
+docker.io/nginx     latest              8b89e48b5f15        6 days ago          109 MB
+[root@dev tomcat8]# 
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2-3、-运行新构建的镜像"><a href="#2-3、-运行新构建的镜像" class="headerlink" title="2.3、 运行新构建的镜像"></a>2.3、 运行新构建的镜像</h4><pre class="line-numbers language-shell"><code class="language-shell">[root@dev tomcat8]# docker run --name tomcat8 -d -p 8080:8080  marvin/tomcat
+6f189daf58807a5683a8b9d6c01b1b30ae8770045aa551535d27b641681c256a
+[root@dev tomcat8]# docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                    NAMES
+6f189daf5880        marvin/tomcat       "catalina.sh run"   3 seconds ago       Up 2 seconds        0.0.0.0:8080-&gt;8080/tcp   tomcat8
+[root@dev tomcat8]# 
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2-4、-查看镜像运行效果"><a href="#2-4、-查看镜像运行效果" class="headerlink" title="2.4、 查看镜像运行效果"></a>2.4、 查看镜像运行效果</h4><p><img src="/loading.gif" data-original="/images/linux/docker/docker-tomcat-config2.png" alt="tomcat.png"></p>
+<h4 id="2-5、如果要配置https证书的话，可将jks的证书放于conf目录下，在server中使用相对路径引用证书，配置如下"><a href="#2-5、如果要配置https证书的话，可将jks的证书放于conf目录下，在server中使用相对路径引用证书，配置如下" class="headerlink" title="2.5、如果要配置https证书的话，可将jks的证书放于conf目录下，在server中使用相对路径引用证书，配置如下:"></a>2.5、如果要配置https证书的话，可将jks的证书放于conf目录下，在server中使用相对路径引用证书，配置如下:</h4><pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Connector</span> <span class="token attr-name">port</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>8888<span class="token punctuation">"</span></span> <span class="token attr-name">protocol</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org.apache.coyote.http11.Http11NioProtocol<span class="token punctuation">"</span></span>
+               <span class="token attr-name">maxThreads</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>150<span class="token punctuation">"</span></span> <span class="token attr-name">SSLEnabled</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token attr-name">scheme</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https<span class="token punctuation">"</span></span> <span class="token attr-name">secure</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token attr-name">URIEncoding</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span>  
+               <span class="token attr-name">clientAuth</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span> <span class="token attr-name">sslProtocol</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>TLS<span class="token punctuation">"</span></span> <span class="token attr-name">keystoreFile</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>conf/SHA256withRSA__.haier.net.jks<span class="token punctuation">"</span></span> <span class="token attr-name">keystorePass</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>20170905<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>  
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>或者如果是pem文件的话</p>
+<pre class="line-numbers language-xml"><code class="language-xml"> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Connector</span> <span class="token attr-name">port</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>8443<span class="token punctuation">"</span></span> <span class="token attr-name">protocol</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org.apache.coyote.http11.Http11AprProtocol<span class="token punctuation">"</span></span>
+               <span class="token attr-name">maxThreads</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>150<span class="token punctuation">"</span></span> <span class="token attr-name">SSLEnabled</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>UpgradeProtocol</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org.apache.coyote.http2.Http2Protocol<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>SSLHostConfig</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Certificate</span> <span class="token attr-name">certificateKeyFile</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>conf/localhost-rsa-key.pem<span class="token punctuation">"</span></span>
+                         <span class="token attr-name">certificateFile</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>conf/localhost-rsa-cert.pem<span class="token punctuation">"</span></span>
+                         <span class="token attr-name">certificateChainFile</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>conf/localhost-rsa-chain.pem<span class="token punctuation">"</span></span>
+                         <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>RSA<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>SSLHostConfig</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Connector</span><span class="token punctuation">&gt;</span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2-6、在分布式微服务中的应用"><a href="#2-6、在分布式微服务中的应用" class="headerlink" title="2.6、在分布式微服务中的应用"></a>2.6、在分布式微服务中的应用</h4><p> tomcat作为web容器被广泛应用，但我们目前restful接口特别多，每个接口都需要一个tomcat来启动，为了配置隔离，一般都会把tomcat安装文件复制多遍，分别把war包部署在对应的webapp目录下，但这样造成的问题就是tomcat安装文件占用了大量的磁盘空间，且不便于统一管理。比如要修改tomcat的某个配置，那么对应的所有的tomcat目录都要修改一遍。</p>
+<p>基于上述情况，作者设计了一种基于docker的tomcat服务化方案。</p>
+<p><img src="/loading.gif" data-original="/images/linux/docker/docker-tomcat-config3.png" alt="分布式应用"></p>
+<h4 id="2-7、查看tomcat日志"><a href="#2-7、查看tomcat日志" class="headerlink" title="2.7、查看tomcat日志"></a>2.7、查看tomcat日志</h4><p>因为tomcat日志是随着程序运行生成的，所以不能使用add或者copy宿主机目录的形式添加到容器，目前的思路是将容器中的logs整个目录copy到宿主机，实际应用中可用定时任务执行脚本的形式解决。</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@dev logs]# docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                    NAMES
+6f189daf5880        marvin/tomcat       "catalina.sh run"   4 hours ago         Up 4 hours          0.0.0.0:8080-&gt;8080/tcp   tomcat8
+[root@dev logs]# 
+[root@dev logs]# pwd
+/opt/tomcat8/logs
+[root@dev logs]# ll
+total 0
+[root@dev logs]#  docker cp 6f189daf5880:/usr/local/tomcat/logs /opt/tomcat8/
+[root@dev logs]# ll
+total 16
+-rw-r----- 1 root root 7863 Jul 23 18:08 catalina.2018-07-23.log
+-rw-r----- 1 root root    0 Jul 23 18:07 host-manager.2018-07-23.log
+-rw-r----- 1 root root  930 Jul 23 18:08 localhost.2018-07-23.log
+-rw-r----- 1 root root 1424 Jul 23 22:49 localhost_access_log.2018-07-23.txt
+-rw-r----- 1 root root    0 Jul 23 18:07 manager.2018-07-23.log
+[root@dev logs]# 
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2-8-另一个tomcat-jdk的例子"><a href="#2-8-另一个tomcat-jdk的例子" class="headerlink" title="2.8 另一个tomcat+jdk的例子"></a>2.8 另一个tomcat+jdk的例子</h4><pre class="line-numbers language-shell"><code class="language-shell">#tomcat8 openjdk8
+
+FROM centos:7
+
+MAINTAINER fengzp <fengzp@gzyitop.com>
+
+ENV LANG en_US.UTF-8
+ENV TOMCAT_VERSION 8.5.13
+ENV CATALINA_HOME /opt/apache-tomcat-$TOMCAT_VERSION
+ENV PATH $CATALINA_HOME/bin:$PATH
+ENV JDK_VERSION 1.8.0
+
+WORKDIR $CATALINA_HOME
+
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime
+
+RUN yum -y install java-$JDK_VERSION-openjdk-devel &amp;&amp; rm -rf /var/cache/yum/*
+ENV JAVA_HOME /usr/lib/jvm/java-openjdk
+
+RUN yum -y install wget
+RUN cd /opt/ &amp;&amp; wget "http://apache.fayea.com/tomcat/tomcat-8/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz"
+RUN cd /opt/ &amp;&amp; tar -zxf apache-tomcat-$TOMCAT_VERSION.tar.gz
+RUN cd /opt/ &amp;&amp; rm -rf apache-tomcat-$TOMCAT_VERSION.tar.gz
+RUN chmod +x $CATALINA_HOME/bin/*.sh
+
+VOLUME $CATALINA_HOME/webapps 
+VOLUME $CATALINA_HOME/logs
+VOLUME $CATALINA_HOME/conf
+
+EXPOSE 8080
+
+CMD $CATALINA_HOME/bin/startup.sh &amp;&amp; tail -F $CATALINA_HOME/logs/catalina.out
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></fengzp@gzyitop.com></code></pre>
+<h3 id="三、不适用容器自带jdk"><a href="#三、不适用容器自带jdk" class="headerlink" title="三、不适用容器自带jdk"></a>三、不适用容器自带jdk</h3><p>3.1 先将下载好的jdk和tomcat上传到宿主服务器</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@dev tomcat8]# ls
+apache-tomcat-7.0.70.tar.gz  jdk-7u80-linux-x64.tar.gz 
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>3.2 dockerfile文件如下</p>
+<pre class="line-numbers language-shell"><code class="language-shell">#pull down centos image
+FROM centos
+MAINTAINER test@test.com
+#copy jdk and tomcat into image
+ADD ./apache-tomcat-7.0.70.tar.gz /root
+ADD ./jdk-7u80-linux-x64.tar.gz /root
+#set environment variable
+ENV JAVA_HOME /root/jdk1.7.0_80
+ENV PATH $JAVA_HOME/bin:$PATH
+#define entry point which will be run first when the container starts up
+ENTRYPOINT /root/apache-tomcat-7.0.70/bin/startup.sh &amp;&amp; tail -F /root/apache-tomcat-7.0.70/logs/catalina.out
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="四、参考文章："><a href="#四、参考文章：" class="headerlink" title="四、参考文章："></a>四、参考文章：</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_32351227/article/details/78673591">https://blog.csdn.net/qq_32351227/article/details/78673591</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zydev/p/5804289.html">https://www.cnblogs.com/zydev/p/5804289.html</a></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/docker/">
+                                    <span class="chip bg-color">docker</span>
+                                </a>
+                            
+                                <a href="/tags/tomcat/">
+                                    <span class="chip bg-color">tomcat</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">写作不易，客官打赏一杯奶茶？</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="https://unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'N7oztxzXo2GE0LjMsxQ5yEg6-gzGzoHsz',
+        appKey: 'cstOXLnQTjiJCeiwLK8pxp3g',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'ヾﾉ≧∀≦)o 来呀！吐槽一番吧！'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2018/07/25/docker-xue-xi-an-li-yong-docker-bu-shu-mysql-fu-wu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="docker学习案例：用docker部署mysql服务">
+                        
+                        <span class="card-title">docker学习案例：用docker部署mysql服务</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            docker实际案例之在centOS7.4上用docker部署mysql服务简书地址
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2018-07-25
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%BF%90%E7%BB%B4/" class="post-category">
+                                    运维
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/mysql/">
+                        <span class="chip bg-color">mysql</span>
+                    </a>
+                    
+                    <a href="/tags/docker/">
+                        <span class="chip bg-color">docker</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/07/22/docker-xue-xi-an-li-yong-docker-bu-shu-nginx-fu-wu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="docker学习案例：用docker部署nginx服务">
+                        
+                        <span class="card-title">docker学习案例：用docker部署nginx服务</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            docker实际案例之在centOS7.4上用docker部署nginx服务[简书地址]](https://www.jianshu.com/p/1aa87bf713d5)
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2018-07-22
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%BF%90%E7%BB%B4/" class="post-category">
+                                    运维
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/nginx/">
+                        <span class="chip bg-color">nginx</span>
+                    </a>
+                    
+                    <a href="/tags/docker/">
+                        <span class="chip bg-color">docker</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2018-2022</span>
+            
+            <span id="year">2018</span>
+            <a href="/about" target="_blank">马海强</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+             <span id="busuanzi_container_site_pv"></span> 
+            <i class="fa fa-heart"></i> 本站总访问量 
+            <span id="busuanzi_value_site_pv" class="white-color">
+
+            </span>  
+             
+                <span id="busuanzi_container_site_uv"></span> 次,&nbsp; 
+                <i class="fa fa-users"></i> 访客数 
+                <span id="busuanzi_value_site_uv" class="white-color">
+
+                </span> 人 
+
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2018";
+                    var startMonth = "6";
+                    var startDate = "5";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="qdhaiqiang" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:qdhaiqiang@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=389709260" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 389709260" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?8835c2c7d2db94534f40216cf670e8ea";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i["DaoVoiceObject"] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            a.charset = "utf-8";
+            m.parentNode.insertBefore(a, m)
+        })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+            "//widget.daovoice.io/widget/6984b559.js", "daovoice")
+        daovoice('init', {
+            app_id: "39029f44"
+        });
+        daovoice('update');
+    </script>
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+<script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+
+</html>
