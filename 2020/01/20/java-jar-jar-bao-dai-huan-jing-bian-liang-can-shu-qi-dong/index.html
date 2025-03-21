@@ -29,11 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
-<script src="/js/prism-line-numbers.min.js"></script>
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 
 
@@ -508,7 +508,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    930
+                    917
                 </div>
                 
 
@@ -546,7 +546,7 @@
 <pre class="line-numbers language-shell"><code class="language-shell">-DpropName=propValue
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>比如：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">java -jar -DdatabaseUrl="mysql://localhost:3306/pdb?user=root&amp;password=root"  -Dapp.key="123" -Dapp.secret="xxx"  demo.jar
+<pre class="line-numbers language-shell"><code class="language-shell">java -jar -DdatabaseUrl="mysql://localhost:3306/pdb?user=root&password=root"  -Dapp.key="123" -Dapp.secret="xxx"  demo.jar
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>多个参数也可以。</p>
 <h3 id="方式二：参数直接跟在命令后面，多个参数之间用空格隔开"><a href="#方式二：参数直接跟在命令后面，多个参数之间用空格隔开" class="headerlink" title="方式二：参数直接跟在命令后面，多个参数之间用空格隔开"></a>方式二：参数直接跟在命令后面，多个参数之间用空格隔开</h3><pre class="line-numbers language-shell"><code class="language-shell">java -jar demo.jar JOURNAL_TREENODE_DATA-20190404174502.txt processType=1
@@ -559,14 +559,14 @@
 <pre class="line-numbers language-shell"><code class="language-shell">server.port={port:8081}
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="用clojure编写的jar里有惊喜"><a href="#用clojure编写的jar里有惊喜" class="headerlink" title="用clojure编写的jar里有惊喜"></a>用clojure编写的jar里有惊喜</h2><p>在clojure上面的配置就变得诡异了，猜猜下面的配置能不能生效呢？</p>
-<pre class="line-numbers language-shell"><code class="language-shell">java -jar -Ddatabase-url="mysql://localhost:3306/pdb?user=root&amp;password=root"  -Dapp.key="123" -Dapp.secret="xxx"  demo.jar
+<pre class="line-numbers language-shell"><code class="language-shell">java -jar -Ddatabase-url="mysql://localhost:3306/pdb?user=root&password=root"  -Dapp.key="123" -Dapp.secret="xxx"  demo.jar
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>如果你用<code>cider-conect</code>通过nrepl的端口连接上你的服务，你会发现，这个配置导致<code>database-url</code>的值确实已经改了，但是后面两个没有。</p>
 <p>究其原因，我们java从classpath里获取参数使用的是properties形式的，也就是json的格式。这不难理解，spring有它的办法，clojure当然也有自己的方式。</p>
-<pre class="line-numbers language-json"><code class="language-json"><span class="token property">"app"</span><span class="token operator">:</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-json"><code class="language-json"><span class="token property">"app"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token property">"key"</span><span class="token operator">:</span> <span class="token string">"123"</span><span class="token punctuation">,</span>
     <span class="token property">"secret"</span><span class="token operator">:</span><span class="token string">"xxx"</span>
-&amp;#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>虽然json和我们的edn里map是很像的，但是毕竟是不同，于是要分析下现在的edn里的配置信息他是怎么读取的呢？</p>
 <h3 id="代码里的env"><a href="#代码里的env" class="headerlink" title="代码里的env"></a>代码里的env</h3><p>在<code>config</code>这个namespace里找到了env</p>
@@ -579,20 +579,20 @@
     (source/from-env)]))
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="cprop加载配置"><a href="#cprop加载配置" class="headerlink" title="cprop加载配置"></a>cprop加载配置</h3><p><code>cprop.source</code>这个文件就是用来加载edn文件的</p>
-<pre class="line-numbers language-clojure"><code class="language-clojure">(defn- env-&gt;path [k]
-  (k-&gt;path k "_" #"__"))
+<pre class="line-numbers language-clojure"><code class="language-clojure">(defn- env->path [k]
+  (k->path k "_" #"__"))
 
 (defn read-system-env
   ([]
    (read-system-env {}))
   ([opts]
-   (-&gt;&gt; (System/getenv)
-        (map (fn [[k v]] [(env-&gt;path k)
-                          (str-&gt;value v opts)]))
+   (->> (System/getenv)
+        (map (fn [[k v]] [(env->path k)
+                          (str->value v opts)]))
         (into {}))))
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>从获取的过程看，应该是会把<code>_</code>做为单元节点断开，因此需要改成这样</p>
-<pre class="line-numbers language-clojure"><code class="language-clojure">java -jar -Ddatabase-url="mysql://localhost:3306/pdb?user=root&amp;password=root"  -Dapp_key="123" -Dapp_secret="xxx"  demo.jar
+<pre class="line-numbers language-clojure"><code class="language-clojure">java -jar -Ddatabase-url="mysql://localhost:3306/pdb?user=root&password=root"  -Dapp_key="123" -Dapp_secret="xxx"  demo.jar
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>对应到edn里应该是</p>
 <pre class="line-numbers language-clojure"><code class="language-clojure">{:app
@@ -1304,7 +1304,7 @@ Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content ty
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2018-2022</span>
+                <span id="year">2018-2025</span>
             
             <span id="year">2018</span>
             <a href="/about" target="_blank">马海强</a>

@@ -29,11 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
-<script src="/js/prism-line-numbers.min.js"></script>
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 
 
@@ -547,10 +547,10 @@
 </ul>
 <h2 id="2、实际操作"><a href="#2、实际操作" class="headerlink" title="2、实际操作"></a>2、实际操作</h2><p>实际操作过程因为我作为后端工程师，没有前端环境，因此用我本地接口调试神奇postman来模拟前端。<br>服务端有一个接口是这样的：</p>
 <pre class="line-numbers language-java"><code class="language-java">    <span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span><span class="token string">"tests"</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> RtnResult<span class="token operator">&lt;</span>String<span class="token operator">&gt;</span> <span class="token function">testPost</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestBody</span> DataVo vo<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        logger<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"post data:&amp;#123;&amp;#125;"</span> <span class="token punctuation">,</span> JSONObject<span class="token punctuation">.</span><span class="token function">toJSONString</span><span class="token punctuation">(</span>vo<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">RtnResult</span><span class="token operator">&lt;</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token string">"保存成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> RtnResult<span class="token operator">&lt;</span>String<span class="token operator">></span> <span class="token function">testPost</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestBody</span> DataVo vo<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        logger<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"post data:{}"</span> <span class="token punctuation">,</span> JSONObject<span class="token punctuation">.</span><span class="token function">toJSONString</span><span class="token punctuation">(</span>vo<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">RtnResult</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token string">"保存成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>用postman本地测试，故意不传参数，效果如下：<br><img src="/loading.gif" data-original="/images/tools/tcpdump-postman.png" alt="参数错误400的场景"><br>接下来，抓包查看。</p>
 <h3 id="2-1、准备工作"><a href="#2-1、准备工作" class="headerlink" title="2.1、准备工作"></a>2.1、准备工作</h3><ul>
@@ -579,30 +579,30 @@ total 4
 <p>可以使用<code>tcpdump -r dump-file1</code>命令查看</p>
 <pre class="line-numbers language-shell"><code class="language-shell">[root@dev ~]# tcpdump -r dump-file1 
 reading from file dump-file1, link-type EN10MB (Ethernet)
-14:04:30.636260 IP dev.ssh &gt; 112.224.67.134.26919: Flags [P.], seq 332116900:332116952, ack 3962938602, win 255, length 52
-14:04:30.661616 IP dev.ssh &gt; 112.224.67.134.26919: Flags [P.], seq 52:184, ack 1, win 255, length 132
-14:04:30.710115 IP 112.224.67.134.26919 &gt; dev.ssh: Flags [.], ack 184, win 66, length 0
-14:04:49.658756 IP 112.224.67.134.26920 &gt; dev.ssh: Flags [P.], seq 3449703456:3449703492, ack 3469026640, win 64, length 36
-14:04:49.698057 IP dev.ssh &gt; 112.224.67.134.26920: Flags [.], ack 36, win 255, length 0
-14:05:04.771846 IP 112.224.67.134.58166 &gt; dev.d-s-n: Flags [S], seq 3379667287, win 17520, options [mss 1400,nop,wscale 8,nop,nop,sackOK], length 0
-14:05:04.771914 IP dev.d-s-n &gt; 112.224.67.134.58166: Flags [S.], seq 2331290743, ack 3379667288, win 29200, options [mss 1460,nop,nop,sackOK,nop,wscale 7], length 0
-14:05:04.811492 IP 112.224.67.134.58166 &gt; dev.d-s-n: Flags [.], ack 1, win 68, length 0
-14:05:04.820465 IP 112.224.67.134.58166 &gt; dev.d-s-n: Flags [P.], seq 1:415, ack 1, win 68, length 414
-14:05:04.820496 IP dev.d-s-n &gt; 112.224.67.134.58166: Flags [.], ack 415, win 237, length 0
-14:05:04.824051 IP dev.d-s-n &gt; 112.224.67.134.58166: Flags [P.], seq 1:354, ack 415, win 237, length 353
-14:05:04.824297 IP dev.d-s-n &gt; 112.224.67.134.58166: Flags [P.], seq 354:359, ack 415, win 237, length 5
-14:05:04.871458 IP 112.224.67.134.58166 &gt; dev.d-s-n: Flags [.], ack 359, win 67, length 0
-14:05:05.911468 IP 112.224.67.134.58166 &gt; dev.d-s-n: Flags [.], seq 414:415, ack 359, win 67, length 1
-14:05:05.911526 IP dev.d-s-n &gt; 112.224.67.134.58166: Flags [.], ack 415, win 237, options [nop,nop,sack 1 {414:415}], length 0
-14:05:06.951486 IP 112.224.67.134.58166 &gt; dev.d-s-n: Flags [.], seq 414:415, ack 359, win 67, length 1
-14:05:06.951537 IP dev.d-s-n &gt; 112.224.67.134.58166: Flags [.], ack 415, win 237, options [nop,nop,sack 1 {414:415}], length 0
-14:05:08.011588 IP 112.224.67.134.58166 &gt; dev.d-s-n: Flags [.], seq 414:415, ack 359, win 67, length 1
-14:05:08.011644 IP dev.d-s-n &gt; 112.224.67.134.58166: Flags [.], ack 415, win 237, options [nop,nop,sack 1 {414:415}], length 0
-14:05:09.051406 IP 112.224.67.134.58166 &gt; dev.d-s-n: Flags [.], seq 414:415, ack 359, win 67, length 1
-14:05:09.051452 IP dev.d-s-n &gt; 112.224.67.134.58166: Flags [.], ack 415, win 237, options [nop,nop,sack 1 {414:415}], length 0
-14:05:10.091399 IP 112.224.67.134.58166 &gt; dev.d-s-n: Flags [.], seq 414:415, ack 359, win 67, length 1
-14:05:10.091451 IP dev.d-s-n &gt; 112.224.67.134.58166: Flags [.], ack 415, win 237, options [nop,nop,sack 1 {414:415}], length 0
-14:05:10.130248 IP 112.224.67.134.26919 &gt; dev.ssh: Flags [P.], seq 1:53, ack 184, win 66, length 52
+14:04:30.636260 IP dev.ssh > 112.224.67.134.26919: Flags [P.], seq 332116900:332116952, ack 3962938602, win 255, length 52
+14:04:30.661616 IP dev.ssh > 112.224.67.134.26919: Flags [P.], seq 52:184, ack 1, win 255, length 132
+14:04:30.710115 IP 112.224.67.134.26919 > dev.ssh: Flags [.], ack 184, win 66, length 0
+14:04:49.658756 IP 112.224.67.134.26920 > dev.ssh: Flags [P.], seq 3449703456:3449703492, ack 3469026640, win 64, length 36
+14:04:49.698057 IP dev.ssh > 112.224.67.134.26920: Flags [.], ack 36, win 255, length 0
+14:05:04.771846 IP 112.224.67.134.58166 > dev.d-s-n: Flags [S], seq 3379667287, win 17520, options [mss 1400,nop,wscale 8,nop,nop,sackOK], length 0
+14:05:04.771914 IP dev.d-s-n > 112.224.67.134.58166: Flags [S.], seq 2331290743, ack 3379667288, win 29200, options [mss 1460,nop,nop,sackOK,nop,wscale 7], length 0
+14:05:04.811492 IP 112.224.67.134.58166 > dev.d-s-n: Flags [.], ack 1, win 68, length 0
+14:05:04.820465 IP 112.224.67.134.58166 > dev.d-s-n: Flags [P.], seq 1:415, ack 1, win 68, length 414
+14:05:04.820496 IP dev.d-s-n > 112.224.67.134.58166: Flags [.], ack 415, win 237, length 0
+14:05:04.824051 IP dev.d-s-n > 112.224.67.134.58166: Flags [P.], seq 1:354, ack 415, win 237, length 353
+14:05:04.824297 IP dev.d-s-n > 112.224.67.134.58166: Flags [P.], seq 354:359, ack 415, win 237, length 5
+14:05:04.871458 IP 112.224.67.134.58166 > dev.d-s-n: Flags [.], ack 359, win 67, length 0
+14:05:05.911468 IP 112.224.67.134.58166 > dev.d-s-n: Flags [.], seq 414:415, ack 359, win 67, length 1
+14:05:05.911526 IP dev.d-s-n > 112.224.67.134.58166: Flags [.], ack 415, win 237, options [nop,nop,sack 1 {414:415}], length 0
+14:05:06.951486 IP 112.224.67.134.58166 > dev.d-s-n: Flags [.], seq 414:415, ack 359, win 67, length 1
+14:05:06.951537 IP dev.d-s-n > 112.224.67.134.58166: Flags [.], ack 415, win 237, options [nop,nop,sack 1 {414:415}], length 0
+14:05:08.011588 IP 112.224.67.134.58166 > dev.d-s-n: Flags [.], seq 414:415, ack 359, win 67, length 1
+14:05:08.011644 IP dev.d-s-n > 112.224.67.134.58166: Flags [.], ack 415, win 237, options [nop,nop,sack 1 {414:415}], length 0
+14:05:09.051406 IP 112.224.67.134.58166 > dev.d-s-n: Flags [.], seq 414:415, ack 359, win 67, length 1
+14:05:09.051452 IP dev.d-s-n > 112.224.67.134.58166: Flags [.], ack 415, win 237, options [nop,nop,sack 1 {414:415}], length 0
+14:05:10.091399 IP 112.224.67.134.58166 > dev.d-s-n: Flags [.], seq 414:415, ack 359, win 67, length 1
+14:05:10.091451 IP dev.d-s-n > 112.224.67.134.58166: Flags [.], ack 415, win 237, options [nop,nop,sack 1 {414:415}], length 0
+14:05:10.130248 IP 112.224.67.134.26919 > dev.ssh: Flags [P.], seq 1:53, ack 184, win 66, length 52
 [root@dev ~]# 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="2-2、用wireshark分析报文内容"><a href="#2-2、用wireshark分析报文内容" class="headerlink" title="2.2、用wireshark分析报文内容"></a>2.2、用wireshark分析报文内容</h3><p>了解tcp网络协议的，看到以上报文，应该已经了解一二了。<br>为了将其转换成常用的http协议，我们用wireshark这款工具再分析一下。<br>下载该文件，在windows上可以直接将该文件拖入到wireshark，会自动打开。<br><img src="/loading.gif" data-original="/images/tools/tcpdump-wireshark.png" alt="tcpdump文件在WireShark中打开"></p>
@@ -1306,7 +1306,7 @@ reading from file dump-file1, link-type EN10MB (Ethernet)
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2018-2022</span>
+                <span id="year">2018-2025</span>
             
             <span id="year">2018</span>
             <a href="/about" target="_blank">马海强</a>

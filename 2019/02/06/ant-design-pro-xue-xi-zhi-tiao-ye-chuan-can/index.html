@@ -29,11 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
-<script src="/js/prism-line-numbers.min.js"></script>
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 
 
@@ -504,7 +504,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    301
+                    289
                 </div>
                 
 
@@ -540,15 +540,15 @@
 
 <span class="token comment" spellcheck="true">/* 普通使用 */</span>
 
-<span class="token operator">&lt;</span>Link to<span class="token operator">=</span><span class="token string">"/list"</span><span class="token operator">&gt;</span>Go to list page<span class="token operator">&lt;</span><span class="token operator">/</span>Link<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>Link to<span class="token operator">=</span><span class="token string">"/list"</span><span class="token operator">></span>Go to list page<span class="token operator">&lt;</span><span class="token operator">/</span>Link<span class="token operator">></span>
 
 <span class="token comment" spellcheck="true">/* 带参数 */</span>
 
-<span class="token operator">&lt;</span>Link to<span class="token operator">=</span><span class="token string">"/list?a=b"</span><span class="token operator">&gt;</span>Go to list page<span class="token operator">&lt;</span><span class="token operator">/</span>Link<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>Link to<span class="token operator">=</span><span class="token string">"/list?a=b"</span><span class="token operator">></span>Go to list page<span class="token operator">&lt;</span><span class="token operator">/</span>Link<span class="token operator">></span>
 
 <span class="token comment" spellcheck="true">/* 包含子组件 */</span>
 
-<span class="token operator">&lt;</span>Link to<span class="token operator">=</span><span class="token string">"/list?a=b"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>button<span class="token operator">&gt;</span>Go to list page<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>Link<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>Link to<span class="token operator">=</span><span class="token string">"/list?a=b"</span><span class="token operator">></span><span class="token operator">&lt;</span>button<span class="token operator">></span>Go to list page<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>Link<span class="token operator">></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="umi-router"><a href="#umi-router" class="headerlink" title="umi/router"></a>umi/router</h3><h4 id="router-push-path"><a href="#router-push-path" class="headerlink" title="router.push(path)"></a>router.push(path)</h4><p>推一个新的页面到 history 里。</p>
 <pre class="line-numbers language-js"><code class="language-js">
@@ -564,35 +564,35 @@ router<span class="token punctuation">.</span><span class="token function">push<
 
 <span class="token comment" spellcheck="true">// 带参数，并且参数会显示在url中</span>
 
-router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
 
-  pathname<span class="token punctuation">:</span> <span class="token string">'/list'</span><span class="token punctuation">,</span>
+<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span> pathname<span class="token punctuation">:</span> <span class="token string">'/list'</span><span class="token punctuation">,</span>
 
-  query<span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span> query<span class="token punctuation">:</span> <span class="token punctuation">{</span>
 
-    a<span class="token punctuation">:</span> <span class="token string">'b'</span><span class="token punctuation">,</span>
+<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span> <span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span> a<span class="token punctuation">:</span> <span class="token string">'b'</span><span class="token punctuation">,</span>
 
-  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
+<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">// 带参数，但是参数不会显示在url中</span>
 
-router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
 
-  pathname<span class="token punctuation">:</span> <span class="token string">'/list'</span><span class="token punctuation">,</span>
+<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span> pathname<span class="token punctuation">:</span> <span class="token string">'/list'</span><span class="token punctuation">,</span>
 
-  state<span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// state字段可以自定义，如用params等也可以</span>
+<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span> state<span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// state字段可以自定义，如用params等也可以</span>
 
-    a<span class="token punctuation">:</span> <span class="token string">'b'</span><span class="token punctuation">,</span>
+<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span> <span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span> a<span class="token punctuation">:</span> <span class="token string">'b'</span><span class="token punctuation">,</span>
 
-  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
+<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>list页面对参数的接收取值：</strong></p>
 <pre class="line-numbers language-js"><code class="language-js">
-<span class="token keyword">const</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> location<span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> query<span class="token punctuation">,</span> state <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">;</span><span class="token operator">**</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span> location<span class="token punctuation">:</span> <span class="token punctuation">{</span> query<span class="token punctuation">,</span> state <span class="token punctuation">}</span> <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">;</span><span class="token operator">**</span>
 
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>query<span class="token punctuation">.</span>a<span class="token punctuation">,</span> state<span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token operator">**</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
@@ -1287,7 +1287,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2018-2022</span>
+                <span id="year">2018-2025</span>
             
             <span id="year">2018</span>
             <a href="/about" target="_blank">马海强</a>

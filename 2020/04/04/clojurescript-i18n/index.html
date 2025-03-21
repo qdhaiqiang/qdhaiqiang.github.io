@@ -29,11 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
-<script src="/js/prism-line-numbers.min.js"></script>
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 
 
@@ -561,16 +561,16 @@
 
 ;; 语言菜单
 (defn- dropdown-menu []
-  [:&gt; ant/Menu
+  [:> ant/Menu
    {:className "menu"
     :onClick   (fn [menu]
-                 (let [value (js-&gt;clj menu :keywordize-keys true)]
+                 (let [value (js->clj menu :keywordize-keys true)]
                    (rf/dispatch [:i18n/change-lang (keyword (:key value))])))}
-   [:&gt; MenuItem {:key "zh-cn" :title "中文"}
+   [:> MenuItem {:key "zh-cn" :title "中文"}
     [:span (i18n-str "中文")]]
-   [:&gt; MenuItem {:key "en-us" :title "英文"}
+   [:> MenuItem {:key "en-us" :title "英文"}
     [:span (i18n-str "英文")]]
-   [:&gt; MenuItem {:key "ja-jp" :title "日文"}
+   [:> MenuItem {:key "ja-jp" :title "日文"}
     [:span (i18n-str "日文")]]])
 
 [:div {:style {:margin-left 20
@@ -578,7 +578,7 @@
                          :font-family "PingFangSC-Medium,PingFang SC"
                          :font-weight 500
                          :color       "rgba(0,0,0,1)"}}
-           [:&gt; ant/Dropdown {:overlay (reagent.core/as-element [dropdown-menu])}
+           [:> ant/Dropdown {:overlay (reagent.core/as-element [dropdown-menu])}
             [:span (i18n-str (or (get language @lang) "中文"))]]]
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="2-切换和保存当前语言"><a href="#2-切换和保存当前语言" class="headerlink" title="2. 切换和保存当前语言"></a>2. 切换和保存当前语言</h4><pre class="line-numbers language-cljs"><code class="language-cljs">;;通过key设置和获取localstorage里的数据
@@ -609,7 +609,7 @@
 (kf/reg-event-fx
  ::save-db-lang
  (fn [{:keys [db]} [db-lang-map]]
-   {:db (-&gt; db
+   {:db (-> db
             (assoc-in [:db-lang-map] db-lang-map))}))
 
 (rf/reg-event-fx
@@ -1385,7 +1385,7 @@ INSERT INTO  `t_store_language`(`id`, `company_id`, `lang_key`, `lang_value`, `l
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2018-2022</span>
+                <span id="year">2018-2025</span>
             
             <span id="year">2018</span>
             <a href="/about" target="_blank">马海强</a>

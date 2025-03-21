@@ -29,11 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
-<script src="/js/prism-line-numbers.min.js"></script>
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 
 
@@ -504,14 +504,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.6k
+                    2.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    13 分
+                    12 分
                 </div>
                 
 
@@ -549,7 +549,7 @@
 (defn- concat-key [keys]
   (concat [:demo] keys))
 
-(defn- data-&gt;db [db keys value]
+(defn- data->db [db keys value]
   (assoc-in db (concat-key keys) value))
 
 (kf/reg-event-fx
@@ -565,7 +565,7 @@
 (rf/reg-event-db
   ::set-db-demo-detail
   (fn [db [_ res]]
-    (data-&gt;db db [:selected :detail] (:data res))))
+    (data->db db [:selected :detail] (:data res))))
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>上面的操作用kee-frame实现</li>
@@ -581,7 +581,7 @@
 
  :将返回结果数据存入db
  (fn [{:keys [db]} [_ res]]
-   {:db (data-&gt;db db [:demo-detail] (:data res))}))
+   {:db (data->db db [:demo-detail] (:data res))}))
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>区别：</p>
 <ul>
@@ -603,11 +603,11 @@
 <p>这个处理<a target="_blank" rel="noopener" href="https://github.com/Day8/re-frame">github</a>上是有的，这个h函数换可以简化一下</p>
 </blockquote>
 <pre class="line-numbers language-clj"><code class="language-clj">(defn h 
-  [{:keys [db]} [_ item-id]]    ;; &lt;--- new: obtain db and id directly
+  [{:keys [db]} [_ item-id]]    ;; <--- new: obtain db and id directly
   {:db  (dissoc-in db [:items item-id])}) ;; same as before
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h2 id="kee-frame-reg-chain处理多次有依赖请求和参数传递"><a href="#kee-frame-reg-chain处理多次有依赖请求和参数传递" class="headerlink" title="kee-frame/reg-chain处理多次有依赖请求和参数传递"></a>kee-frame/reg-chain处理多次有依赖请求和参数传递</h2><p>有个这样的需求，controller里start需要触发不止一个ajax请求数据供页面渲染，通常的做法是dispatch多个event，这在start里很好写的，因为start本来接受函数或者event的集合。<br>但是如果我们的多个ajax请求间有依赖，比如第二个ajax需要使用第一个ajax的请求结果作为参数，并且也要使用发起第一个ajax时使用的参数，怎么搞呢？看看实现：</p>
-<pre class="line-numbers language-klipse-cljs"><code class="language-klipse-cljs">(defn data-&gt;db [db keys values]
+<pre class="line-numbers language-klipse-cljs"><code class="language-klipse-cljs">(defn data->db [db keys values]
   (prn "将多个结果存入db")
 )
 (kf/reg-chain-named
@@ -631,7 +631,7 @@
 
  :将上两个请求返回结果数据存入db
  (fn [{:keys [db]} [_ res1 res2]]
-   {:db (data-&gt;db db [key1 key2] [res1 res2]}))
+   {:db (data->db db [key1 key2] [res1 res2]}))
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>说明：chain在reframe上扩展的这个event参数和结果是一直往下累计的，第一个参数是dispatch时的参数，往后每个函数的第二组参数依次是每一次请求的结果。</p>
 <h2 id="antd的组件中使用组件"><a href="#antd的组件中使用组件" class="headerlink" title="antd的组件中使用组件"></a>antd的组件中使用组件</h2><p>一些组件需要的属性的参数类型是ReactNode， 比如Input的prefix属性<br>这需要 <strong>使用Reagent的<a target="_blank" rel="noopener" href="http://reagent-project.github.io/docs/master/reagent.core.html#var-as-element"><code>as-element</code></a>函数</strong></p>
@@ -639,8 +639,8 @@
 <p>(as-element form) Turns a vector of Hiccup syntax into a React element. Returns form unchanged if it is not a vector.</p>
 </blockquote>
 <pre class="line-numbers language-klipse-reagent"><code class="language-klipse-reagent">(defn page1 []
-  [:&gt; ant/Input
-   {:prefix (r/as-element [:&gt; ant/Icon {:type "user"}])}]
+  [:> ant/Input
+   {:prefix (r/as-element [:> ant/Icon {:type "user"}])}]
 )
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="修改页面atom元素赋值和修改"><a href="#修改页面atom元素赋值和修改" class="headerlink" title="修改页面atom元素赋值和修改"></a>修改页面atom元素赋值和修改</h2><p>初学者包括小菜鸡我是不是会碰到个问题，从db里订阅的数据渲染页面时第一次没有，第二次以后就都正常了，或者你想修改一下这个值重新提交到接口上，发现值改不了。</p>
@@ -651,7 +651,7 @@
       [:div 
           [ant/input {:default-value (:name @data)
                           :type "text"
-                          :on-change #(swap! item assoc item-str (-&gt; % .-target .-value))}]])))
+                          :on-change #(swap! item assoc item-str (-> % .-target .-value))}]])))
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>亦或是这样的:</p>
 <pre class="line-numbers language-klipse-reagent"><code class="language-klipse-reagent">(defn page3 []
@@ -659,7 +659,7 @@
     (let data @(re-frame/subscribe [:db-key])
          [:div [ant/input {:default-value (:name @data)
                           :type "text"
-                          :on-change #(swap! item assoc item-str (-&gt; % .-target .-value))}]])))
+                          :on-change #(swap! item assoc item-str (-> % .-target .-value))}]])))
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>恭喜，这两种方式完美踩雷，我们大神说因为我没有看<a target="_blank" rel="noopener" href="https://github.com/reagent-project/reagent">reagent</a><br>的Guide一二三，好吧，确实没看。</p>
 <ul>
@@ -685,7 +685,7 @@
   [:div
    [ant/input {:default-value (:name @db-value)
                :type "text"
-               :on-change #(swap! item assoc item-str (-&gt; % .-target .-value))}]]))
+               :on-change #(swap! item assoc item-str (-> % .-target .-value))}]]))
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ul>
@@ -734,14 +734,14 @@
 (kf/reg-controller
  :路由带参跳转不同页面
  {:params (fn [route-data]
-            (when (-&gt; route-data :data :name (= :weixin-redirect))
+            (when (-> route-data :data :name (= :weixin-redirect))
               (:query-string route-data)))
   :start (fn [_ params]
            (re-frame/dispatch [:weixin-redirect
                                (reduce-kv (fn [m k v]
                                             (assoc m (keyword k) v))
                                           {}
-                                          (into {} (map #(clojure.string/split % #"=") (clojure.string/split params #"&amp;"))))]))})
+                                          (into {} (map #(clojure.string/split % #"=") (clojure.string/split params #"&"))))]))})
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>如果想要每次路由变化，都触发某个controller的start，只需要在params里返回<code>identity </code>即可。</p>
 <h2 id="clojurescript-和-javascript交互"><a href="#clojurescript-和-javascript交互" class="headerlink" title="clojurescript 和 javascript交互"></a>clojurescript 和 javascript交互</h2><p>有时候我们的clojurescript需要和javascript交互。<br>比如用js打个log，比如用js获取window的location数据等，举个列子</p>
@@ -750,7 +750,7 @@
 (.-search (.-location js/window))
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>cljs还提供了cljs和js互转的函数<code>clj-&gt;js</code>和<code>js-&gt;clj</code><br>看看例子：</p>
-<pre class="line-numbers language-clj"><code class="language-clj">(def js-object (clj-&gt;js  :a 1 :b [1 2 3] :c #{"d" true :e nil}))
+<pre class="line-numbers language-clj"><code class="language-clj">(def js-object (clj->js  :a 1 :b [1 2 3] :c #{"d" true :e nil}))
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>输出结果</p>
 <pre><code>{
@@ -776,9 +776,9 @@
 (defn get-form
   "返回又From.create创建的 `form` 这个函数只能在form内部调用, 因为使用了reaget/current-component."
   []
-  (-&gt; (r/current-component)
+  (-> (r/current-component)
       (r/props)
-      (js-&gt;clj :keywordize-keys true)
+      (js->clj :keywordize-keys true)
       (:form)))
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>大神在<a target="_blank" rel="noopener" href="https://blog.3vyd.com/blog/posts-output/2019-07-20-4clojure/">4clojure</a>博客上也有js操作DOM和引入highcharts的使用的例子。<br>更多交互的操作参考<a target="_blank" rel="noopener" href="https://www.spacjer.com/blog/2014/09/12/clojurescript-javascript-interop/">ClojureScript: JavaScript Interop</a> 和<br><a target="_blank" rel="noopener" href="https://lwhorton.github.io/2018/10/20/clojurescript-interop-with-javascript.html">Clojurescript interop with javascript</a></p>
@@ -788,9 +788,9 @@
 (cljs-repl)
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>在alk项目里的示例：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">user&gt; (use 'figwheel-sidecar.repl-api)
+<pre class="line-numbers language-shell"><code class="language-shell">user> (use 'figwheel-sidecar.repl-api)
 nil
-user&gt; (start-figwheel!)
+user> (start-figwheel!)
 Figwheel: Starting server at http://0.0.0.0:3449
 Figwheel: Watching build - patient-app
 Compiling build :patient-app to "target/cljsbuild/public/patientjs/app.js" from ["src/cljs/patient" "src/cljc" "env/dev/cljs/patient"]...
@@ -798,7 +798,7 @@ Successfully compiled build :patient-app to "target/cljsbuild/public/patientjs/a
 Figwheel: Starting CSS Watcher for paths  ["resources/public/css"]
 Figwheel: Starting nREPL server on port: 7002
 nil
-user&gt; (cljs-repl)
+user> (cljs-repl)
 Launching ClojureScript REPL for build: patient-app
 Figwheel Controls:
           (stop-autobuild)                ;; stops Figwheel autobuilder
@@ -820,8 +820,8 @@ Figwheel Controls:
 Prompt will show when Figwheel connects to your application
 To quit, type: :cljs/quit
 nil
- cljs.user&gt; (fig-status) 
-cljs.user&gt; (fig-status) 
+ cljs.user> (fig-status) 
+cljs.user> (fig-status) 
 Figwheel System Status
 ----------------------------------------------------
 Watching builds: [patient-app]
@@ -829,12 +829,12 @@ Client Connections
      patient-app: 1 connection
 ----------------------------------------------------
 nil
-cljs.user&gt; (build-once doctor-app)
+cljs.user> (build-once doctor-app)
 Figwheel: Building once - doctor-app
 Compiling build :doctor-app to "target/cljsbuild/public/doctorjs/app.js" from ["src/cljs/doctor" "src/cljc" "env/dev/cljs/doctor"]...
 Successfully compiled build :doctor-app to "target/cljsbuild/public/doctorjs/app.js" in 14.038 seconds.
 nil
-cljs.user&gt; (fig-status) 
+cljs.user> (fig-status) 
 Figwheel System Status
 ----------------------------------------------------
 Watching builds: [patient-app]
@@ -843,13 +843,13 @@ Client Connections
      doctor-app: 1 connection
 ----------------------------------------------------
 nil
-cljs.user&gt; 
+cljs.user> 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>用浏览器链接后可以在repl里查看状态</p>
 <pre class="line-numbers language-shell"><code class="language-shell">(fig-status)  
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>还有其他操作，控制台有提示</p>
-<pre class="line-numbers language-shell"><code class="language-shell">user&gt; (cljs-repl)
+<pre class="line-numbers language-shell"><code class="language-shell">user> (cljs-repl)
 Launching ClojureScript REPL for build: dev
 Figwheel Controls:
           (stop-autobuild)                ;; stops Figwheel autobuilder
@@ -868,7 +868,7 @@ Figwheel Controls:
  Results: Stored in vars *1, *2, *3, *e holds last exception object
 Prompt will show when Figwheel connects to your application
 To quit, type: :cljs/quit
-cljs.user&gt;
+cljs.user>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
@@ -1556,7 +1556,7 @@ cljs.user&gt;
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2018-2022</span>
+                <span id="year">2018-2025</span>
             
             <span id="year">2018</span>
             <a href="/about" target="_blank">马海强</a>

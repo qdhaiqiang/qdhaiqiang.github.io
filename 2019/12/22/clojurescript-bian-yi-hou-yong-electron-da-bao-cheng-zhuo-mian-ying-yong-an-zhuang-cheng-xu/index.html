@@ -29,11 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
-<script src="/js/prism-line-numbers.min.js"></script>
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 
 
@@ -470,12 +470,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/electron/">
-                                <span class="chip bg-color">electron</span>
-                            </a>
-                        
                             <a href="/tags/clojurescript/">
                                 <span class="chip bg-color">clojurescript</span>
+                            </a>
+                        
+                            <a href="/tags/electron/">
+                                <span class="chip bg-color">electron</span>
                             </a>
                         
                     </div>
@@ -508,7 +508,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.1k
+                    2k
                 </div>
                 
 
@@ -579,107 +579,107 @@
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>其中electron下的public文件夹内容结构就跟往nginx部署时是一样的，<code>main.js</code>和<code>package.json</code>是为electron手动加入的。main.js是win的默认行为的指定文件，内容如下：</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// Modules to control application life and create native browser window</span>
-<span class="token keyword">const</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>app<span class="token punctuation">,</span> BrowserWindow<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'electron'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span>app<span class="token punctuation">,</span> BrowserWindow<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'electron'</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">// Keep a global reference of the window object, if you don't, the window will</span>
 <span class="token comment" spellcheck="true">// be closed automatically when the JavaScript object is garbage collected.</span>
 <span class="token keyword">let</span> mainWindow
 <span class="token keyword">const</span> mainWindowURL <span class="token operator">=</span> <span class="token string">'http://localhost:10386/doc.html'</span><span class="token punctuation">;</span>
 
-<span class="token keyword">function</span> createWindow <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> createWindow <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment" spellcheck="true">// Create the browser window.</span>
-  mainWindow <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BrowserWindow</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  mainWindow <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BrowserWindow</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">//fullscreen: true,</span>
-    webPreferences<span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
-  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
+    webPreferences<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
   <span class="token comment" spellcheck="true">// and load the index.html of the app.</span>
   <span class="token comment" spellcheck="true">//   mainWindow.loadFile('index.html')</span>
   mainWindow<span class="token punctuation">.</span><span class="token function">loadURL</span><span class="token punctuation">(</span>mainWindowURL<span class="token punctuation">)</span>
 
   <span class="token comment" spellcheck="true">// Emitted when the window is closed.</span>
-  mainWindow<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'closed'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  mainWindow<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'closed'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// Dereference the window object, usually you would store windows</span>
     <span class="token comment" spellcheck="true">// in an array if your app supports multi windows, this is the time</span>
     <span class="token comment" spellcheck="true">// when you should delete the corresponding element.</span>
     mainWindow <span class="token operator">=</span> <span class="token keyword">null</span>
-  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
 
-<span class="token keyword">function</span> <span class="token function">bootstrapServer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">bootstrapServer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> handler <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'serve-handler'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">const</span> http <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'http'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  <span class="token keyword">const</span> server <span class="token operator">=</span> http<span class="token punctuation">.</span><span class="token function">createServer</span><span class="token punctuation">(</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> response<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> server <span class="token operator">=</span> http<span class="token punctuation">.</span><span class="token function">createServer</span><span class="token punctuation">(</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> response<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// You pass two more arguments for config and middleware</span>
     <span class="token comment" spellcheck="true">// More details here: https://github.com/zeit/serve-handler#options</span>
-    <span class="token keyword">return</span> <span class="token function">handler</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> response<span class="token punctuation">,</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token function">handler</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> response<span class="token punctuation">,</span> <span class="token punctuation">{</span>
       <span class="token keyword">public</span><span class="token punctuation">:</span> <span class="token string">'resources/app.asar/public'</span><span class="token punctuation">,</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-  server<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">10386</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  server<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">10386</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token function">createWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
 app<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'ready'</span><span class="token punctuation">,</span> bootstrapServer<span class="token punctuation">)</span>
 
 <span class="token comment" spellcheck="true">// Quit when all windows are closed.</span>
-app<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'window-all-closed'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'window-all-closed'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment" spellcheck="true">// On OS X it is common for applications and their menu bar</span>
   <span class="token comment" spellcheck="true">// to stay active until the user quits explicitly with Cmd + Q</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>platform <span class="token operator">!==</span> <span class="token string">'darwin'</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>platform <span class="token operator">!==</span> <span class="token string">'darwin'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     app<span class="token punctuation">.</span><span class="token function">quit</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-app<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'activate'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'activate'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment" spellcheck="true">// On OS X it's common to re-create a window in the app when the</span>
   <span class="token comment" spellcheck="true">// dock icon is clicked and there are no other windows open.</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>mainWindow <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>mainWindow <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token function">createWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 <span class="token comment" spellcheck="true">// In this file you can include the rest of your app's specific main process</span>
 <span class="token comment" spellcheck="true">// code. You can also put them in separate files and require them here.</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>package.json的内容如下：</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token punctuation">{</span>
   <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"eallergy"</span><span class="token punctuation">,</span>
   <span class="token string">"version"</span><span class="token punctuation">:</span> <span class="token string">"1.0.0"</span><span class="token punctuation">,</span>
   <span class="token string">"license"</span><span class="token punctuation">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
   <span class="token string">"main"</span><span class="token punctuation">:</span> <span class="token string">"main.js"</span><span class="token punctuation">,</span>
-  <span class="token string">"scripts"</span><span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  <span class="token string">"scripts"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
     <span class="token string">"start"</span><span class="token punctuation">:</span> <span class="token string">"electron ."</span><span class="token punctuation">,</span>
     <span class="token string">"dist"</span><span class="token punctuation">:</span> <span class="token string">"electron-builder -c.extraMetadata.main=main.js"</span><span class="token punctuation">,</span>
     <span class="token string">"dist-32"</span><span class="token punctuation">:</span> <span class="token string">"electron-builder -c.extraMetadata.main=main.js --ia32"</span>
-  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
-  <span class="token string">"build"</span><span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">"build"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
     <span class="token string">"productName"</span><span class="token punctuation">:</span> <span class="token string">"eallergy"</span><span class="token punctuation">,</span>
     <span class="token string">"appId"</span><span class="token punctuation">:</span> <span class="token string">"alk.doctor"</span><span class="token punctuation">,</span>
     <span class="token string">"copyright"</span><span class="token punctuation">:</span><span class="token string">"红创科技"</span><span class="token punctuation">,</span>
-    <span class="token string">"directories"</span><span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token string">"directories"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
       <span class="token string">"buildResources"</span><span class="token punctuation">:</span> <span class="token string">"public"</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token string">"files"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
       <span class="token string">"main.js"</span><span class="token punctuation">,</span>
       <span class="token string">"public/**/*"</span><span class="token punctuation">,</span>
       <span class="token string">"node_modules/**/*"</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
-    <span class="token string">"mac"</span><span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token string">"mac"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
       <span class="token string">"category"</span><span class="token punctuation">:</span> <span class="token string">"your.app.category.type"</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
-  <span class="token string">"devDependencies"</span><span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">"devDependencies"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
     <span class="token string">"electron"</span><span class="token punctuation">:</span> <span class="token string">"^5.0.7"</span><span class="token punctuation">,</span>
     <span class="token string">"electron-builder"</span><span class="token punctuation">:</span> <span class="token string">"^21.0.15"</span>
-  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
-  <span class="token string">"dependencies"</span><span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">"dependencies"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
     <span class="token string">"serve-handler"</span><span class="token punctuation">:</span> <span class="token string">"^6.1.0"</span>
-  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>将资源文件copy到<code>electron/public/</code>位置后执行<code>yarn</code>和<code>yarn dist</code>命令（执行出错的请看下面的解决方案）。</p>
 <h4 id="2-打包"><a href="#2-打包" class="headerlink" title="2. 打包"></a>2. 打包</h4><p>执行打包之前还有点环境准备工作</p>
@@ -778,8 +778,8 @@ set SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/
 <h2 id="第三步：配置更新—-这一步没有成功就换方案了，不值得看"><a href="#第三步：配置更新—-这一步没有成功就换方案了，不值得看" class="headerlink" title="第三步：配置更新—-这一步没有成功就换方案了，不值得看"></a>第三步：配置更新—-这一步没有成功就换方案了，不值得看</h2><pre class="line-numbers language-shell"><code class="language-shell">$ npm install electron-updater --save
 npm WARN rm not removing /Users/mahaiqiang/git/redcreation/alk-wxapi/alk-web/electron/node_modules/.bin/semver as it wasn't installed by /Users/mahaiqiang/git/redcreation/alk-wxapi/alk-web/electron/node_modules/semver
 
-&gt; ejs@2.7.4 postinstall /Users/mahaiqiang/git/redcreation/alk-wxapi/alk-web/electron/node_modules/ejs
-&gt; node ./postinstall.js
+> ejs@2.7.4 postinstall /Users/mahaiqiang/git/redcreation/alk-wxapi/alk-web/electron/node_modules/ejs
+> node ./postinstall.js
 
 Thank you for installing EJS: built with the Jake JavaScript build tool (https://jakejs.com/)
 
@@ -792,15 +792,15 @@ added 20 packages from 19 contributors, removed 10 packages, updated 289 package
 found 0 vulnerabilities
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>为了配合打包 package.json 需要给 build 新增配置项：</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token string">"build"</span><span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token string">"build"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
     <span class="token string">"publish"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
-        <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token punctuation">{</span>
           <span class="token string">"provider"</span><span class="token punctuation">:</span> <span class="token string">"generic"</span><span class="token punctuation">,</span>
           <span class="token string">"url"</span><span class="token punctuation">:</span> <span class="token string">"http://127.0.0.1:5500/"</span> #这里是我本地开的服务器的地址
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
     <span class="token operator">...</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="参考文档："><a href="#参考文档：" class="headerlink" title="参考文档："></a>参考文档：</h2><p> <a target="_blank" rel="noopener" href="https://www.cnblogs.com/buzhiqianduan/p/7620099.html">electron入门心得</a><br><a target="_blank" rel="noopener" href="https://lzw.me/a/build-electron-desktop-app-installer.html">使用 electron-builder 与 electron-packager 的 JSAPI 构建 electron 桌面应用安装程序</a></p>
 
@@ -817,12 +817,12 @@ found 0 vulnerabilities
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/electron/">
-                                    <span class="chip bg-color">electron</span>
-                                </a>
-                            
                                 <a href="/tags/clojurescript/">
                                     <span class="chip bg-color">clojurescript</span>
+                                </a>
+                            
+                                <a href="/tags/electron/">
+                                    <span class="chip bg-color">electron</span>
                                 </a>
                             
                         </div>
@@ -1299,12 +1299,12 @@ found 0 vulnerabilities
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/electron/">
-                        <span class="chip bg-color">electron</span>
-                    </a>
-                    
                     <a href="/tags/clojurescript/">
                         <span class="chip bg-color">clojurescript</span>
+                    </a>
+                    
+                    <a href="/tags/electron/">
+                        <span class="chip bg-color">electron</span>
                     </a>
                     
                 </div>
@@ -1493,7 +1493,7 @@ found 0 vulnerabilities
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2018-2022</span>
+                <span id="year">2018-2025</span>
             
             <span id="year">2018</span>
             <a href="/about" target="_blank">马海强</a>

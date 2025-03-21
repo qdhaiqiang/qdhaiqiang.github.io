@@ -29,11 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
-<script src="/js/prism-line-numbers.min.js"></script>
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 
 
@@ -470,12 +470,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/electron/">
-                                <span class="chip bg-color">electron</span>
-                            </a>
-                        
                             <a href="/tags/clojurescript/">
                                 <span class="chip bg-color">clojurescript</span>
+                            </a>
+                        
+                            <a href="/tags/electron/">
+                                <span class="chip bg-color">electron</span>
                             </a>
                         
                     </div>
@@ -508,7 +508,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    843
+                    802
                 </div>
                 
 
@@ -556,12 +556,12 @@
 <p>两个命令(asar –help)：</p>
 <pre class="line-numbers language-shell"><code class="language-shell">asar pack app default_app.asar    
 asar extract|e <archive> <dest>   
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></dest></archive></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>其他命令自行百度。</p>
 <h3 id="3-核心文件"><a href="#3-核心文件" class="headerlink" title="3.核心文件"></a>3.核心文件</h3><p>核心文件就是打包成<code>resources/default_app.asar</code>所需要的文件。在<code>electron</code>的项目目录下，创建一个文件夹<code>app</code> ，里面新建两个文件。</p>
 <h4 id="3-1-main-js"><a href="#3-1-main-js" class="headerlink" title="3.1 main.js"></a>3.1 main.js</h4><pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// app 模块是为了控制整个应用的生命周期设计的。</span>
 <span class="token comment" spellcheck="true">// BrowserWindow 类让你有创建一个浏览器窗口的权力。</span>
-<span class="token keyword">const</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>app<span class="token punctuation">,</span> BrowserWindow<span class="token punctuation">,</span> Menu<span class="token punctuation">,</span> ipcMain<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'electron'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span>app<span class="token punctuation">,</span> BrowserWindow<span class="token punctuation">,</span> Menu<span class="token punctuation">,</span> ipcMain<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'electron'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> nativeImage <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'electron'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>nativeImage<span class="token punctuation">;</span>
 <span class="token keyword">var</span> overlay <span class="token operator">=</span> nativeImage<span class="token punctuation">.</span><span class="token function">createFromPath</span><span class="token punctuation">(</span><span class="token string">'icon.png'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -570,52 +570,52 @@ asar extract|e <archive> <dest>
 <span class="token keyword">let</span> mainWindow<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">//api:https://wizardforcel.gitbooks.io/electron-doc/content/api/browser-window.html</span>
-<span class="token keyword">function</span> createWindow <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> createWindow <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"createWindow......"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-      mainWindow <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BrowserWindow</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+      mainWindow <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BrowserWindow</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
       <span class="token comment" spellcheck="true">// fullscreen: true,</span>
       maximizable<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">//支持最大化</span>
       show<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>   <span class="token comment" spellcheck="true">//为了让初始化窗口显示无闪烁，先关闭显示，等待加载完成后再显示。</span>
       <span class="token comment" spellcheck="true">// icon: "https://medical.3vyd.com/alk/prod/pc/icon/icon.ico"</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
     <span class="token comment" spellcheck="true">// Emitted when the window is closed.</span>
-    mainWindow<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'closed'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    mainWindow<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'closed'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"closed......"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
       mainWindow <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
-    <span class="token comment" spellcheck="true">// mainWindow.once('ready-to-show', () =&gt; &amp;#123;    //开启这个以后点击了图片虽然没有白屏，但是会感觉不到点了没点</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">// mainWindow.once('ready-to-show', () => {    //开启这个以后点击了图片虽然没有白屏，但是会感觉不到点了没点</span>
     mainWindow<span class="token punctuation">.</span><span class="token function">maximize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//打开时最大化打开，不是全屏，保留状态栏</span>
-    <span class="token comment" spellcheck="true">// &amp;#125;)</span>
+    <span class="token comment" spellcheck="true">// })</span>
 
   <span class="token comment" spellcheck="true">// mainWindow.setOverlayIcon(overlay, "医敏")</span>
   mainWindow<span class="token punctuation">.</span><span class="token function">setTitle</span><span class="token punctuation">(</span><span class="token string">"过敏性疾病高端用户平台"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   mainWindow<span class="token punctuation">.</span><span class="token function">setAutoHideMenuBar</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//自动隐藏菜单</span>
   mainWindow<span class="token punctuation">.</span><span class="token function">loadURL</span><span class="token punctuation">(</span>mainWindowURL<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token comment" spellcheck="true">// app.commandLine.appendSwitch("--disable-http-cache")   禁用缓存</span>
-  <span class="token comment" spellcheck="true">// mainWindow.webContents.openDevTools(&amp;#123;mode:'bottom'&amp;#125;);</span>
+  <span class="token comment" spellcheck="true">// mainWindow.webContents.openDevTools({mode:'bottom'});</span>
   mainWindow<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-app<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'ready'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'ready'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"ready......"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token function">createWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">// Quit when all windows are closed.</span>
-app<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'window-all-closed'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'window-all-closed'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment" spellcheck="true">// On OS X it is common for applications and their menu bar</span>
   <span class="token comment" spellcheck="true">// to stay active until the user quits explicitly with Cmd + Q</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>platform <span class="token operator">!==</span> <span class="token string">'darwin'</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>platform <span class="token operator">!==</span> <span class="token string">'darwin'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     app<span class="token punctuation">.</span><span class="token function">quit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="3-2-package-json"><a href="#3-2-package-json" class="headerlink" title="3.2 package.json"></a>3.2 package.json</h4><pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<h4 id="3-2-package-json"><a href="#3-2-package-json" class="headerlink" title="3.2 package.json"></a>3.2 package.json</h4><pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token punctuation">{</span>
   <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"electron"</span><span class="token punctuation">,</span>
   <span class="token string">"productName"</span><span class="token punctuation">:</span> <span class="token string">"Electron"</span><span class="token punctuation">,</span>
   <span class="token string">"main"</span><span class="token punctuation">:</span> <span class="token string">"main.js"</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>注意：</strong><code>productName</code>的值千万不需要改。</p>
 <h4 id="4-打包"><a href="#4-打包" class="headerlink" title="4. 打包"></a>4. 打包</h4><p>在<code>electron/resources</code>目录下执行：</p>
@@ -652,12 +652,12 @@ asar pack app default_app.asar
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/electron/">
-                                    <span class="chip bg-color">electron</span>
-                                </a>
-                            
                                 <a href="/tags/clojurescript/">
                                     <span class="chip bg-color">clojurescript</span>
+                                </a>
+                            
+                                <a href="/tags/electron/">
+                                    <span class="chip bg-color">electron</span>
                                 </a>
                             
                         </div>
@@ -1188,12 +1188,12 @@ asar pack app default_app.asar
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/electron/">
-                        <span class="chip bg-color">electron</span>
-                    </a>
-                    
                     <a href="/tags/clojurescript/">
                         <span class="chip bg-color">clojurescript</span>
+                    </a>
+                    
+                    <a href="/tags/electron/">
+                        <span class="chip bg-color">electron</span>
                     </a>
                     
                 </div>
@@ -1332,7 +1332,7 @@ asar pack app default_app.asar
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2018-2022</span>
+                <span id="year">2018-2025</span>
             
             <span id="year">2018</span>
             <a href="/about" target="_blank">马海强</a>

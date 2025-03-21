@@ -29,11 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
-<script src="/js/prism-line-numbers.min.js"></script>
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 
 
@@ -504,7 +504,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    878
+                    865
                 </div>
                 
 
@@ -544,9 +544,9 @@
 
 (Take 5 (repeat 10))
 
-(1 2 3) =&gt; error
+(1 2 3) => error
 
-'(1 2 3) =&gt; (1 2 3)
+'(1 2 3) => (1 2 3)
 
 (doc if)
 
@@ -587,18 +587,18 @@
 </ol>
 <pre class="line-numbers language-clojure"><code class="language-clojure">;;map  遍历list，格式化list里map的key对应的value
 (require '[clj-time.format :as f])
-=&gt; nil
+=> nil
 (def custom-formatter (f/formatter "yyyyMMdd"))
-=&gt; #'user/custom-formatter
+=> #'user/custom-formatter
 (defn convert-format [d] (f/unparse custom-formatter (f/parse (f/formatter :date-hour-minute-second ) d)))
-=&gt; #'user/convert-format
+=> #'user/convert-format
 (map (fn [m] (assoc m :create-time (convert-format (:create-time m))) )
      [{:id 1
        :create-time "2019-04-17T14:47:24"}
       {
        :id 2
        :create-time "2019-04-17T14:47:44"}])
-=&gt; ({:id 1, :create-time "20190417"} {:id 2, :create-time "20190417"})
+=> ({:id 1, :create-time "20190417"} {:id 2, :create-time "20190417"})
 
 ;;再写一个
 ```clojure
@@ -619,7 +619,7 @@
    :create-time "2019-04-17T14:47:44",
    :deleted 0
    }])
-=&gt;
+=>
 ({:office-id "1", :office-name "1-耳鼻喉科", :hospital-id "1", :create-time "2019-04-17T14:47:24", :deleted 0}
  {:office-id "2", :office-name "2-变态反应科", :hospital-id "1", :create-time "2019-04-17T14:47:44", :deleted 0})
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
@@ -646,24 +646,24 @@
 可以转变为：<pre class="line-numbers language-clojure"><code class="language-clojure">(f1 (f2 (.. (fn arg1 arg2 .. argn))))  
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 举例<pre class="line-numbers language-clojure"><code class="language-clojure">((comp str +) 8 8 8)   
-;;=&gt; "24"
+;;=> "24"
 (filter (comp not zero?) [0 1 0 2 0 3 0 4])
-;;=&gt; (1 2 3 4)
+;;=> (1 2 3 4)
 (map
 (comp - (partial + 3) (partial * 2))
     [1 2 3 4])
-;;=&gt;  (-5 -7 -9 -11)
+;;=>  (-5 -7 -9 -11)
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li>partial<br>形如：<code>((partial  f  arg1 arg2 .. argn)  arga argb .. argz)  </code><br>就是执行：<br>(f  arg1 arg2 .. argn  arga argb .. argz)<br>注意：偏函数的第一个参数是一个函数，后面至少有1个其他参数<br>partial函数称为“偏函数”或者“部分完整函数”，因为它是不完整的，定义也用def而不是defn。 </li>
 </ol>
-<pre class="line-numbers language-clojure"><code class="language-clojure">user=&gt; (def hundred-times (partial * 100))
+<pre class="line-numbers language-clojure"><code class="language-clojure">user=> (def hundred-times (partial * 100))
 #'user/hundred-times
 
-user=&gt; (hundred-times 5)
+user=> (hundred-times 5)
 500
 
-user=&gt; (hundred-times 4 5 6)
+user=> (hundred-times 4 5 6)
 12000
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="8">
@@ -1384,7 +1384,7 @@ user=&gt; (hundred-times 4 5 6)
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2018-2022</span>
+                <span id="year">2018-2025</span>
             
             <span id="year">2018</span>
             <a href="/about" target="_blank">马海强</a>

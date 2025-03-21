@@ -29,11 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
-<script src="/js/prism-line-numbers.min.js"></script>
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 
 
@@ -508,7 +508,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.5k
+                    4.4k
                 </div>
                 
 
@@ -607,8 +607,8 @@ drwxr-xr-x 2 root root 4096 Jul 24 14:18 data
 10151eef645f8621441585354ad11d1f98514cdb253c5d1b77db6c0c50327420
 [root@dev mysql]# docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
-10151eef645f        mysql:5.7.19        "docker-entrypoint..."   3 seconds ago       Up 2 seconds        0.0.0.0:3306-&gt;3306/tcp   mysql5.7
-6f189daf5880        marvin/tomcat       "catalina.sh run"        22 hours ago        Up 22 hours         0.0.0.0:8080-&gt;8080/tcp   tomcat8
+10151eef645f        mysql:5.7.19        "docker-entrypoint..."   3 seconds ago       Up 2 seconds        0.0.0.0:3306->3306/tcp   mysql5.7
+6f189daf5880        marvin/tomcat       "catalina.sh run"        22 hours ago        Up 22 hours         0.0.0.0:8080->8080/tcp   tomcat8
 [root@dev mysql]# 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>其他参数：</p>
@@ -630,7 +630,7 @@ owners.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-mysql&gt; show databases;
+mysql> show databases;
 +--------------------+
 | Database           |
 +--------------------+
@@ -641,18 +641,18 @@ mysql&gt; show databases;
 +--------------------+
 4 rows in set (0.01 sec)
 
-mysql&gt; 
+mysql> 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>成功安装mysql</p>
-<h4 id="1-5-设置远程客户端登录"><a href="#1-5-设置远程客户端登录" class="headerlink" title="1.5 设置远程客户端登录"></a>1.5 设置远程客户端登录</h4><pre class="line-numbers language-shell"><code class="language-shell">mysql&gt; grant all privileges on *.* to root@"%" identified by "root.123" with grant option;
+<h4 id="1-5-设置远程客户端登录"><a href="#1-5-设置远程客户端登录" class="headerlink" title="1.5 设置远程客户端登录"></a>1.5 设置远程客户端登录</h4><pre class="line-numbers language-shell"><code class="language-shell">mysql> grant all privileges on *.* to root@"%" identified by "root.123" with grant option;
 Query OK, 0 rows affected, 1 warning (0.00 sec)
 
-mysql&gt; 
+mysql> 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="/loading.gif" data-original="/images/linux/docker/docker-mysql-connect.png" alt="远程客户端链接"></p>
 <p>通过客户端创建数据一个数据库，创建一张表<br><img src="/loading.gif" data-original="/images/linux/docker/docker-mysql-create-table.png" alt="创建表"></p>
 <p>在server端用命令行查看:</p>
-<pre class="line-numbers language-shell"><code class="language-shell">mysql&gt; show databases;
+<pre class="line-numbers language-shell"><code class="language-shell">mysql> show databases;
 +--------------------+
 | Database           |
 +--------------------+
@@ -664,12 +664,12 @@ mysql&gt;
 +--------------------+
 5 rows in set (0.00 sec)
 
-mysql&gt; use demo;
+mysql> use demo;
 Reading table information for completion of table and column names
 You can turn off this feature to get a quicker startup with -A
 
 Database changed
-mysql&gt; show tables;
+mysql> show tables;
 +----------------+
 | Tables_in_demo |
 +----------------+
@@ -677,10 +677,10 @@ mysql&gt; show tables;
 +----------------+
 1 row in set (0.00 sec)
 
-mysql&gt; select * from test;
+mysql> select * from test;
 Empty set (0.00 sec)
 
-mysql&gt; 
+mysql> 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>再看宿主机文件目录：</p>
 <pre class="line-numbers language-shell"><code class="language-shell">[root@dev data]# pwd
@@ -745,7 +745,7 @@ echo `service mysql status`
  
 echo '2.开始导入数据....'
 #导入数据
-mysql &lt; /mysql/schema.sql
+mysql < /mysql/schema.sql
 echo '3.导入数据完毕....'
  
 sleep 3
@@ -753,7 +753,7 @@ echo `service mysql status`
  
 #重新设置mysql密码
 echo '4.开始修改密码....'
-mysql &lt; /mysql/privileges.sql
+mysql < /mysql/privileges.sql
 echo '5.修改密码完毕....'
  
 #sleep 3
@@ -842,35 +842,35 @@ drwxr-xr-x 6 polkitd ssh_keys 4096 Jul 26 09:52 data
 [root@dev mysql]# docker build -t marvin/docker-mysql:5.7.19 .
 Sending build context to Docker daemon 219.8 MB
 Step 1/9 : FROM docker.io/mysql:5.7.19
- ---&gt; 3e3878acd190
+ ---> 3e3878acd190
 Step 2/9 : ENV MYSQL_ALLOW_EMPTY_PASSWORD yes
- ---&gt; Running in 12565f8c0c75
- ---&gt; c3603b8b0ce0
+ ---> Running in 12565f8c0c75
+ ---> c3603b8b0ce0
 Removing intermediate container 12565f8c0c75
 Step 3/9 : COPY setup.sh /mysql/setup.sh
- ---&gt; 25f810745d6e
+ ---> 25f810745d6e
 Removing intermediate container c87437761955
 Step 4/9 : COPY schema.sql /mysql/schema.sql
- ---&gt; 6336d1ec2e5c
+ ---> 6336d1ec2e5c
 Removing intermediate container d18c0faf05e2
 Step 5/9 : COPY privileges.sql /mysql/privileges.sql
- ---&gt; 909fd9a0147e
+ ---> 909fd9a0147e
 Removing intermediate container 597ba357c5dd
 Step 6/9 : COPY conf.d /etc/mysql/conf.d
- ---&gt; 0df0b1a8419a
+ ---> 0df0b1a8419a
 Removing intermediate container 5495b6697f5a
 Step 7/9 : RUN chmod 755 /mysql/*.sh
- ---&gt; Running in 648c99da183d
+ ---> Running in 648c99da183d
 
- ---&gt; 9637b6b5e125
+ ---> 9637b6b5e125
 Removing intermediate container 648c99da183d
 Step 8/9 : EXPOSE 3306
- ---&gt; Running in 0b4514d7ffcc
- ---&gt; 0acd4a3a39a6
+ ---> Running in 0b4514d7ffcc
+ ---> 0acd4a3a39a6
 Removing intermediate container 0b4514d7ffcc
 Step 9/9 : CMD sh /mysql/setup.sh
- ---&gt; Running in 9cc069e6e6aa
- ---&gt; effcf5bab4c1
+ ---> Running in 9cc069e6e6aa
+ ---> effcf5bab4c1
 Removing intermediate container 9cc069e6e6aa
 Successfully built effcf5bab4c1
 [root@dev mysql]# 
@@ -888,9 +888,9 @@ docker.io/mysql       5.7.19              3e3878acd190        9 months ago      
 e55a41a9ace4fb09db5af3e77fab257764f938ffe2f7221ec312bf624f41543e
 [root@dev mysql]# docker ps
 CONTAINER ID        IMAGE                        COMMAND                  CREATED             STATUS              PORTS                     NAMES
-e55a41a9ace4        marvin/docker-mysql:5.7.19   "docker-entrypoint..."   4 seconds ago       Up 3 seconds        0.0.0.0:13306-&gt;3306/tcp   inspiring_bassi
-831da6f83e21        mysql:5.7.19                 "docker-entrypoint..."   2 hours ago         Up 2 hours          0.0.0.0:3306-&gt;3306/tcp    mysql5.7
-6f189daf5880        marvin/tomcat                "catalina.sh run"        2 days ago          Up 2 days           0.0.0.0:8080-&gt;8080/tcp    tomcat8
+e55a41a9ace4        marvin/docker-mysql:5.7.19   "docker-entrypoint..."   4 seconds ago       Up 3 seconds        0.0.0.0:13306->3306/tcp   inspiring_bassi
+831da6f83e21        mysql:5.7.19                 "docker-entrypoint..."   2 hours ago         Up 2 hours          0.0.0.0:3306->3306/tcp    mysql5.7
+6f189daf5880        marvin/tomcat                "catalina.sh run"        2 days ago          Up 2 days           0.0.0.0:8080->8080/tcp    tomcat8
 [root@dev mysql]# 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="2-7、检查结果docker-exec-it-e55a41a9ace4-mysql-udocker-p123456"><a href="#2-7、检查结果docker-exec-it-e55a41a9ace4-mysql-udocker-p123456" class="headerlink" title="2.7、检查结果docker exec -it e55a41a9ace4 mysql -udocker -p123456 "></a>2.7、检查结果<code>docker exec -it e55a41a9ace4 mysql -udocker -p123456 </code></h4><pre class="line-numbers language-shell"><code class="language-shell">[root@dev mysql]# docker exec -it e55a41a9ace4 mysql -udocker -p123456            
@@ -907,7 +907,7 @@ owners.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-mysql&gt; show databases;
+mysql> show databases;
 +--------------------+
 | Database           |
 +--------------------+
@@ -916,12 +916,12 @@ mysql&gt; show databases;
 +--------------------+
 2 rows in set (0.01 sec)
 
-mysql&gt; use docker_mysql
+mysql> use docker_mysql
 Reading table information for completion of table and column names
 You can turn off this feature to get a quicker startup with -A
 
 Database changed
-mysql&gt; show tables;
+mysql> show tables;
 +------------------------+
 | Tables_in_docker_mysql |
 +------------------------+
@@ -929,7 +929,7 @@ mysql&gt; show tables;
 +------------------------+
 1 row in set (0.01 sec)
 
-mysql&gt; 
+mysql> 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="2-8、远程登录"><a href="#2-8、远程登录" class="headerlink" title="2.8、远程登录"></a>2.8、远程登录</h4><p><img src="/loading.gif" data-original="/images/linux/docker/docker-mysql-connect2.png" alt="远程链接mysql"></p>
 <p>用客户端链接后创建了数据库，然后重新启动docker，数据仍然在。完美~~~</p>
@@ -1010,7 +1010,7 @@ RUN&nbsp;chown&nbsp;-R&nbsp;foo:foo&nbsp;/data
 <p>该Docker file不能按预期那样运行，我们本来希望<code>touch</code>命令在镜像的文件系统上运行，但是实际上它是在一个临时容器的Volume上运行。如下所示：</p>
 <pre class="line-numbers language-shell"><code class="language-shell">FROM&nbsp;debian:wheezy
 RUN&nbsp;useradd&nbsp;foo
-RUN&nbsp;mkdir&nbsp;/data&nbsp;&amp;&amp;&nbsp;touch&nbsp;/data/x
+RUN&nbsp;mkdir&nbsp;/data&nbsp;&&&nbsp;touch&nbsp;/data/x
 RUN&nbsp;chown&nbsp;-R&nbsp;foo:foo&nbsp;/data
 VOLUME&nbsp;/data
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
@@ -1717,7 +1717,7 @@ VOLUME&nbsp;/data
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2018-2022</span>
+                <span id="year">2018-2025</span>
             
             <span id="year">2018</span>
             <a href="/about" target="_blank">马海强</a>

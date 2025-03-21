@@ -29,11 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
-<script src="/js/prism-line-numbers.min.js"></script>
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 
 
@@ -512,7 +512,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    1.1k
                 </div>
                 
 
@@ -560,19 +560,19 @@
 <ul>
 <li><p>第二步，app检查逻辑是否正常？<br>app启动时做了检查日志处理：</p>
 <pre class="line-numbers language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 热更-检查更新</span>
-codePushCheckForUpdate <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-  CodePush<span class="token punctuation">.</span><span class="token function">checkForUpdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>update<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>update<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+codePushCheckForUpdate <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  CodePush<span class="token punctuation">.</span><span class="token function">checkForUpdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>update<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>update<span class="token punctuation">)</span> <span class="token punctuation">{</span>
       console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'已是最新版本...'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
       console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'有新版本-------'</span><span class="token punctuation">,</span> update<span class="token punctuation">)</span><span class="token punctuation">;</span>
       <span class="token keyword">const</span> packageSize <span class="token operator">=</span> <span class="token function">parseFloat</span><span class="token punctuation">(</span>update<span class="token punctuation">.</span>packageSize <span class="token operator">/</span> <span class="token number">1024</span> <span class="token operator">/</span> <span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toFixed</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
       console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'packageSize'</span><span class="token punctuation">,</span> packageSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> totalSize<span class="token punctuation">:</span> packageSize <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> totalSize<span class="token punctuation">:</span> packageSize <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
       <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">showUpdateInfoAlert</span><span class="token punctuation">(</span>update<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>安卓手机启动查看log，结果确实是匹配的<br><img src="/loading.gif" data-original="/images/fontend/rn-codepush-app-log.png" alt="安卓logcat日志"></p>
 </li>
@@ -617,46 +617,46 @@ DELETE FROM codepush.deployments_versions WHERE  id=43;
 <p>很遗憾仍然没有生效。此时本地的debug环境一个app启动后，发现居然提示更新。</p>
 <p><strong>问题来了，可能是热更和检查热更不在一个频道上</strong></p>
 <p>检查安卓热更配置，果然验证了这一猜测。</p>
-<pre class="line-numbers language-js"><code class="language-js">    buildTypes <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        debug <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-js"><code class="language-js">    buildTypes <span class="token punctuation">{</span>
+        debug <span class="token punctuation">{</span>
             ext<span class="token punctuation">.</span>alwaysUpdateBuildId <span class="token operator">=</span> <span class="token boolean">false</span> <span class="token comment" spellcheck="true">// 避免 crashLytics 的alwaysUpdateBuildId每次编译都重新生成 加快编译速度</span>
             buildConfigField <span class="token string">"String"</span><span class="token punctuation">,</span> <span class="token string">"CODEPUSH_KEY"</span><span class="token punctuation">,</span> <span class="token string">'"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"'</span> <span class="token comment" spellcheck="true">// Staging</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-        release <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        release <span class="token punctuation">{</span>
             signingConfig signingConfigs<span class="token punctuation">.</span>release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles <span class="token function">getDefaultProguardFile</span><span class="token punctuation">(</span><span class="token string">"proguard-android.txt"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"proguard-rules.pro"</span>
             buildConfigField <span class="token string">"String"</span><span class="token punctuation">,</span> <span class="token string">"CODEPUSH_KEY"</span><span class="token punctuation">,</span> <span class="token string">'"pppppppppppppppppppppppppppppp"'</span> <span class="token comment" spellcheck="true">//Production</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h5 id="一个解释"><a href="#一个解释" class="headerlink" title="一个解释"></a>一个解释</h5><p>配置里只有debug（Staging）和release（Production）的配置,配置了不同的deployment key，但因为打测试环境的app时，选择的是release，所以，按照这个配置，只有发在Production的上的热更，app启动时才能检查到，而现在一直在用Staging发。</p>
-<h2 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h2><pre class="line-numbers language-js"><code class="language-js">    buildTypes <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        debug <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<h2 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h2><pre class="line-numbers language-js"><code class="language-js">    buildTypes <span class="token punctuation">{</span>
+        debug <span class="token punctuation">{</span>
             ext<span class="token punctuation">.</span>alwaysUpdateBuildId <span class="token operator">=</span> <span class="token boolean">false</span> <span class="token comment" spellcheck="true">// 避免 crashLytics 的alwaysUpdateBuildId每次编译都重新生成 加快编译速度</span>
             buildConfigField <span class="token string">"String"</span><span class="token punctuation">,</span> <span class="token string">"CODEPUSH_KEY"</span><span class="token punctuation">,</span> <span class="token string">'"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"'</span> <span class="token comment" spellcheck="true">// Staging</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-        beta <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        beta <span class="token punctuation">{</span>
             signingConfig signingConfigs<span class="token punctuation">.</span>release
             minifyEnabled enableProguardInReleaseBuilds
             buildConfigField <span class="token string">"String"</span><span class="token punctuation">,</span> <span class="token string">"CODEPUSH_KEY"</span><span class="token punctuation">,</span> <span class="token string">'"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"'</span> <span class="token comment" spellcheck="true">//Staging</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-        release <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        release <span class="token punctuation">{</span>
             signingConfig signingConfigs<span class="token punctuation">.</span>release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles <span class="token function">getDefaultProguardFile</span><span class="token punctuation">(</span><span class="token string">"proguard-android.txt"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"proguard-rules.pro"</span>
             buildConfigField <span class="token string">"String"</span><span class="token punctuation">,</span> <span class="token string">"CODEPUSH_KEY"</span><span class="token punctuation">,</span> <span class="token string">'"pppppppppppppppppppppppppppppp"'</span> <span class="token comment" spellcheck="true">//Production</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>sync时报错，所有的库都找不到，错误信息如下：<br><img src="/loading.gif" data-original="/images/fontend/rn-codepush-sync-error.png" alt="android sync error"></p>
 <p>参考<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/47001656/unable-to-resolve-dependency-android-studio-3-0/47021147">本文提示</a>，发现配置少了一项<code>matchingFallbacks = ['release', 'debug']</code>，添加到beta配置后，build成功。</p>
-<pre class="line-numbers language-js"><code class="language-js">beta <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-js"><code class="language-js">beta <span class="token punctuation">{</span>
     signingConfig signingConfigs<span class="token punctuation">.</span>release
     minifyEnabled enableProguardInReleaseBuilds
     buildConfigField <span class="token string">"String"</span><span class="token punctuation">,</span> <span class="token string">"CODEPUSH_KEY"</span><span class="token punctuation">,</span> <span class="token string">'"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"'</span> <span class="token comment" spellcheck="true">//Staging</span>
    matchingFallbacks <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'release'</span><span class="token punctuation">,</span> <span class="token string">'debug'</span><span class="token punctuation">]</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>build后，重新打包，选择beta包，<br><img src="/loading.gif" data-original="/images/fontend/rn-codepush-build.png" alt="重新打包"></p>
 <p>首页菜单改成【专属应用】，发热更，而且强更。<br><img src="/loading.gif" data-original="/images/fontend/rn-codepush-push3.png" alt="code-push.png"></p>
@@ -1365,7 +1365,7 @@ DELETE FROM codepush.deployments_versions WHERE  id=43;
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2018-2022</span>
+                <span id="year">2018-2025</span>
             
             <span id="year">2018</span>
             <a href="/about" target="_blank">马海强</a>

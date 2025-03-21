@@ -29,11 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
-<script src="/js/prism-line-numbers.min.js"></script>
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 
 
@@ -504,7 +504,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1k
                 </div>
                 
 
@@ -538,19 +538,19 @@
 <h2 id="问题出现"><a href="#问题出现" class="headerlink" title="问题出现"></a>问题出现</h2><p>构建失败信息是这样的：</p>
 <pre class="line-numbers language-log"><code class="language-log"><pre class="console-output" style="box-sizing: border-box; white-space: pre-wrap; word-wrap: break-word; margin: 0px; color: rgb(51, 51, 51); font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">Started by user [超级管理员](http://jenkins.haier.haiqiang.xin:7776/user/admin)
 Building in workspace /var/lib/jenkins/workspace/chuangke_pre_portal_web_auto_deploy
- &gt; git rev-parse --is-inside-work-tree # timeout=10
+ > git rev-parse --is-inside-work-tree # timeout=10
 Fetching changes from the remote Git repository
- &gt; git config remote.origin.url git@git.3vyd.com:portalmanage.git # timeout=10
+ > git config remote.origin.url git@git.3vyd.com:portalmanage.git # timeout=10
 Fetching upstream changes from git@git.3vyd.com:portalmanage.git
- &gt; git --version # timeout=10
- &gt; git fetch --tags --progress git@git.3vyd.com:portalmanage.git +refs/heads/*:refs/remotes/origin/*
- &gt; git rev-parse refs/remotes/origin/master^{commit} # timeout=10
- &gt; git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+ > git --version # timeout=10
+ > git fetch --tags --progress git@git.3vyd.com:portalmanage.git +refs/heads/*:refs/remotes/origin/*
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
 Checking out Revision c9a9d48ae6453a8d84734920f8718abec5598f2a (refs/remotes/origin/master)
- &gt; git config core.sparsecheckout # timeout=10
- &gt; git checkout -f c9a9d48ae6453a8d84734920f8718abec5598f2a
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f c9a9d48ae6453a8d84734920f8718abec5598f2a
 Commit message: "直播统计"
- &gt; git rev-list --no-walk 34ede46c51b5a223746b1c07d0845952d7d0eefd # timeout=10
+ > git rev-list --no-walk 34ede46c51b5a223746b1c07d0845952d7d0eefd # timeout=10
 [chuangke_pre_portal_web_auto_deploy] $ /bin/sh -xe /tmp/jenkins1426166608252484443.sh
 + yarn
 yarn install v1.3.2
@@ -563,20 +563,20 @@ yarn run v1.3.2
 $ node scripts/build.js
 Creating an optimized production build...
 
-&lt;--- Last few GCs ---&gt;
+<--- Last few GCs --->
 
-  780502 ms: Mark-sweep 1323.4 (1408.7) -&gt; 1317.3 (1408.7) MB, 955.6 / 0.0 ms [allocation failure] [GC in old space requested].
-  781304 ms: Mark-sweep 1317.3 (1408.7) -&gt; 1317.3 (1410.7) MB, 802.4 / 0.0 ms [allocation failure] [GC in old space requested].
-  782171 ms: Mark-sweep 1317.3 (1410.7) -&gt; 1326.8 (1403.7) MB, 866.5 / 0.0 ms [last resort gc].
-  782958 ms: Mark-sweep 1326.8 (1403.7) -&gt; 1336.9 (1403.7) MB, 787.3 / 0.0 ms [last resort gc].
+  780502 ms: Mark-sweep 1323.4 (1408.7) -> 1317.3 (1408.7) MB, 955.6 / 0.0 ms [allocation failure] [GC in old space requested].
+  781304 ms: Mark-sweep 1317.3 (1408.7) -> 1317.3 (1410.7) MB, 802.4 / 0.0 ms [allocation failure] [GC in old space requested].
+  782171 ms: Mark-sweep 1317.3 (1410.7) -> 1326.8 (1403.7) MB, 866.5 / 0.0 ms [last resort gc].
+  782958 ms: Mark-sweep 1326.8 (1403.7) -> 1336.9 (1403.7) MB, 787.3 / 0.0 ms [last resort gc].
 
-&lt;--- JS stacktrace ---&gt;
+<--- JS stacktrace --->
 
 ==== JS stack trace =========================================
 
-Security context: 0x1116596cf781 <js object="">
-    1: stringify [native json.js:~176] [pc=0x1ab7d7e562d3] (this=0x1116596c92a1 <a json="" with="" map="" 0xa5d18e09b09="">,E=0x27fe2de64711 <an object="" with="" map="" 0x23d396b32619="">,F=0x111659604381 <undefined>,S=0x111659604381 <undefined>)
-    2: arguments adaptor frame: 1-&gt;3
+Security context: 0x1116596cf781 <JS Object>
+    1: stringify [native json.js:~176] [pc=0x1ab7d7e562d3] (this=0x1116596c92a1 <a JSON with map 0xa5d18e09b09>,E=0x27fe2de64711 <an Object with map 0x23d396b32619>,F=0x111659604381 <undefined>,S=0x111659604381 <undefined>)
+    2: arguments adaptor frame: 1->3
     3: /* anonymous */(aka /* anonymous */) [/var/lib/jenkins/workspace/chuangke_pre_portal_web_auto_deploy/node_modules/webpack/lib/Sou...
 
 FATAL ERROR: CALL_AND_RETRY_LAST Allocation failed - JavaScript heap out of memory
@@ -585,23 +585,23 @@ FATAL ERROR: CALL_AND_RETRY_LAST Allocation failed - JavaScript heap out of memo
  3: v8::Utils::ReportApiFailure(char const*, char const*) [node]
  4: v8::internal::V8::FatalProcessOutOfMemory(char const*, bool) [node]
  5: v8::internal::Factory::NewRawTwoByteString(int, v8::internal::PretenureFlag) [node]
- 6: v8::internal::String::SlowFlatten(v8::internal::Handle<v8::internal::consstring>, v8::internal::PretenureFlag) [node]
- 7: v8::internal::String::Flatten(v8::internal::Handle<v8::internal::string>, v8::internal::PretenureFlag) [node]
- 8: v8::internal::BasicJsonStringifier::SerializeString(v8::internal::Handle<v8::internal::string>) [node]
- 9: v8::internal::BasicJsonStringifier::Result v8::internal::BasicJsonStringifier::Serialize_<false>(v8::internal::Handle<v8::internal::object>, bool, v8::internal::Handle<v8::internal::object>) [node]
-10: v8::internal::BasicJsonStringifier::SerializeJSArraySlow(v8::internal::Handle<v8::internal::jsarray>, unsigned int, unsigned int) [node]
-11: v8::internal::BasicJsonStringifier::Result v8::internal::BasicJsonStringifier::Serialize_<true>(v8::internal::Handle<v8::internal::object>, bool, v8::internal::Handle<v8::internal::object>) [node]
-12: v8::internal::BasicJsonStringifier::Result v8::internal::BasicJsonStringifier::Serialize_<false>(v8::internal::Handle<v8::internal::object>, bool, v8::internal::Handle<v8::internal::object>) [node]
-13: v8::internal::BasicJsonStringifier::Stringify(v8::internal::Handle<v8::internal::object>) [node]
+ 6: v8::internal::String::SlowFlatten(v8::internal::Handle<v8::internal::ConsString>, v8::internal::PretenureFlag) [node]
+ 7: v8::internal::String::Flatten(v8::internal::Handle<v8::internal::String>, v8::internal::PretenureFlag) [node]
+ 8: v8::internal::BasicJsonStringifier::SerializeString(v8::internal::Handle<v8::internal::String>) [node]
+ 9: v8::internal::BasicJsonStringifier::Result v8::internal::BasicJsonStringifier::Serialize_<false>(v8::internal::Handle<v8::internal::Object>, bool, v8::internal::Handle<v8::internal::Object>) [node]
+10: v8::internal::BasicJsonStringifier::SerializeJSArraySlow(v8::internal::Handle<v8::internal::JSArray>, unsigned int, unsigned int) [node]
+11: v8::internal::BasicJsonStringifier::Result v8::internal::BasicJsonStringifier::Serialize_<true>(v8::internal::Handle<v8::internal::Object>, bool, v8::internal::Handle<v8::internal::Object>) [node]
+12: v8::internal::BasicJsonStringifier::Result v8::internal::BasicJsonStringifier::Serialize_<false>(v8::internal::Handle<v8::internal::Object>, bool, v8::internal::Handle<v8::internal::Object>) [node]
+13: v8::internal::BasicJsonStringifier::Stringify(v8::internal::Handle<v8::internal::Object>) [node]
 14: v8::internal::Runtime_BasicJSONStringify(int, v8::internal::Object**, v8::internal::Isolate*) [node]
 15: 0x1ab7ca0092a7
 error Command failed with signal "SIGABRT".
 info Visit [https://yarnpkg.com/en/docs/cli/run](https://yarnpkg.com/en/docs/cli/run) for documentation about this command.
 Build step 'Execute shell' marked build as failure
 Sending e-mails to: marvin.ma@3vyd.com damon.shen@3vyd.com
-Finished: FAILURE</v8::internal::object></v8::internal::object></v8::internal::object></false></v8::internal::object></v8::internal::object></true></v8::internal::jsarray></v8::internal::object></v8::internal::object></false></v8::internal::string></v8::internal::string></v8::internal::consstring></undefined></undefined></an></a></js></pre><a json="" with="" map="" 0xa5d18e09b09="">
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></a></code></pre><a json="" with="" map="" 0xa5d18e09b09="">
-</a><h2 id="解决思路"><a json="" with="" map="" 0xa5d18e09b09=""></a><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><p>1、Jenkins服务器系统内存不够<br>看了看jenkins所在服务器的内存，在jenkins执行这个job的时候，内存最高也就140%，因为服务器是Centos 4核16G的配置，用free查看，可用内存仍然9G多。当时没有截图，所以就不贴图了，但是肯定不是说服务器内存吃紧导致的。</p>
+Finished: FAILURE</pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><p>1、Jenkins服务器系统内存不够<br>看了看jenkins所在服务器的内存，在jenkins执行这个job的时候，内存最高也就140%，因为服务器是Centos 4核16G的配置，用free查看，可用内存仍然9G多。当时没有截图，所以就不贴图了，但是肯定不是说服务器内存吃紧导致的。</p>
 <p>2、排除了服务器本身内存小的问题，考虑本次build新进的代码的问题，看了一下就两个commit，因为网上有说是调用file.write的时候处理不当，会导致该问题的产生的，正好本次build有一个commit是添加了富文本编辑器。<br>但是检查一圈好像没有问题。</p>
 <p>3、框架问题，限制了内存。</p>
 <h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>最后通过<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/38558989/node-js-heap-out-of-memory%E4%B8%80%E6%96%87%E6%89%BE%E5%88%B0%E4%BA%86%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E3%80%82%E5%85%88%E5%81%9A%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%B0%9D%E8%AF%95%EF%BC%8C%E4%BF%AE%E6%94%B9%E8%AF%A5job%E7%9A%84build%E5%91%BD%E4%BB%A4%EF%BC%8C%E5%B0%86%E5%8E%9F%E6%9D%A5%E7%9A%84">https://stackoverflow.com/questions/38558989/node-js-heap-out-of-memory一文找到了解决方案。先做本地部署尝试，修改该job的build命令，将原来的</a></p>
@@ -615,18 +615,18 @@ Finished: FAILURE</v8::internal::object></v8::internal::object></v8::internal::o
 <p><img src="/loading.gif" data-original="/images/fontend/rn-build-shell.png" alt="jenkins build shell"></p>
 <p>重新build，success。</p>
 <p>然后因为该项目分开发，测试、生产等多个环境，因此打算在代码框架里直接作为配置项，具体的做法是在package.json的build命令前加上指定内存的参数<code>--max-old-space-size=4096</code>。将原来的：</p>
-<pre class="line-numbers language-json"><code class="language-json"><span class="token property">"scripts"</span><span class="token operator">:</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-json"><code class="language-json"><span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token property">"start"</span><span class="token operator">:</span> <span class="token string">"node scripts/start.js"</span><span class="token punctuation">,</span>
     <span class="token property">"build"</span><span class="token operator">:</span> <span class="token string">"node scripts/build.js"</span><span class="token punctuation">,</span>
     <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"node scripts/test.js --env=jsdom"</span>
-  &amp;#<span class="token number">125</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>修改为：</p>
-<pre class="line-numbers language-json"><code class="language-json">  <span class="token property">"scripts"</span><span class="token operator">:</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-json"><code class="language-json">  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token property">"start"</span><span class="token operator">:</span> <span class="token string">"node scripts/start.js"</span><span class="token punctuation">,</span>
     <span class="token property">"build"</span><span class="token operator">:</span> <span class="token string">"node --max-old-space-size=4096 scripts/build.js"</span><span class="token punctuation">,</span>
     <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"node scripts/test.js --env=jsdom"</span>
-  &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>提交代码，jenkins修改回原来的<code>yarn start</code>，重新build， SUCCESS。<br>一劳永逸。</p>
 
@@ -1321,7 +1321,7 @@ Finished: FAILURE</v8::internal::object></v8::internal::object></v8::internal::o
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2018-2022</span>
+                <span id="year">2018-2025</span>
             
             <span id="year">2018</span>
             <a href="/about" target="_blank">马海强</a>

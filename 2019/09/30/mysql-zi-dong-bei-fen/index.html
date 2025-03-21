@@ -29,11 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
-<script src="/js/prism-line-numbers.min.js"></script>
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 
 
@@ -508,7 +508,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    427
+                    424
                 </div>
                 
 
@@ -551,7 +551,7 @@
   # 15   9  *    *     *    /Users/[your user name]/scripts/mysql_backup.sh
 
 #RESTORE FROM BACKUP
-  #$ gunzip &lt; [backupfile.sql.gz] | mysql -u [uname] -p[pass] [dbname]
+  #$ gunzip < [backupfile.sql.gz] | mysql -u [uname] -p[pass] [dbname]
 
 #==============================================================================
 # CUSTOM SETTINGS
@@ -609,9 +609,9 @@ function echo_status(){
 
 function backup_database(){
     backup_file="$BACKUP_DIR/$TIMESTAMP.$database.sql.gz" 
-    output+="$database =&gt; $backup_file\n"
+    output+="$database => $backup_file\n"
     echo_status "...backing up $count of $total databases: $database"
-    $(mysqldump $(mysql_login) $database | gzip -9 &gt; $backup_file)
+    $(mysqldump $(mysql_login) $database | gzip -9 > $backup_file)
     printf "path = ${backup_file}"
     #scp copy to other server
     scp $backup_file haieradmin@10.135.26.78:/opt/chuangke/db/backup/
@@ -1339,7 +1339,7 @@ printf "All backed up!\n\n"
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2018-2022</span>
+                <span id="year">2018-2025</span>
             
             <span id="year">2018</span>
             <a href="/about" target="_blank">马海强</a>

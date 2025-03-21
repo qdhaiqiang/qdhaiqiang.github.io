@@ -29,11 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
-<script src="/js/prism-line-numbers.min.js"></script>
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 
 
@@ -508,14 +508,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3k
+                    2.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    17 分
+                    16 分
                 </div>
                 
 
@@ -550,7 +550,7 @@ docker.io   docker.io/cloudesire/tomcat                     Tomcat server, 6/7/8
 docker.io   docker.io/tutum/tomcat                          Base docker image to run a Tomcat applicat...   10                   
 docker.io   docker.io/meirwa/spring-boot-tomcat-mysql-app   a sample spring-boot app using tomcat and ...   9                    [OK]
 docker.io   docker.io/jeanblanchard/tomcat                  Minimal Docker image with Apache Tomcat         8                    
-docker.io   docker.io/aallam/tomcat-mysql                   Debian, Oracle JDK, Tomcat &amp; MySQL              7                    [OK]
+docker.io   docker.io/aallam/tomcat-mysql                   Debian, Oracle JDK, Tomcat & MySQL              7                    [OK]
 docker.io   docker.io/rightctrl/tomcat                      CentOS , Oracle Java, tomcat application s...   3                    [OK]
 docker.io   docker.io/amd64/tomcat                          Apache Tomcat is an open source implementa...   2                    
 docker.io   docker.io/arm64v8/tomcat                        Apache Tomcat is an open source implementa...   2                    
@@ -640,7 +640,7 @@ docker.io/nginx     latest              8b89e48b5f15        6 days ago          
 <h4 id="1-4-部署自己的web应用"><a href="#1-4-部署自己的web应用" class="headerlink" title="1.4 部署自己的web应用"></a>1.4 部署自己的web应用</h4><p>将本地war包上传到宿主机<code>/opt/tomcat8/</code>目录下。<br>先停止原来的tomcat容器，然后重新挂在新的war包并启动。</p>
 <pre class="line-numbers language-shell"><code class="language-shell">[root@dev nginx]# docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                NAMES
-00a88a12a6f4        nginx_image1        "/bin/sh -c 'nginx..."   About an hour ago   Up About an hour    0.0.0.0:80-&gt;80/tcp   nginx
+00a88a12a6f4        nginx_image1        "/bin/sh -c 'nginx..."   About an hour ago   Up About an hour    0.0.0.0:80->80/tcp   nginx
 [root@dev nginx]# docker stop 00a88a12a6f4
 00a88a12a6f4
 [root@dev nginx]# docker rm 00a88a12a6f4
@@ -653,7 +653,7 @@ total 25852
 2c2e386b7d1a2635f7be28c404a7a71a0ec8fda074b22035be6d62d28b8f8a50
 [root@dev tomcat8]# docker ps
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                    NAMES
-2c2e386b7d1a        docker.io/tomcat    "catalina.sh run"   15 seconds ago      Up 14 seconds       0.0.0.0:8080-&gt;8080/tcp   mystifying_wilson
+2c2e386b7d1a        docker.io/tomcat    "catalina.sh run"   15 seconds ago      Up 14 seconds       0.0.0.0:8080->8080/tcp   mystifying_wilson
 [root@dev tomcat8]# 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>调用接口查看启动情况<br><img src="/loading.gif" data-original="/images/linux/docker/docker-tomcat-config.png" alt="tomcat：8080"><br>容器正常启动。</p>
@@ -667,19 +667,19 @@ COPY  conf/server.xml  /usr/local/tomcat/conf/server.xml
 <h4 id="2-2、用dockerfile-构建出镜tomcat镜像"><a href="#2-2、用dockerfile-构建出镜tomcat镜像" class="headerlink" title="2. 2、用dockerfile 构建出镜tomcat镜像"></a>2. 2、用dockerfile 构建出镜tomcat镜像</h4><pre class="line-numbers language-shell"><code class="language-shell">[root@dev tomcat8]# docker build -t marvin/tomcat . 
 Sending build context to Docker daemon 26.48 MB
 Step 1/5 : FROM docker.io/tomcat:latest
- ---&gt; 2d43521f2b1a
+ ---> 2d43521f2b1a
 Step 2/5 : MAINTAINER marvin(qdhaiqiang@163.com)
- ---&gt; Running in de53a8b32cf8
- ---&gt; fd9c7980f09e
+ ---> Running in de53a8b32cf8
+ ---> fd9c7980f09e
 Removing intermediate container de53a8b32cf8
 Step 3/5 : COPY webapps /usr/local/tomcat/webapps
- ---&gt; 010bf40a7e8d
+ ---> 010bf40a7e8d
 Removing intermediate container 27feb6b70ca8
 Step 4/5 : COPY logs /usr/local/tomcat/logs
- ---&gt; 010946977b25
+ ---> 010946977b25
 Removing intermediate container aff55ea55e30
 Step 5/5 : COPY conf/server.xml /usr/local/tomcat/conf/server.xml
- ---&gt; 098f61ab6f8b
+ ---> 098f61ab6f8b
 Removing intermediate container 18d241c36d15
 Successfully built 098f61ab6f8b
 [root@dev tomcat8]# 
@@ -697,25 +697,25 @@ docker.io/nginx     latest              8b89e48b5f15        6 days ago          
 6f189daf58807a5683a8b9d6c01b1b30ae8770045aa551535d27b641681c256a
 [root@dev tomcat8]# docker ps
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                    NAMES
-6f189daf5880        marvin/tomcat       "catalina.sh run"   3 seconds ago       Up 2 seconds        0.0.0.0:8080-&gt;8080/tcp   tomcat8
+6f189daf5880        marvin/tomcat       "catalina.sh run"   3 seconds ago       Up 2 seconds        0.0.0.0:8080->8080/tcp   tomcat8
 [root@dev tomcat8]# 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="2-4、-查看镜像运行效果"><a href="#2-4、-查看镜像运行效果" class="headerlink" title="2.4、 查看镜像运行效果"></a>2.4、 查看镜像运行效果</h4><p><img src="/loading.gif" data-original="/images/linux/docker/docker-tomcat-config2.png" alt="tomcat.png"></p>
 <h4 id="2-5、如果要配置https证书的话，可将jks的证书放于conf目录下，在server中使用相对路径引用证书，配置如下"><a href="#2-5、如果要配置https证书的话，可将jks的证书放于conf目录下，在server中使用相对路径引用证书，配置如下" class="headerlink" title="2.5、如果要配置https证书的话，可将jks的证书放于conf目录下，在server中使用相对路径引用证书，配置如下:"></a>2.5、如果要配置https证书的话，可将jks的证书放于conf目录下，在server中使用相对路径引用证书，配置如下:</h4><pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Connector</span> <span class="token attr-name">port</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>8888<span class="token punctuation">"</span></span> <span class="token attr-name">protocol</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org.apache.coyote.http11.Http11NioProtocol<span class="token punctuation">"</span></span>
                <span class="token attr-name">maxThreads</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>150<span class="token punctuation">"</span></span> <span class="token attr-name">SSLEnabled</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token attr-name">scheme</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https<span class="token punctuation">"</span></span> <span class="token attr-name">secure</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token attr-name">URIEncoding</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span>  
-               <span class="token attr-name">clientAuth</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span> <span class="token attr-name">sslProtocol</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>TLS<span class="token punctuation">"</span></span> <span class="token attr-name">keystoreFile</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>conf/SHA256withRSA__.haier.net.jks<span class="token punctuation">"</span></span> <span class="token attr-name">keystorePass</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>20170905<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>  
+               <span class="token attr-name">clientAuth</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span> <span class="token attr-name">sslProtocol</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>TLS<span class="token punctuation">"</span></span> <span class="token attr-name">keystoreFile</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>conf/SHA256withRSA__.haier.net.jks<span class="token punctuation">"</span></span> <span class="token attr-name">keystorePass</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>20170905<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>  
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>或者如果是pem文件的话</p>
 <pre class="line-numbers language-xml"><code class="language-xml"> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Connector</span> <span class="token attr-name">port</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>8443<span class="token punctuation">"</span></span> <span class="token attr-name">protocol</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org.apache.coyote.http11.Http11AprProtocol<span class="token punctuation">"</span></span>
-               <span class="token attr-name">maxThreads</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>150<span class="token punctuation">"</span></span> <span class="token attr-name">SSLEnabled</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>UpgradeProtocol</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org.apache.coyote.http2.Http2Protocol<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>SSLHostConfig</span><span class="token punctuation">&gt;</span></span>
+               <span class="token attr-name">maxThreads</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>150<span class="token punctuation">"</span></span> <span class="token attr-name">SSLEnabled</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>UpgradeProtocol</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org.apache.coyote.http2.Http2Protocol<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>SSLHostConfig</span><span class="token punctuation">></span></span>
             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Certificate</span> <span class="token attr-name">certificateKeyFile</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>conf/localhost-rsa-key.pem<span class="token punctuation">"</span></span>
                          <span class="token attr-name">certificateFile</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>conf/localhost-rsa-cert.pem<span class="token punctuation">"</span></span>
                          <span class="token attr-name">certificateChainFile</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>conf/localhost-rsa-chain.pem<span class="token punctuation">"</span></span>
-                         <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>RSA<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>SSLHostConfig</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Connector</span><span class="token punctuation">&gt;</span></span>
+                         <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>RSA<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>SSLHostConfig</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Connector</span><span class="token punctuation">></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="2-6、在分布式微服务中的应用"><a href="#2-6、在分布式微服务中的应用" class="headerlink" title="2.6、在分布式微服务中的应用"></a>2.6、在分布式微服务中的应用</h4><p> tomcat作为web容器被广泛应用，但我们目前restful接口特别多，每个接口都需要一个tomcat来启动，为了配置隔离，一般都会把tomcat安装文件复制多遍，分别把war包部署在对应的webapp目录下，但这样造成的问题就是tomcat安装文件占用了大量的磁盘空间，且不便于统一管理。比如要修改tomcat的某个配置，那么对应的所有的tomcat目录都要修改一遍。</p>
 <p>基于上述情况，作者设计了一种基于docker的tomcat服务化方案。</p>
@@ -723,7 +723,7 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 <h4 id="2-7、查看tomcat日志"><a href="#2-7、查看tomcat日志" class="headerlink" title="2.7、查看tomcat日志"></a>2.7、查看tomcat日志</h4><p>因为tomcat日志是随着程序运行生成的，所以不能使用add或者copy宿主机目录的形式添加到容器，目前的思路是将容器中的logs整个目录copy到宿主机，实际应用中可用定时任务执行脚本的形式解决。</p>
 <pre class="line-numbers language-shell"><code class="language-shell">[root@dev logs]# docker ps
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                    NAMES
-6f189daf5880        marvin/tomcat       "catalina.sh run"   4 hours ago         Up 4 hours          0.0.0.0:8080-&gt;8080/tcp   tomcat8
+6f189daf5880        marvin/tomcat       "catalina.sh run"   4 hours ago         Up 4 hours          0.0.0.0:8080->8080/tcp   tomcat8
 [root@dev logs]# 
 [root@dev logs]# pwd
 /opt/tomcat8/logs
@@ -755,13 +755,13 @@ WORKDIR $CATALINA_HOME
 
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime
 
-RUN yum -y install java-$JDK_VERSION-openjdk-devel &amp;&amp; rm -rf /var/cache/yum/*
+RUN yum -y install java-$JDK_VERSION-openjdk-devel && rm -rf /var/cache/yum/*
 ENV JAVA_HOME /usr/lib/jvm/java-openjdk
 
 RUN yum -y install wget
-RUN cd /opt/ &amp;&amp; wget "http://apache.fayea.com/tomcat/tomcat-8/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz"
-RUN cd /opt/ &amp;&amp; tar -zxf apache-tomcat-$TOMCAT_VERSION.tar.gz
-RUN cd /opt/ &amp;&amp; rm -rf apache-tomcat-$TOMCAT_VERSION.tar.gz
+RUN cd /opt/ && wget "http://apache.fayea.com/tomcat/tomcat-8/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz"
+RUN cd /opt/ && tar -zxf apache-tomcat-$TOMCAT_VERSION.tar.gz
+RUN cd /opt/ && rm -rf apache-tomcat-$TOMCAT_VERSION.tar.gz
 RUN chmod +x $CATALINA_HOME/bin/*.sh
 
 VOLUME $CATALINA_HOME/webapps 
@@ -770,8 +770,8 @@ VOLUME $CATALINA_HOME/conf
 
 EXPOSE 8080
 
-CMD $CATALINA_HOME/bin/startup.sh &amp;&amp; tail -F $CATALINA_HOME/logs/catalina.out
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></fengzp@gzyitop.com></code></pre>
+CMD $CATALINA_HOME/bin/startup.sh && tail -F $CATALINA_HOME/logs/catalina.out
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="三、不适用容器自带jdk"><a href="#三、不适用容器自带jdk" class="headerlink" title="三、不适用容器自带jdk"></a>三、不适用容器自带jdk</h3><p>3.1 先将下载好的jdk和tomcat上传到宿主服务器</p>
 <pre class="line-numbers language-shell"><code class="language-shell">[root@dev tomcat8]# ls
 apache-tomcat-7.0.70.tar.gz  jdk-7u80-linux-x64.tar.gz 
@@ -787,7 +787,7 @@ ADD ./jdk-7u80-linux-x64.tar.gz /root
 ENV JAVA_HOME /root/jdk1.7.0_80
 ENV PATH $JAVA_HOME/bin:$PATH
 #define entry point which will be run first when the container starts up
-ENTRYPOINT /root/apache-tomcat-7.0.70/bin/startup.sh &amp;&amp; tail -F /root/apache-tomcat-7.0.70/logs/catalina.out
+ENTRYPOINT /root/apache-tomcat-7.0.70/bin/startup.sh && tail -F /root/apache-tomcat-7.0.70/logs/catalina.out
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="四、参考文章："><a href="#四、参考文章：" class="headerlink" title="四、参考文章："></a>四、参考文章：</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_32351227/article/details/78673591">https://blog.csdn.net/qq_32351227/article/details/78673591</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zydev/p/5804289.html">https://www.cnblogs.com/zydev/p/5804289.html</a></p>
 
@@ -1482,7 +1482,7 @@ ENTRYPOINT /root/apache-tomcat-7.0.70/bin/startup.sh &amp;&amp; tail -F /root/ap
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2018-2022</span>
+                <span id="year">2018-2025</span>
             
             <span id="year">2018</span>
             <a href="/about" target="_blank">马海强</a>

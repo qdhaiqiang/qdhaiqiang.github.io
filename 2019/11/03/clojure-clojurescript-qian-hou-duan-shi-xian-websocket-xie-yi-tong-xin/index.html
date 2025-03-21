@@ -29,11 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
-<script src="/js/prism-line-numbers.min.js"></script>
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 
 
@@ -609,7 +609,7 @@
 </ol>
 <pre class="line-numbers language-shell"><code class="language-shell">$ wscat -c ws://localhost:3000/api/ws
 Connected (press CTRL+C to quit)
-&gt;
+>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><p>在任意一个页面找个契机开始创建连接，参考<a target="_blank" rel="noopener" href="https://github.com/luminus-framework/examples/tree/master/multi-client-ws-immutant">multi-client-ws-immutant</a>创建时指定消息处理回调函数。<br>代码如下：</p>
 <ol>
@@ -710,7 +710,7 @@ Connected (press CTRL+C to quit)
                             (js/console.log "连接成功")
                             (js/clearTimeout clear-time)))
     (set! (.-onclose chan) (fn []
-                             (js/console.log "连接断开&gt;&gt;&gt;")
+                             (js/console.log "连接断开>>>")
                              (reset! lockReconnect true)
                              (if (true? @lockReconnect)
                                (do                                 
@@ -762,9 +762,9 @@ Connected (press CTRL+C to quit)
   (reagent/with-let [value (reagent/atom nil)]
     [:input
      {:type        :text
-      :placeholder "输入&amp;回车发送"
+      :placeholder "输入&回车发送"
       :value       @value
-      :on-change   #(reset! value (-&gt; % .-target .-value))
+      :on-change   #(reset! value (-> % .-target .-value))
       :on-key-down #(when (= (.-keyCode %) 13)
                       (send-transit-msg!
                        {:message @value})
@@ -1487,7 +1487,7 @@ Connected (press CTRL+C to quit)
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2018-2022</span>
+                <span id="year">2018-2025</span>
             
             <span id="year">2018</span>
             <a href="/about" target="_blank">马海强</a>

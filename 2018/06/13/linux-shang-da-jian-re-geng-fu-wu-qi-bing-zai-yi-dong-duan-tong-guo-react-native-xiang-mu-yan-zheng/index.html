@@ -29,11 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
-<script src="/js/prism-line-numbers.min.js"></script>
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 
 
@@ -512,7 +512,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.6k
+                    3.5k
                 </div>
                 
 
@@ -656,7 +656,7 @@ PORT=3000 HOST=127.0.0.1 NODE_ENV=production code-push-server
 ./bin/www
 
 # 以守护进程的方式运行
-nohup ./bin/www &amp;
+nohup ./bin/www &
 
 # 指定端口号运行
 PORT=3000 HOST=127.0.0.1 NODE_ENV=production node ./bin/www
@@ -672,7 +672,7 @@ info:    No forever processes running
 很抱歉，如果不顺利的话，会有这么个情况</li>
 </ul>
 <pre class="line-numbers language-shell"><code class="language-shell">[root@izm5e3m6sxwr4dw9w7r6h4z lib]# npm install forever -g
-/opt/software/node-v10.0.0-linux-x64/bin/forever -&gt; /opt/software/node-v10.0.0-linux-x64/lib/node_modules/forever/bin/forever
+/opt/software/node-v10.0.0-linux-x64/bin/forever -> /opt/software/node-v10.0.0-linux-x64/lib/node_modules/forever/bin/forever
 npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.7 (node_modules/forever/node_modules/fsevents):
 npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.7: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
 
@@ -773,9 +773,9 @@ $ code-push app list
 <p>用Android Studio打开<code>code-push-demo-app/android</code>目录到MainApplication.java里面修改以下代码：</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
 
-<span class="token keyword">protected</span> List<span class="token operator">&lt;</span>ReactPackage<span class="token operator">&gt;</span> <span class="token function">getPackages</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">protected</span> List<span class="token operator">&lt;</span>ReactPackage<span class="token operator">></span> <span class="token function">getPackages</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-  <span class="token keyword">return</span> Arrays<span class="token punctuation">.</span>&lt;ReactPackage<span class="token operator">&gt;</span><span class="token function">asList</span><span class="token punctuation">(</span>
+  <span class="token keyword">return</span> Arrays<span class="token punctuation">.</span>&lt;ReactPackage<span class="token operator">></span><span class="token function">asList</span><span class="token punctuation">(</span>
 
       <span class="token keyword">new</span> <span class="token class-name">MainReactPackage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 
@@ -791,26 +791,26 @@ $ code-push app list
 
       <span class="token punctuation">)</span>
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>我的配置是：<br>修改MainApplication.java的代码如下：</p>
 <pre class="line-numbers language-java"><code class="language-java">    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">protected</span> List<span class="token operator">&lt;</span>ReactPackage<span class="token operator">&gt;</span> <span class="token function">getPackages</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-      <span class="token keyword">return</span> Arrays<span class="token punctuation">.</span>&lt;ReactPackage<span class="token operator">&gt;</span><span class="token function">asList</span><span class="token punctuation">(</span>
+    <span class="token keyword">protected</span> List<span class="token operator">&lt;</span>ReactPackage<span class="token operator">></span> <span class="token function">getPackages</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> Arrays<span class="token punctuation">.</span>&lt;ReactPackage<span class="token operator">></span><span class="token function">asList</span><span class="token punctuation">(</span>
           <span class="token keyword">new</span> <span class="token class-name">MainReactPackage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
           <span class="token keyword">new</span> <span class="token class-name">CodePushBuilder</span><span class="token punctuation">(</span><span class="token function">getResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>string<span class="token punctuation">.</span>reactNativeCodePush_androidDeploymentKey<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">getApplicationContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
                 <span class="token punctuation">.</span><span class="token function">setIsDebugMode</span><span class="token punctuation">(</span>BuildConfig<span class="token punctuation">.</span>DEBUG<span class="token punctuation">)</span>
                 <span class="token punctuation">.</span><span class="token function">setServerUrl</span><span class="token punctuation">(</span><span class="token function">getResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>string<span class="token punctuation">.</span>reactNativeCodePush_androidServerURL<span class="token punctuation">)</span><span class="token punctuation">)</span>
                 <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
       <span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>修改<code>android/app/src/main/res/values/strings.xml</code>文件，指定reactNativeCodePush_androidDeploymentKey和reactNativeCodePush_androidServerURL的值。</p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>resources</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>string</span> <span class="token attr-name">moduleConfig</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>reactNativeCodePush_androidDeploymentKey<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>6KfLoVvhgdsnFzFCIohRb2t5grmD4ksvOXqog<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>string</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>string</span> <span class="token attr-name">moduleConfig</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>reactNativeCodePush_androidServerURL<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>http://xxx.xxx:3000/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>string</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>string</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>app_name<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>CodePushDemoApp<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>string</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>resources</span><span class="token punctuation">&gt;</span></span>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>resources</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>string</span> <span class="token attr-name">moduleConfig</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>reactNativeCodePush_androidDeploymentKey<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>6KfLoVvhgdsnFzFCIohRb2t5grmD4ksvOXqog<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>string</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>string</span> <span class="token attr-name">moduleConfig</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>reactNativeCodePush_androidServerURL<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>http://xxx.xxx:3000/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>string</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>string</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>app_name<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>CodePushDemoApp<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>string</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>resources</span><span class="token punctuation">></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="4">
 <li><p>cd 到code-push-demo-app目录，允许react-native start 启动react-native 服务。可以选择用数据线连接手机，手机开启开发者模式。也可以直接将<code>code-push-demo-app\android\app\build\outputs\apk\debug</code>以后的apk包发送到手机上，直接打开安装。</p>
@@ -868,32 +868,32 @@ code-push deployment history CodePushReactNativeDemo-android Staging
 code-push login 登陆
 code-push loout 注销
 code-push access-key ls 列出登陆的token
-code-push access-key rm <accesskye> 删除某个 access-key
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></accesskye></code></pre>
+code-push access-key rm <accessKye> 删除某个 access-key
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-shell"><code class="language-shell">// app操作相关
-code-push app add <appname> <platform> react-native  在账号里面添加一个新的app
+code-push app add <appName> <platform> react-native  在账号里面添加一个新的app
 code-push app remove 或者 rm 在账号里移除一个 app
 code-push app rename 重命名一个存在 app
 code-push app list 或则 ls 列出账号下面的所有 app
 code-push app transfer 把app的所有权转移到另外一个账号
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></platform></appname></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-shell"><code class="language-shell">// 应用信息相关
-code-push deployment add <appname> 部署
-code-push deployment rm <appname> 删除部署
-code-push deployment rename <appname> 重命名
-code-push deployment ls <appname> 列出应用的部署情况
-code-push deployment ls <appname> -k 查看部署的key
-code-push deployment history <appname> <deploymentname> 查看历史版本
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></deploymentname></appname></appname></appname></appname></appname></appname></code></pre>
+code-push deployment add <appName> 部署
+code-push deployment rm <appName> 删除部署
+code-push deployment rename <appName> 重命名
+code-push deployment ls <appName> 列出应用的部署情况
+code-push deployment ls <appName> -k 查看部署的key
+code-push deployment history <appName> <deploymentName> 查看历史版本
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-shell"><code class="language-shell">// 发布
-code-push release-react <appname> <platform> -t 版本  -d 环境  --des 描述 -m true （强制更新）
+code-push release-react <appName> <platform> -t 版本  -d 环境  --des 描述 -m true （强制更新）
 
 // 清除历史部署记录
-code-push deployment clear <appname> Production or Staging
+code-push deployment clear <appName> Production or Staging
 
 // 回滚
-code-push rollback <appname> Production --targetRelease v4(codepush服务部署的版本号)
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></appname></appname></platform></appname></code></pre>
+code-push rollback <appName> Production --targetRelease v4(codepush服务部署的版本号)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>注意事项：</p>
 <ol>
 <li><p>更新规则<br>  1&gt; CodePush部署版本 &gt; App版本</p>
@@ -1622,7 +1622,7 @@ code-push rollback <appname> Production --targetRelease v4(codepush服务部署�
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2018-2022</span>
+                <span id="year">2018-2025</span>
             
             <span id="year">2018</span>
             <a href="/about" target="_blank">马海强</a>

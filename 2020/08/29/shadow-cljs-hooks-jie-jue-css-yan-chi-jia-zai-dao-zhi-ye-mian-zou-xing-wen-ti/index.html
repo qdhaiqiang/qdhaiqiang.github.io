@@ -29,11 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
-<script src="/js/prism-line-numbers.min.js"></script>
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 
 
@@ -570,7 +570,7 @@
 
 (defn watch-resource
   {:shadow.build/stage :flush}
-  [build-state &amp; args]
+  [build-state & args]
   (future
     (prn "configure completed")
     (let [dir (System/getProperty "user.dir")]
@@ -599,8 +599,8 @@ function writeByDir(){
           if [[ $(basename $file) = "antd.min.css" ]] || [[ $(basename $file) = "slick.min.css" ]] || [[ $(basename $file) = "slick-theme.min.css" ]]; then
             echo "uncopy css :"$(basename $file)
           else
-            cat "$file" &gt;&gt; "${target_file}"
-              echo "" &gt;&gt; "${target_file}"
+            cat "$file" >> "${target_file}"
+              echo "" >> "${target_file}"
           fi
         else
           writeByDir $file
@@ -613,7 +613,7 @@ writeByDir ${srcpath}
 <p>此处由衷感慨下，repl真好用，clojure.java.shell这个库的使用，及最后钩子内容好不好使全靠这个工具调试。否则的话，修改hooks就要频繁启动shadow-cljs项目，并且如果hooks函数有错误的没有任何报错信息，只是钩子函数不执行。</p>
 </blockquote>
 <p>这样本地开发的css文件也能及时写入到<code>style.css</code>里，在<code>index.html</code>引用这个文件，妥了。</p>
-<pre class="line-numbers language-html"><code class="language-html"> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/css/style.css<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text/css<span class="token punctuation">"</span></span> <span class="token punctuation">&gt;</span></span>
+<pre class="line-numbers language-html"><code class="language-html"> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/css/style.css<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text/css<span class="token punctuation">"</span></span> <span class="token punctuation">></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="一顿操作猛如虎，定睛一看原地杵"><a href="#一顿操作猛如虎，定睛一看原地杵" class="headerlink" title="一顿操作猛如虎，定睛一看原地杵"></a>一顿操作猛如虎，定睛一看原地杵</h2><p>以上操作还是不够完美，</p>
 <ol>
@@ -1307,7 +1307,7 @@ writeByDir ${srcpath}
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2018-2022</span>
+                <span id="year">2018-2025</span>
             
             <span id="year">2018</span>
             <a href="/about" target="_blank">马海强</a>

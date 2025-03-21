@@ -29,11 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
-<script src="/js/prism-line-numbers.min.js"></script>
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 
 
@@ -536,7 +536,7 @@
 <span id="more"></span>
 
 <p>今天在clojure中使用<a target="_blank" rel="noopener" href="https://ai.baidu.com/docs#/OCR-Java-SDK/f76eb9f8">百度OCR的java api</a>，但是发现引入java的sdk后，项目中配置的logback的配置与sdk里的slf4j冲突，并且不巧的是slf4j冲掉了原有的logback的配置，这还了得，只能修改后再使用啦。<br>1、先以一个包的log配置和现状来看看现状。<br>logback配置</p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>logger</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>jdbc.audit<span class="token punctuation">"</span></span> <span class="token attr-name">level</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>warn<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>logger</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>jdbc.audit<span class="token punctuation">"</span></span> <span class="token attr-name">level</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>warn<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>jdbc.audit的级别是warn，原来启动项目时自然是不会打印jdbc.audit的日志的，引入第三方sdk然后启动repl，log中有如下内容：</p>
 <pre class="line-numbers language-shell"><code class="language-shell">SLF4J: Class path contains multiple SLF4J bindings.
@@ -561,14 +561,14 @@ jar uf java-sdk-4.11.0.jar META-INF/maven/com.baidu.aip/java-sdk/pom.xml
 </blockquote>
 <p>这段启示使用的,在repl里的代码如下：</p>
 <pre class="line-numbers language-clojure"><code class="language-clojure">(import com.baidu.aip.ocr.AipOcr)
-=&gt; com.baidu.aip.ocr.AipOcr
+=> com.baidu.aip.ocr.AipOcr
 (def ocr-client
   (AipOcr. "16321634"
            "ppiRhvR7VQLqhaiMH7svO7G9"
            "my-secret"))
-=&gt; #'user/ocr-client
+=> #'user/ocr-client
 (.receipt ocr-client "upload/files/81558580941_.pic_1.jpg" (new java.util.HashMap))
-=&gt;
+=>
 #object[org.json.JSONObject
         0x7a4e1225
         "{\"log_id\":7285098450024979673,\"words_result\":[{\"words\":\"山东省耳鼻喉医院鼻变态反应-嗅觉门诊\",\"location\":{\"top\":29,\"left\":232,\"width\":606,\"height\":63}},{\"words\":\"变应原点刺试验报告单\",\"location\":{\"top\":104,\"left\":318,\"width\":419,\"height\":45}},{\"words\":\"姓名:\",\"location\":{\"top\":218,\"left\":63,\"width\":58,\"height\":25}},{\"words\":\"性别:年龄:岁电话\",\"location\":{\"top\":212,\"left\":205,\"width\":287,\"height\":30}},{\"words\":\"检查日期:\",\"location\":{\"top\":207,\"left\":697,\"width\":103,\"height\":25}},{\"words\":\"年月日\",\"location\":{\"top\":199,\"left\":876,\"width\":120,\"height\":29}},{\"words\":\"名称\",\"location\":{\"top\":302,\"left\":106,\"width\":40,\"height\":21}},{\"words\":\"标本风团直径结果\",\"location\":{\"top\":296,\"left\":220,\"width\":268,\"height\":26}},{\"words\":\"名称\",\"location\":{\"top\":295,\"left\":572,\"width\":40,\"height\":21}},{\"words\":\"标本风团直径结果\",\"location\":{\"top\":286,\"left\":694,\"width\":276,\"height\":29}},{\"words\":\" (mm)\",\"location\":{\"top\":328,\"left\":330,\"width\":55,\"height\":17}},{\"words\":\" mm)\",\"location\":{\"top\":321,\"left\":806,\"width\":43,\"height\":14}},{\"words\":\"9\",\"location\":{\"top\":370,\"left\":586,\"width\":12,\"height\":14}},{\"words\":\"粉尘螨\",\"location\":{\"top\":408,\"left\":98,\"width\":62,\"height\":22}},{\"words\":\"大籽蒿花粉\",\"location\":{\"top\":401,\"left\":543,\"width\":100,\"height\":23}},{\"words\":\"2\",\"location\":{\"top\":477,\"left\":126,\"width\":12,\"height\":14}},{\"words\":\"10\",\"location\":{\"top\":470,\"left\":582,\"width\":23,\"height\":16}},{\"words\":\"屋尘螨\",\"location\":{\"top\":509,\"left\":102,\"width\":60,\"height\":21}},{\"words\":\"杨树花粉\",\"location\":{\"top\":503,\"left\":553,\"width\":80,\"height\":22}},{\"words\":\"狗毛\",\"location\":{\"top\":607,\"left\":113,\"width\":42,\"height\":21}},{\"words\":\"柳树花粉\",\"location\":{\"top\":603,\"left\":554,\"width\":79,\"height\":23}},{\"words\":\"12\",\"location\":{\"top\":670,\"left\":583,\"width\":22,\"height\":17}},{\"words\":\"猫毛\",\"location\":{\"top\":706,\"left\":116,\"width\":40,\"height\":21}},{\"words\":\"梧桐花粉\",\"location\":{\"top\":702,\"left\":554,\"width\":79,\"height\":21}},{\"words\":\"5\",\"location\":{\"top\":773,\"left\":131,\"width\":13,\"height\":14}},{\"words\":\"13\",\"location\":{\"top\":768,\"left\":585,\"width\":21,\"height\":16}},{\"words\":\"鸭毛绒\",\"location\":{\"top\":804,\"left\":106,\"width\":62,\"height\":22}},{\"words\":\"产黄青霉\",\"location\":{\"top\":801,\"left\":554,\"width\":81,\"height\":21}},{\"words\":\"14\",\"location\":{\"top\":868,\"left\":586,\"width\":22,\"height\":14}},{\"words\":\"葎草\",\"location\":{\"top\":903,\"left\":119,\"width\":40,\"height\":19}},{\"words\":\"链格孢霉\",\"location\":{\"top\":900,\"left\":557,\"width\":80,\"height\":23}},{\"words\":\"15\",\"location\":{\"top\":955,\"left\":587,\"width\":21,\"height\":16}},{\"words\":\"藜属花粉\",\"location\":{\"top\":990,\"left\":98,\"width\":83,\"height\":24}},{\"words\":\"阴性对照\",\"location\":{\"top\":987,\"left\":558,\"width\":79,\"height\":23}},{\"words\":\"8\",\"location\":{\"top\":1058,\"left\":133,\"width\":14,\"height\":14}},{\"words\":\"16\",\"location\":{\"top\":1053,\"left\":588,\"width\":22,\"height\":16}},{\"words\":\"豚草\",\"location\":{\"top\":1088,\"left\":119,\"width\":42,\"height\":23}},{\"words\":\"阳性对照\",\"location\":{\"top\":1085,\"left\":558,\"width\":80,\"height\":21}},{\"words\":\"注:1、皮试前应停用口服抗组胺药物3天\",\"location\":{\"top\":1178,\"left\":46,\"width\":372,\"height\":41}},{\"words\":\"2、有严重皮肤病和皮肤溃烂者不得做皮肤试验\",\"location\":{\"top\":1217,\"left\":121,\"width\":405,\"height\":29}},{\"words\":\"3、以上结果不做证明用\",\"location\":{\"top\":1248,\"left\":120,\"width\":214,\"height\":40}}],\"words_result_num\":41}"]
@@ -595,7 +595,7 @@ lein deps
                          (.update (.getBytes s)))))))
 ;;修改时间格式
 (defn format-date-time [timestamp]
-  (-&gt; "yyyyMMddHHmmss"
+  (-> "yyyyMMddHHmmss"
       (java.text.SimpleDateFormat.)
       (.format timestamp)))
 ;;获取UUID
@@ -1301,7 +1301,7 @@ lein deps
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2018-2022</span>
+                <span id="year">2018-2025</span>
             
             <span id="year">2018</span>
             <a href="/about" target="_blank">马海强</a>

@@ -29,11 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
-<script src="/js/prism-line-numbers.min.js"></script>
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 
 
@@ -508,7 +508,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    353
+                    346
                 </div>
                 
 
@@ -538,7 +538,7 @@
                 <p>使用adb命令抓包等<br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/6151dca25217">简书地址</a></p>
 <span id="more"></span>
 
-<h3 id="抓包"><a href="#抓包" class="headerlink" title="抓包"></a>抓包</h3><pre class="line-numbers language-shell"><code class="language-shell">adb logcat -v time tag 1&gt;F:\log.txt
+<h3 id="抓包"><a href="#抓包" class="headerlink" title="抓包"></a>抓包</h3><pre class="line-numbers language-shell"><code class="language-shell">adb logcat -v time tag 1>F:\log.txt
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="/loading.gif" data-original="/images/android/adb1.png" alt="图片1.png"></p>
 <p><img src="/loading.gif" data-original="/images/android/adb-log.png" alt="图片2.png"></p>
@@ -546,11 +546,11 @@
 <blockquote>
 <p>adb logcat -b main -v time&gt;app.log&nbsp; 打印应用程序的log<br>adb logcat -b radio -v time&gt; radio.log 打印射频相关的log，SIM STK也会在里面，modem相关的ATcommand等，当然跟QXDM差的很远了。<br>adb logcat -b events -v time&nbsp; 打印系统事件的日志，比如触屏事件。。。<br>//android log的抓取<br>adb logcat<br>//kernel log的抓取<br>adb shell cat /proc/kmsg<br>//log 信息的保存<br>mkdir&nbsp; /data/anr<br>logcat *：V &gt; /data/anr/android<br>demsg &gt;/data/anr/kernel<br>//按ctrl+c结束log输出<br>adb pull /data/anr ./log/</p>
 </blockquote>
-<h3 id="手动彻底卸载app"><a href="#手动彻底卸载app" class="headerlink" title="手动彻底卸载app"></a>手动彻底卸载app</h3><pre class="line-numbers language-shell"><code class="language-shell">D:\Git\pingtai\Portal&gt;adb uninstall com.haierchuangkeapp
+<h3 id="手动彻底卸载app"><a href="#手动彻底卸载app" class="headerlink" title="手动彻底卸载app"></a>手动彻底卸载app</h3><pre class="line-numbers language-shell"><code class="language-shell">D:\Git\pingtai\Portal>adb uninstall com.haierchuangkeapp
 Failure [DELETE_FAILED_INTERNAL_ERROR]
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>在本地用管理员身份运行cmd命令行工具，使用adb shell进入手机应用命令行，<br>根据提示 ：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">D:\Git\pingtai\Portal&gt;adb shell
+<pre class="line-numbers language-shell"><code class="language-shell">D:\Git\pingtai\Portal>adb shell
 M1E:/ $ cd /data/local/tmp/
 M1E:/data/local/tmp $ ll
 /system/bin/sh: ll: not found
@@ -562,12 +562,12 @@ M1E:/data/local/tmp $ rm -rf com.haierchuangkeapp*
 M1E:/data/local/tmp $
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>然后手动推送安装包，然后安装：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">D:\Git\pingtai\Portal\android&gt;adb push D:\Git\pingtai\Portal\android\app\build\outputs\apk\debug\app-debug.apk /data/local/tmp/com.haierchuangkeapp
+<pre class="line-numbers language-shell"><code class="language-shell">D:\Git\pingtai\Portal\android>adb push D:\Git\pingtai\Portal\android\app\build\outputs\apk\debug\app-debug.apk /data/local/tmp/com.haierchuangkeapp
 D:\Git\pingtai\Portal\android\app\build\outputs\apk\debug\app-debug.apk: 1 file pushed. 13.0 MB/s (64737700 bytes in 4.756s)
 
-D:\Git\pingtai\Portal\android&gt;
-D:\Git\pingtai\Portal\android&gt;
-D:\Git\pingtai\Portal\android&gt;adb shell pm install -t -r "/data/local/tmp/com.haierchuangkeapp"
+D:\Git\pingtai\Portal\android>
+D:\Git\pingtai\Portal\android>
+D:\Git\pingtai\Portal\android>adb shell pm install -t -r "/data/local/tmp/com.haierchuangkeapp"
 Success
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
@@ -1260,7 +1260,7 @@ Success
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2018-2022</span>
+                <span id="year">2018-2025</span>
             
             <span id="year">2018</span>
             <a href="/about" target="_blank">马海强</a>

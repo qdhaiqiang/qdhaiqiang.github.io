@@ -29,11 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
-<script src="/js/prism-line-numbers.min.js"></script>
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 
 
@@ -504,7 +504,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    257
+                    228
                 </div>
                 
 
@@ -536,7 +536,7 @@
 <span id="more"></span>
 
 <h2 id="1-excel数字按长度补0，并转换成文本"><a href="#1-excel数字按长度补0，并转换成文本" class="headerlink" title="1. excel数字按长度补0，并转换成文本"></a>1. excel数字按长度补0，并转换成文本</h2><p>在海尔这段时间从数据库里导出来的员工工号8位数，因为有些0开头的，导出到excel里后前面的0就没有了。<br>可以新建一列，然后以导出的那列为基础数据用公式处理成想要的，补齐8位，前面补0。公式如下：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">=REPT(0,8-LEN(A2))&amp;A2
+<pre class="line-numbers language-shell"><code class="language-shell">=REPT(0,8-LEN(A2))&A2
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="/loading.gif" data-original="/images/tools/excel-format.png" alt="补齐8位，前面补0"></p>
 <h2 id="2-excel里将数据拼接成语句"><a href="#2-excel里将数据拼接成语句" class="headerlink" title="2. excel里将数据拼接成语句"></a>2. excel里将数据拼接成语句</h2><p>有时候需要将excel里的数据，拼接成想要的json或者sql。</p>
@@ -547,7 +547,7 @@
 <p><img src="/loading.gif" data-original="/images/tools/excel-CONCATENATE.png" alt="拼接成json"><br>目标内容比如：<code>"优裁精选"    {:en-us "Retail"  :ja-jp "優れた裁断"}</code></p>
 </li>
 <li><p>根据表头，拼接成sql的insert语句</p>
-<pre class="line-numbers language-shell"><code class="language-shell">=CONCATENATE("INSERT INTO t_sys_user (`"&amp;A$1&amp;"`, `"&amp;B$1&amp;"`, `"&amp;C$1&amp;"`, `"&amp;D$1&amp;"`, `"&amp;E$1&amp;"`, `"&amp;F$1&amp;"`) VALUES ('"&amp;A3&amp;"',"&amp;" '"&amp;B3&amp;"','"&amp;C3&amp;"',"&amp;"'"&amp;D3&amp;"',"&amp;"'"&amp;E3&amp;"',"&amp;"'"&amp;F3&amp;"');")
+<pre class="line-numbers language-shell"><code class="language-shell">=CONCATENATE("INSERT INTO t_sys_user (`"&A$1&"`, `"&B$1&"`, `"&C$1&"`, `"&D$1&"`, `"&E$1&"`, `"&F$1&"`) VALUES ('"&A3&"',"&" '"&B3&"','"&C3&"',"&"'"&D3&"',"&"'"&E3&"',"&"'"&F3&"');")
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="/loading.gif" data-original="/images/tools/excel-contact-sql.png" alt="拼接成sql"></p>
 </li>
@@ -1237,7 +1237,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2018-2022</span>
+                <span id="year">2018-2025</span>
             
             <span id="year">2018</span>
             <a href="/about" target="_blank">马海强</a>

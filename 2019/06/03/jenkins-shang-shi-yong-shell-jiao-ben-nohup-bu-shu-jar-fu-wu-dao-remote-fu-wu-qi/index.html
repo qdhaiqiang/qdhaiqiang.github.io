@@ -29,11 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
-<script src="/js/prism-line-numbers.min.js"></script>
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 
 
@@ -545,13 +545,13 @@
 
 <p>先贴一下，我的jenkins里最后核心配置</p>
 <pre class="line-numbers language-shell"><code class="language-shell">#停止服务，备份jar
-ssh -p 22 root@0.0.0.0 'bash -s ' &lt; /opt/auto-deploy-scripts/remove_jar.sh /opt/jar/ alk-wxapi-test.jar
+ssh -p 22 root@0.0.0.0 'bash -s ' < /opt/auto-deploy-scripts/remove_jar.sh /opt/jar/ alk-wxapi-test.jar
 
 #copy jar
 scp -P22 /mnt/jenkins/workspace/alk_api_test_auto_deploy/target/uberjar/alk-wxapi-test.jar root@0.0.0.0:/opt/jar/
 
 #重启服务
-ssh -p 22 root@0.0.0.0 'bash -s' &lt; /opt/auto-deploy-scripts/start_jar.sh /usr/local/jdk1.8.0_212 /opt/jar/ alk-wxapi-test.jar
+ssh -p 22 root@0.0.0.0 'bash -s' < /opt/auto-deploy-scripts/start_jar.sh /usr/local/jdk1.8.0_212 /opt/jar/ alk-wxapi-test.jar
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>remove_jar.sh脚本：</p>
 <pre class="line-numbers language-shell"><code class="language-shell">#!/bin/bash
@@ -620,8 +620,8 @@ echo "授予当前用户权限"
 #chmod 777 $file
 echo "执行....."
 cd $jar_path
-nohup java -jar $file &gt; ${jar_path}/log/nohup.log 2&gt;&amp;1 &amp;
-echo "启动jar的命令: nohup java -jar $file &gt; ${jar_path}log/nohup.log 2&gt;&amp;1 &amp; "
+nohup java -jar $file > ${jar_path}/log/nohup.log 2>&1 &
+echo "启动jar的命令: nohup java -jar $file > ${jar_path}log/nohup.log 2>&1 & "
 echo "================== startup end ======================="
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><code>remove_jar.sh</code>和<code>start_jar.sh</code>在jenkins服务器上，需要将这两个shell在0.0.0.0（不能暴露）的远端去执行<br>没错，客官您一眼就看出来了，觉得简单的不值一提吧，先别着急，对搜这个问题的小菜鸡来说这里面也是大有文章，听我一一道来。</p>
@@ -1334,7 +1334,7 @@ export PATH=$JAVA_HOME/bin:$PATH
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2018-2022</span>
+                <span id="year">2018-2025</span>
             
             <span id="year">2018</span>
             <a href="/about" target="_blank">马海强</a>

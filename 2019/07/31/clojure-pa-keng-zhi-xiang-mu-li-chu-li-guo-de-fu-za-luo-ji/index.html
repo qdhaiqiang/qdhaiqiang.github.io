@@ -29,11 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
-<script src="/js/prism-line-numbers.min.js"></script>
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 
 
@@ -539,7 +539,7 @@
   {:page       0,
    :size       10,
    :patient-id 222})
-=&gt;
+=>
 ({:deleted 0,
   :drug-flag 1,
   :drug-id 1,
@@ -573,7 +573,7 @@
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>json以后格式是一条条的record：</p>
 <pre class="line-numbers language-json"><code class="language-json"><span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-      &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+      <span class="token punctuation">{</span>
         <span class="token property">"deleted"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
         <span class="token property">"drug-flag"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
         <span class="token property">"drug-id"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
@@ -584,8 +584,8 @@
         <span class="token property">"drug-name"</span><span class="token operator">:</span> <span class="token string">"安脱达"</span><span class="token punctuation">,</span>
         <span class="token property">"patient-id"</span><span class="token operator">:</span> <span class="token string">"222"</span><span class="token punctuation">,</span>
         <span class="token property">"sum"</span><span class="token operator">:</span> <span class="token number">58</span>
-      &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
-      &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
         <span class="token property">"deleted"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
         <span class="token property">"drug-flag"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
         <span class="token property">"drug-id"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
@@ -596,8 +596,8 @@
         <span class="token property">"drug-name"</span><span class="token operator">:</span> <span class="token string">"安脱达"</span><span class="token punctuation">,</span>
         <span class="token property">"patient-id"</span><span class="token operator">:</span> <span class="token string">"222"</span><span class="token punctuation">,</span>
         <span class="token property">"sum"</span><span class="token operator">:</span> <span class="token number">120</span>
-      &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
-      &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
         <span class="token property">"deleted"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
         <span class="token property">"drug-flag"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
         <span class="token property">"drug-id"</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
@@ -608,19 +608,19 @@
         <span class="token property">"drug-name"</span><span class="token operator">:</span> <span class="token string">"奥马珠"</span><span class="token punctuation">,</span>
         <span class="token property">"patient-id"</span><span class="token operator">:</span> <span class="token string">"222"</span><span class="token punctuation">,</span>
         <span class="token property">"sum"</span><span class="token operator">:</span> <span class="token number">200</span>
-      &amp;#<span class="token number">125</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
     <span class="token punctuation">]</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>而预期的json是干这么几件事:</p>
 <blockquote>
 <p>1、根据日期将分组，以指定字段为key，group的日期为value<br>2、对日期进行格式化<br>3、同一日期下的数据，以list为key，record作为value<br>4、对每个list里record的sum字段求和，与list同级，以total-cost为key，和为value<br>5、同4类似，对list里的record的count求和，与list同级，以total-count为key，和为value</p>
 </blockquote>
-<pre class="line-numbers language-json"><code class="language-json">&amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
 <span class="token property">"content"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-      &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+      <span class="token punctuation">{</span>
         <span class="token property">"cost-date"</span><span class="token operator">:</span> <span class="token string">"2019-05-07"</span><span class="token punctuation">,</span>
         <span class="token property">"list"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-          &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+          <span class="token punctuation">{</span>
             <span class="token property">"deleted"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
             <span class="token property">"drug-flag"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
             <span class="token property">"drug-id"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
@@ -631,8 +631,8 @@
             <span class="token property">"drug-name"</span><span class="token operator">:</span> <span class="token string">"安脱达"</span><span class="token punctuation">,</span>
             <span class="token property">"patient-id"</span><span class="token operator">:</span> <span class="token string">"222"</span><span class="token punctuation">,</span>
             <span class="token property">"sum"</span><span class="token operator">:</span> <span class="token number">58</span>
-          &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
-          &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">{</span>
             <span class="token property">"deleted"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
             <span class="token property">"drug-flag"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
             <span class="token property">"drug-id"</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
@@ -643,15 +643,15 @@
             <span class="token property">"drug-name"</span><span class="token operator">:</span> <span class="token string">"奥马珠"</span><span class="token punctuation">,</span>
             <span class="token property">"patient-id"</span><span class="token operator">:</span> <span class="token string">"222"</span><span class="token punctuation">,</span>
             <span class="token property">"sum"</span><span class="token operator">:</span> <span class="token number">200</span>
-          &amp;#<span class="token number">125</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
         <span class="token punctuation">]</span><span class="token punctuation">,</span>
         <span class="token property">"total-cost"</span><span class="token operator">:</span> <span class="token number">258</span><span class="token punctuation">,</span>
         <span class="token property">"total-count"</span><span class="token operator">:</span> <span class="token number">17</span>
-      &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
-      &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
         <span class="token property">"cost-date"</span><span class="token operator">:</span> <span class="token string">"2019-06-05"</span><span class="token punctuation">,</span>
         <span class="token property">"list"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-          &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+          <span class="token punctuation">{</span>
             <span class="token property">"deleted"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
             <span class="token property">"drug-flag"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
             <span class="token property">"drug-id"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
@@ -662,13 +662,13 @@
             <span class="token property">"drug-name"</span><span class="token operator">:</span> <span class="token string">"安脱达"</span><span class="token punctuation">,</span>
             <span class="token property">"patient-id"</span><span class="token operator">:</span> <span class="token string">"222"</span><span class="token punctuation">,</span>
             <span class="token property">"sum"</span><span class="token operator">:</span> <span class="token number">120</span>
-          &amp;#<span class="token number">125</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
         <span class="token punctuation">]</span><span class="token punctuation">,</span>
         <span class="token property">"total-cost"</span><span class="token operator">:</span> <span class="token number">120</span><span class="token punctuation">,</span>
         <span class="token property">"total-count"</span><span class="token operator">:</span> <span class="token number">10</span>
-      &amp;#<span class="token number">125</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
     <span class="token punctuation">]</span>
-&amp;#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>那么这个处理函数应该怎么写呢？<br>提供一个工具类，处理将关系数据库的record搞成tree的函数</p>
 <pre class="line-numbers language-clojure"><code class="language-clojure">(defn group-data-by-keys
@@ -690,7 +690,7 @@
                                   0
                                   )"
   ([data group-keys]
-   (-&gt;&gt; data
+   (->> data
         (group-by (fn [m] (select-keys m group-keys)))
 
         (reduce-kv (fn [m k v]
@@ -702,8 +702,8 @@
                    {})
         (mapv (fn [e] (apply merge e)))))
 
-  ([data group-keys key r-func val &amp; krvs]
-   (-&gt;&gt; data
+  ([data group-keys key r-func val & krvs]
+   (->> data
         (group-by (fn [m] (select-keys m group-keys)))
 
         (reduce-kv (fn [m k v]
@@ -736,20 +736,20 @@
 <p>在提供一个相反作用的函数</p>
 <pre class="line-numbers language-clojure"><code class="language-clojure">(defn list-from-group-by
  "去除分组, 作用和group-data-by-key 相反:
-  一层嵌套: (list-from-group-by {:y 1 :a [{:b 2} {:b 3}]} )))  -&gt;  [{:b 2, :y 1} {:b 3, :y 1}]
+  一层嵌套: (list-from-group-by {:y 1 :a [{:b 2} {:b 3}]} )))  ->  [{:b 2, :y 1} {:b 3, :y 1}]
 
 
  双层嵌套:  (mapcat sut/list-from-group-by
                   (sut/list-from-group-by {:y 1 :a [{:b [{:x 99}]} {:b [{:x 77}]}]} ))
 
-           -&gt;
+           ->
 
            [{:x 99, :y 1} {:x 77, :y 1}]
  "
  [m]
  (reduce-kv (fn [r k v]
              (if (vector? v)
-              (-&gt;&gt; (apply conj r v)
+              (->> (apply conj r v)
                    (map #(merge % (dissoc m k))))
 
               r))
@@ -759,7 +759,7 @@
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="2、一些有用的utils"><a href="#2、一些有用的utils" class="headerlink" title="2、一些有用的utils"></a>2、一些有用的utils</h3><pre class="line-numbers language-clojure"><code class="language-clojure">
 (defn lower-case-keywrod
- "把输入的字符串变成keywrokd \"ABC\" -&gt; :abc "
+ "把输入的字符串变成keywrokd \"ABC\" -> :abc "
  [s]
  (keyword (clojure.string/lower-case s)))
 
@@ -1240,70 +1240,6 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/08/09/shi-yong-serveo-yi-miao-zhong-shi-xian-nei-wang-chuan-tou/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/25.jpg" class="responsive-img" alt="使用serveo一秒钟实现内网穿透">
-                        
-                        <span class="card-title">使用serveo一秒钟实现内网穿透</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            一点不夸张，1秒钟！！！！
-ssh -R 80:localhost:3000 serveo.net
-
-简书地址
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-08-09
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="post-category">
-                                    工具使用
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/tools/">
-                        <span class="chip bg-color">tools</span>
-                    </a>
-                    
-                    <a href="/tags/server/">
-                        <span class="chip bg-color">server</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%BD%91%E7%BB%9C/">
-                        <span class="chip bg-color">网络</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">
-                        <span class="chip bg-color">内网穿透</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
                 <a href="/2019/07/31/clojure-web-luminus-jie-kou-kai-fa/">
                     <div class="card-image">
                         
@@ -1320,9 +1256,9 @@ ssh -R 80:localhost:3000 serveo.net
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-07-31
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-07-31
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1340,6 +1276,56 @@ ssh -R 80:localhost:3000 serveo.net
                     
                     <a href="/tags/clojure/">
                         <span class="chip bg-color">clojure</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/07/20/mysql-zhong-cun-chu-dai-te-shu-fu-hao-de-wei-xin-ni-cheng/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="mysql中存储带特殊符号的微信昵称">
+                        
+                        <span class="card-title">mysql中存储带特殊符号的微信昵称</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            微信昵称中有表情符号，在获取到微信个人信息保存到mysql时，格式不支持导致保存失败，怎么解决？
+简书地址
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-07-20
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/mysql/">
+                        <span class="chip bg-color">mysql</span>
                     </a>
                     
                 </div>
@@ -1478,7 +1464,7 @@ ssh -R 80:localhost:3000 serveo.net
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2018-2022</span>
+                <span id="year">2018-2025</span>
             
             <span id="year">2018</span>
             <a href="/about" target="_blank">马海强</a>

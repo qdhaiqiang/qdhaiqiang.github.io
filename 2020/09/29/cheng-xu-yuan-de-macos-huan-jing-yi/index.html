@@ -29,11 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
-<script src="/js/prism-line-numbers.min.js"></script>
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 
 
@@ -577,18 +577,18 @@ make install
 Updating Homebrew...
 Warning: Calling Non-checksummed download of sshpass formula file from an arbitrary URL is deprecated! Use 'brew extract' or 'brew create' and 'brew tap-new' to create a formula file in a tap on GitHub instead.
 ######################################################################## 100.0%
-==&gt; Downloading http://sourceforge.net/projects/sshpass/files/sshpass/1.06/sshpass-1.06.tar.gz
-==&gt; Downloading from https://netcologne.dl.sourceforge.net/project/sshpass/sshpass/1.06/sshpass-1.06.tar.gz
+==> Downloading http://sourceforge.net/projects/sshpass/files/sshpass/1.06/sshpass-1.06.tar.gz
+==> Downloading from https://netcologne.dl.sourceforge.net/project/sshpass/sshpass/1.06/sshpass-1.06.tar.gz
 ######################################################################## 100.0%
-==&gt; ./configure --prefix=/usr/local/Cellar/sshpass/1.06
-==&gt; make install
+==> ./configure --prefix=/usr/local/Cellar/sshpass/1.06
+==> make install
 🍺  /usr/local/Cellar/sshpass/1.06: 9 files, 45.8KB, built in 9 seconds
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>安装成功。</p>
 <p>iterm里另一个不得不用的是<code>Zsh</code>和<code>Oh My Zsh</code>家庭套餐，点到为止，网上一搜一大把，选个自己喜欢的theme用就行了。</p>
 <p>iterm2的profiles里执行一个登录的命令</p>
 <pre class="line-numbers language-shell"><code class="language-shell">/usr/local/bin/sshpass -f /Users/mahaiqiang/Documents/sshpass/<file_name> ssh -p<port> marvin@ip
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></port></file_name></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>file_name 只存储这个ip对应的用户登录密码，而且文件没有后缀。</p>
 <p>如果没有安装成功sshpass，也可以用iterm的命令行模式，执行一个shell脚本，脚本的内容可能荣幸</p>
 <pre class="line-numbers language-shell"><code class="language-shell">#!/usr/bin/expect -f
@@ -603,7 +603,7 @@ expect "*assword:*"
 send "$password\r"
 interact
 expect eof
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></port></password></ip></user-name></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>High起来吧</p>
 <ul>
 <li>2020-10-04<br>json_pp，json_pp 我主要是用来格式化 curl 命令行的结果，例如测试某个 restful 接口，返回的 json，在命令行就会自动给你格式化好输出，json_pp 安装：<code>brew install jsonpp</code></li>
@@ -1372,7 +1372,7 @@ expect eof
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2018-2022</span>
+                <span id="year">2018-2025</span>
             
             <span id="year">2018</span>
             <a href="/about" target="_blank">马海强</a>

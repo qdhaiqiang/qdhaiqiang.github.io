@@ -29,11 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
-<script src="/js/prism-line-numbers.min.js"></script>
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 
 
@@ -515,7 +515,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    6 分
                 </div>
                 
 
@@ -574,7 +574,7 @@
 <span class="token annotation punctuation">@Entity</span>
 <span class="token annotation punctuation">@Table</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"t_sys_config"</span><span class="token punctuation">)</span>
 <span class="token annotation punctuation">@Inheritance</span><span class="token punctuation">(</span>strategy <span class="token operator">=</span> InheritanceType<span class="token punctuation">.</span>SINGLE_TABLE<span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SysConfig</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SysConfig</span> <span class="token punctuation">{</span>
     
     <span class="token comment" spellcheck="true">/**
      * 主键
@@ -603,7 +603,7 @@
      * 属性描述
      */</span>
     <span class="token keyword">private</span> String description<span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="加载SystemConfig"><a href="#加载SystemConfig" class="headerlink" title="加载SystemConfig"></a>加载SystemConfig</h4><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Map<span class="token punctuation">;</span>
 <span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Properties<span class="token punctuation">;</span>
@@ -630,7 +630,7 @@
  */</span>
 <span class="token annotation punctuation">@Slf4j</span>
 <span class="token annotation punctuation">@Configuration</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SystemConfig</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SystemConfig</span> <span class="token punctuation">{</span>
     
     <span class="token annotation punctuation">@Autowired</span>
     <span class="token keyword">private</span> ConfigurableEnvironment environment<span class="token punctuation">;</span>
@@ -642,14 +642,14 @@
      * 从数据库加载配置文件信息
      */</span>
     <span class="token annotation punctuation">@PostConstruct</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">initDbPropertySourceUsage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">initDbPropertySourceUsage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"从数据库中加载属性配置文件开始"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment" spellcheck="true">// 获取系统属性集合</span>
         MutablePropertySources propertySources <span class="token operator">=</span> environment<span class="token punctuation">.</span><span class="token function">getPropertySources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         
         <span class="token comment" spellcheck="true">// 从数据库中获取自定义变量表</span>
-        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">&gt;</span> collect <span class="token operator">=</span> sysConfigService<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span>Collectors<span class="token punctuation">.</span><span class="token function">toMap</span><span class="token punctuation">(</span>SysConfig<span class="token operator">:</span><span class="token operator">:</span>getCode<span class="token punctuation">,</span> SysConfig<span class="token operator">:</span><span class="token operator">:</span>getValue<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"从数据库中获取自定义变量表完成，获取到的数据为【&amp;#123;&amp;#125;】"</span><span class="token punctuation">,</span> collect<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">></span> collect <span class="token operator">=</span> sysConfigService<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span>Collectors<span class="token punctuation">.</span><span class="token function">toMap</span><span class="token punctuation">(</span>SysConfig<span class="token operator">:</span><span class="token operator">:</span>getCode<span class="token punctuation">,</span> SysConfig<span class="token operator">:</span><span class="token operator">:</span>getValue<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"从数据库中获取自定义变量表完成，获取到的数据为【{}】"</span><span class="token punctuation">,</span> collect<span class="token punctuation">)</span><span class="token punctuation">;</span>
         
         <span class="token comment" spellcheck="true">// 将转换后的列表加入属性中</span>
         Properties properties <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Properties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -666,30 +666,30 @@
         <span class="token keyword">boolean</span> flag <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
         
         <span class="token comment" spellcheck="true">// 遍历属性集合</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span>PropertySource<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">&gt;</span> source <span class="token operator">:</span> propertySources<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>PropertySource<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span> source <span class="token operator">:</span> propertySources<span class="token punctuation">)</span> <span class="token punctuation">{</span>
             
                 <span class="token comment" spellcheck="true">// 正则匹配</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>pattern<span class="token punctuation">.</span><span class="token function">matcher</span><span class="token punctuation">(</span>source<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">matches</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>pattern<span class="token punctuation">.</span><span class="token function">matcher</span><span class="token punctuation">(</span>source<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">matches</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
                     <span class="token comment" spellcheck="true">// 接收名称</span>
                     name <span class="token operator">=</span> source<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
                     <span class="token comment" spellcheck="true">// 变更标识</span>
                     flag <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
                     
                     <span class="token keyword">break</span><span class="token punctuation">;</span>
-                <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
         
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>flag<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>flag<span class="token punctuation">)</span> <span class="token punctuation">{</span>
                 <span class="token comment" spellcheck="true">// 找到则将自定义属性添加到该属性前</span>
                 propertySources<span class="token punctuation">.</span><span class="token function">addBefore</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> constants<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
                 <span class="token comment" spellcheck="true">// 未找到则默认添加到第一位</span>
                 propertySources<span class="token punctuation">.</span><span class="token function">addFirst</span><span class="token punctuation">(</span>constants<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
         
         log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"从数据库中加载属性配置文件结束"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>里面的SysConfigService及不打了，直接调用了Jpa的Repository而已。</p>
 <p><code>@PostConstruct</code>注解正是为解决<code>容器启动后干啥</code>而生，与其相配的是<code>@PreDestroy</code>容器销毁前干点啥。<br>被@PostConstruct修饰的方法会在服务器加载Servlet的时候运行，并且只会被服务器执行一次。PostConstruct在构造函数之后执行，init（）方法之前执行。PreDestroy（）方法在destroy（）方法知性之后执行<br><img src="/loading.gif" data-original="/images/java/servlet.png" alt="postconstruct"><br>另外，spring中Constructor、@Autowired、@PostConstruct的顺序其实从依赖注入的字面意思就可以知道，要将对象p注入到对象a，那么首先就必须得生成对象a和对象p，才能执行注入。<br>所以，如果一个类A中有个成员变量p被@Autowried注解，那么@Autowired注入是发生在A的构造方法执行完之后的。如果想在生成对象时完成某些初始化操作，而偏偏这些初始化操作又依赖于依赖注入，那么久无法在构造函数中实现。为此，可以使用@PostConstruct注解一个方法来完成初始化，@PostConstruct注解的方法将会在依赖注入完成后被自动调用。</p>
@@ -707,7 +707,7 @@
  */</span>
 <span class="token annotation punctuation">@Slf4j</span>
 <span class="token annotation punctuation">@Configuration</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">PropertiesRefreshEventListener</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">PropertiesRefreshEventListener</span> <span class="token punctuation">{</span>
     <span class="token annotation punctuation">@Autowired</span>
     <span class="token keyword">private</span> SystemConfig systemConfig<span class="token punctuation">;</span>
     
@@ -717,11 +717,11 @@
      * @param event
      */</span>
     <span class="token annotation punctuation">@EventListener</span><span class="token punctuation">(</span>RefreshScopeRefreshedEvent<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onRefresh</span><span class="token punctuation">(</span>RefreshScopeRefreshedEvent event<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onRefresh</span><span class="token punctuation">(</span>RefreshScopeRefreshedEvent event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"重新从数据库装载属性"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         systemConfig<span class="token punctuation">.</span><span class="token function">initDbPropertySourceUsage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>启动配置热更新</p>
 <pre class="line-numbers language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
@@ -733,17 +733,17 @@
      */</span>
     <span class="token annotation punctuation">@RefreshScope</span>
     <span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span>value<span class="token operator">=</span><span class="token string">"/send"</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> RtnResult<span class="token operator">&lt;</span>String<span class="token operator">&gt;</span> <span class="token function">sendSmsCodeChannel</span><span class="token punctuation">(</span>IpInfo ipInfo<span class="token punctuation">,</span>
+    <span class="token keyword">public</span> RtnResult<span class="token operator">&lt;</span>String<span class="token operator">></span> <span class="token function">sendSmsCodeChannel</span><span class="token punctuation">(</span>IpInfo ipInfo<span class="token punctuation">,</span>
                                                 AppInfo appInfo<span class="token punctuation">,</span>
                                                 <span class="token annotation punctuation">@Validated</span> <span class="token annotation punctuation">@RequestBody</span> MsgInfo msgInfo<span class="token punctuation">,</span>
-                                                <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"$&amp;#123;smsCode.limitCount&amp;#125;"</span><span class="token punctuation">)</span> Long smsLimitCount<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"应用【&amp;#123;&amp;#125;】IP地址【&amp;#123;&amp;#125;】采用Redis Channel方式请求短信发送接口，请求参数为【&amp;#123;&amp;#125;】"</span><span class="token punctuation">,</span>
+                                                <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${smsCode.limitCount}"</span><span class="token punctuation">)</span> Long smsLimitCount<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"应用【{}】IP地址【{}】采用Redis Channel方式请求短信发送接口，请求参数为【{}】"</span><span class="token punctuation">,</span>
                 appInfo<span class="token punctuation">.</span><span class="token function">getAppId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>ipInfo<span class="token punctuation">.</span><span class="token function">getIpAddress</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> msgInfo<span class="token punctuation">)</span><span class="token punctuation">;</span>
         
         <span class="token comment" spellcheck="true">// 判断短信发送次数是否超限（每应用每天每手机号）</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">checkSmsCountOver</span><span class="token punctuation">(</span>appInfo<span class="token punctuation">,</span> msgInfo<span class="token punctuation">,</span>smsLimitCount<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">checkSmsCountOver</span><span class="token punctuation">(</span>appInfo<span class="token punctuation">,</span> msgInfo<span class="token punctuation">,</span>smsLimitCount<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token keyword">return</span> RtnResult<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>SmsCodeMsg<span class="token punctuation">.</span>SMS_COUNT_OVER<span class="token punctuation">.</span><span class="token function">fillArgs</span><span class="token punctuation">(</span>msgInfo<span class="token punctuation">.</span><span class="token function">getMobile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
         <span class="token keyword">long</span> start <span class="token operator">=</span> System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         
@@ -759,17 +759,17 @@
         asyncSmsInfo<span class="token punctuation">.</span><span class="token function">setIpAddress</span><span class="token punctuation">(</span>ipInfo<span class="token punctuation">.</span><span class="token function">getIpAddress</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         asyncSmsInfo<span class="token punctuation">.</span><span class="token function">setInvokeTime</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         
-        <span class="token keyword">try</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
             <span class="token comment" spellcheck="true">// 异步发送短信，将信息推送到Redis消息服务队列</span>
             publisherService<span class="token punctuation">.</span><span class="token function">pushSms</span><span class="token punctuation">(</span>asyncSmsInfo<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">BizException</span> e<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">BizException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token keyword">return</span> RtnResult<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>SmsCodeMsg<span class="token punctuation">.</span>SMS_PUBLISH_ERROR<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
         
         <span class="token keyword">long</span> end <span class="token operator">=</span> System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"应用【&amp;#123;&amp;#125;】IP地址【&amp;#123;&amp;#125;】采用Redis Channel方式请求短信发送接口，请求参数为【&amp;#123;&amp;#125;】完成，执行时间为【&amp;#123;&amp;#125;】ms"</span><span class="token punctuation">,</span> appInfo<span class="token punctuation">.</span><span class="token function">getAppId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>ipInfo<span class="token punctuation">.</span><span class="token function">getIpAddress</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> msgInfo<span class="token punctuation">,</span> end<span class="token operator">-</span>start<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"应用【{}】IP地址【{}】采用Redis Channel方式请求短信发送接口，请求参数为【{}】完成，执行时间为【{}】ms"</span><span class="token punctuation">,</span> appInfo<span class="token punctuation">.</span><span class="token function">getAppId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>ipInfo<span class="token punctuation">.</span><span class="token function">getIpAddress</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> msgInfo<span class="token punctuation">,</span> end<span class="token operator">-</span>start<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">return</span> RtnResult<span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span>StringUtils<span class="token punctuation">.</span>EMPTY<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>文中提到的redis channel发送消息模式不是重点，不在讲解使用的是redisTemplate的convertAndSend方法，有需要时自行查阅。</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/98cf7d8b9ec3">@PostConstruct</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/zzzgd_666/article/details/84322947">SpringCloud配置热更新@RefreshScope,以及没有出现/refresh的动态刷新地址,访问404的解决办法</a></p>
@@ -1467,7 +1467,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2018-2022</span>
+                <span id="year">2018-2025</span>
             
             <span id="year">2018</span>
             <a href="/about" target="_blank">马海强</a>
